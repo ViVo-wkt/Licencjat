@@ -760,7 +760,7 @@ MonoBehaviour:
   blipParent: {fileID: 425384231}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!60 &1947636360
 PolygonCollider2D:
   m_ObjectHideFlags: 0
