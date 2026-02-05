@@ -1,0 +1,1443 @@
+fileFormatVersion: 2
+guid: a43251de0b7eefe42872046b3a0c7662
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8754656987462854819
+    second: Degrees_0
+  - first:
+      213: -1299060533412472595
+    second: Degrees_1
+  - first:
+      213: 3654421640915797281
+    second: Degrees_2
+  - first:
+      213: -7079323633515546077
+    second: Degrees_3
+  - first:
+      213: 5721182022639816453
+    second: Degrees_4
+  - first:
+      213: 5069364192016616828
+    second: Degrees_5
+  - first:
+      213: 5024750357668270593
+    second: Degrees_6
+  - first:
+      213: -9011001093409076632
+    second: Degrees_7
+  - first:
+      213: -8909010794662877655
+    second: Degrees_8
+  - first:
+      213: -3322551610958436234
+    second: Degrees_9
+  - first:
+      213: -1918246406866299910
+    second: Degrees_10
+  - first:
+      213: -6023812392589691661
+    second: Degrees_11
+  - first:
+      213: 6549120722162556449
+    second: Degrees_12
+  - first:
+      213: 7271754778116424810
+    second: Degrees_13
+  - first:
+      213: -1699646667480340443
+    second: Degrees_14
+  - first:
+      213: 2791829626229720336
+    second: Degrees_15
+  - first:
+      213: -7405602660601388320
+    second: Degrees_16
+  - first:
+      213: 4214566827290205458
+    second: Degrees_17
+  - first:
+      213: -3992424178864677829
+    second: Degrees_18
+  - first:
+      213: 6638139336744465040
+    second: Degrees_19
+  - first:
+      213: 723042231798033408
+    second: Degrees_20
+  - first:
+      213: 2822816966257596228
+    second: Degrees_21
+  - first:
+      213: -1342258388826601071
+    second: Degrees_22
+  - first:
+      213: 5688959630829448663
+    second: Degrees_23
+  - first:
+      213: -2123717208910604008
+    second: Degrees_24
+  - first:
+      213: 1820537508552172847
+    second: Degrees_25
+  - first:
+      213: 3522209322378178701
+    second: Degrees_26
+  - first:
+      213: -8515103086181529919
+    second: Degrees_27
+  - first:
+      213: 6161575959114001987
+    second: Degrees_28
+  - first:
+      213: -2873924540431774575
+    second: Degrees_29
+  - first:
+      213: -5292422583009758302
+    second: Degrees_30
+  - first:
+      213: 3651575313441849261
+    second: Degrees_31
+  - first:
+      213: -5701265126598378299
+    second: Degrees_32
+  - first:
+      213: 3635632207935639955
+    second: Degrees_33
+  - first:
+      213: -7384893227354012413
+    second: Degrees_34
+  - first:
+      213: 4295613346034346032
+    second: Degrees_35
+  - first:
+      213: 1496902132717102395
+    second: Degrees_36
+  - first:
+      213: -2136330128874770314
+    second: Degrees_37
+  - first:
+      213: -4745833521169384355
+    second: Degrees_38
+  - first:
+      213: -7683749641140703466
+    second: Degrees_39
+  - first:
+      213: 3316232768202237361
+    second: Degrees_40
+  - first:
+      213: -5384201956165344032
+    second: Degrees_41
+  - first:
+      213: -9000590400257039547
+    second: Degrees_42
+  - first:
+      213: 261834446872639992
+    second: Degrees_43
+  - first:
+      213: -353302395773545357
+    second: Degrees_44
+  - first:
+      213: -4476853091071753384
+    second: Degrees_45
+  - first:
+      213: 6870245957059729382
+    second: Degrees_46
+  - first:
+      213: -8945586565939001034
+    second: Degrees_47
+  - first:
+      213: 1239184584630106395
+    second: Degrees_48
+  - first:
+      213: -7716819716108347425
+    second: Degrees_49
+  - first:
+      213: -313486656259585547
+    second: Degrees_50
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Degrees_0
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 1871
+        width: 35
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5792e3aad5318680800000000000000
+      internalID: -8754656987462854819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_1
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 1814
+        width: 164
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de8583cd35fc8fde0800000000000000
+      internalID: -1299060533412472595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_2
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 1758
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1254946de1d17b230800000000000000
+      internalID: 3654421640915797281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_3
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1784
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32a3746c9a031cd90800000000000000
+      internalID: -7079323633515546077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_4
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 1728
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50f0ccaccb8b56f40800000000000000
+      internalID: 5721182022639816453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_5
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 1743
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7d4c3ebfdff95640800000000000000
+      internalID: 5069364192016616828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_6
+      rect:
+        serializedVersion: 2
+        x: 1385
+        y: 1748
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10295d9f3df7bb540800000000000000
+      internalID: 5024750357668270593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_7
+      rect:
+        serializedVersion: 2
+        x: 1412
+        y: 1733
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86a02b47f3e72f280800000000000000
+      internalID: -9011001093409076632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_8
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 1658
+        width: 144
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 926affb52e5dc5480800000000000000
+      internalID: -8909010794662877655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_9
+      rect:
+        serializedVersion: 2
+        x: 1318
+        y: 1658
+        width: 144
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 678abe8d9ece3e1d0800000000000000
+      internalID: -3322551610958436234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_10
+      rect:
+        serializedVersion: 2
+        x: 1444
+        y: 1739
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af390176e050165e0800000000000000
+      internalID: -1918246406866299910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_11
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 1465
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f478126b8e176ca0800000000000000
+      internalID: -6023812392589691661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_12
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 1406
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12e16ab199623ea50800000000000000
+      internalID: 6549120722162556449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_13
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1432
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a64016b71767ae460800000000000000
+      internalID: 7271754778116424810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_14
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1309
+        width: 88
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 528682d6c54a968e0800000000000000
+      internalID: -1699646667480340443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_15
+      rect:
+        serializedVersion: 2
+        x: 1669
+        y: 1309
+        width: 88
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01585d8d0429eb620800000000000000
+      internalID: 2791829626229720336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_16
+      rect:
+        serializedVersion: 2
+        x: 1745
+        y: 1415
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e2aa23ed930a3990800000000000000
+      internalID: -7405602660601388320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_17
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 1380
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21d17ce13362d7a30800000000000000
+      internalID: 4214566827290205458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_18
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 1389
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3c1712bc5f0898c0800000000000000
+      internalID: -3992424178864677829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_19
+      rect:
+        serializedVersion: 2
+        x: 1787
+        y: 1385
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09273307e886f1c50800000000000000
+      internalID: 6638139336744465040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_20
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 954
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00c6de73413c80a00800000000000000
+      internalID: 723042231798033408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_21
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 860
+        width: 12
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 447dabb2319ac2720800000000000000
+      internalID: 2822816966257596228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_22
+      rect:
+        serializedVersion: 2
+        x: 1827
+        y: 860
+        width: 12
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 199c3316b175f5de0800000000000000
+      internalID: -1342258388826601071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_23
+      rect:
+        serializedVersion: 2
+        x: 1871
+        y: 946
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dd602194ae33fe40800000000000000
+      internalID: 5688959630829448663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_24
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 927
+        width: 23
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 819df7f437a0782e0800000000000000
+      internalID: -2123717208910604008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_25
+      rect:
+        serializedVersion: 2
+        x: 1871
+        y: 903
+        width: 23
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f25e689e739d34910800000000000000
+      internalID: 1820537508552172847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_26
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 898
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d80bbec97b661e030800000000000000
+      internalID: 3522209322378178701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_27
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 508
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c6415aabd644d980800000000000000
+      internalID: -8515103086181529919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_28
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 483
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34ea39b70b0528550800000000000000
+      internalID: 6161575959114001987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_29
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 430
+        width: 89
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19c49407bd4cd18d0800000000000000
+      internalID: -2873924540431774575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_30
+      rect:
+        serializedVersion: 2
+        x: 1668
+        y: 430
+        width: 89
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a3b27283b98d86b0800000000000000
+      internalID: -5292422583009758302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_31
+      rect:
+        serializedVersion: 2
+        x: 1790
+        y: 493
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: daf794496600da230800000000000000
+      internalID: 3651575313441849261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_32
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 463
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ccf7cee29901e0b0800000000000000
+      internalID: -5701265126598378299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_33
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 441
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39119ff0b3c547230800000000000000
+      internalID: 3635632207935639955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_34
+      rect:
+        serializedVersion: 2
+        x: 1775
+        y: 467
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 305406f8cb6938990800000000000000
+      internalID: -7384893227354012413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_35
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 433
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 038edce34951d9b30800000000000000
+      internalID: 4295613346034346032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_36
+      rect:
+        serializedVersion: 2
+        x: 1766
+        y: 429
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b35a02c0f8016c410800000000000000
+      internalID: 1496902132717102395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_37
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 136
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6707479011b3a52e0800000000000000
+      internalID: -2136330128874770314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_38
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 122
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5cbe879e89632eb0800000000000000
+      internalID: -4745833521169384355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_39
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 138
+        width: 145
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61fe5c06966dd5590800000000000000
+      internalID: -7683749641140703466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_40
+      rect:
+        serializedVersion: 2
+        x: 1318
+        y: 138
+        width: 144
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b5643de120a50e20800000000000000
+      internalID: 3316232768202237361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_41
+      rect:
+        serializedVersion: 2
+        x: 1427
+        y: 123
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e42dcbf8d87745b0800000000000000
+      internalID: -5384201956165344032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_42
+      rect:
+        serializedVersion: 2
+        x: 1453
+        y: 138
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54363e7d7ba771380800000000000000
+      internalID: -9000590400257039547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_43
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 113
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f9fdcbca0932a300800000000000000
+      internalID: 261834446872639992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_44
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 97
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3749f99c751d81bf0800000000000000
+      internalID: -353302395773545357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_45
+      rect:
+        serializedVersion: 2
+        x: 1401
+        y: 109
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8530f0345d50fd1c0800000000000000
+      internalID: -4476853091071753384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_46
+      rect:
+        serializedVersion: 2
+        x: 1397
+        y: 101
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e7db1e3c44085f50800000000000000
+      internalID: 6870245957059729382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_47
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 58
+        width: 164
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63903bdf964ead380800000000000000
+      internalID: -8945586565939001034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_48
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 6
+        width: 35
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b19740270d7723110800000000000000
+      internalID: 1239184584630106395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_49
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 6
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd791a98a5958e490800000000000000
+      internalID: -7716819716108347425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Degrees_50
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 6
+        width: 11
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f982db0c8546abf0800000000000000
+      internalID: -313486656259585547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Degrees_0: -8754656987462854819
+      Degrees_1: -1299060533412472595
+      Degrees_10: -1918246406866299910
+      Degrees_11: -6023812392589691661
+      Degrees_12: 6549120722162556449
+      Degrees_13: 7271754778116424810
+      Degrees_14: -1699646667480340443
+      Degrees_15: 2791829626229720336
+      Degrees_16: -7405602660601388320
+      Degrees_17: 4214566827290205458
+      Degrees_18: -3992424178864677829
+      Degrees_19: 6638139336744465040
+      Degrees_2: 3654421640915797281
+      Degrees_20: 723042231798033408
+      Degrees_21: 2822816966257596228
+      Degrees_22: -1342258388826601071
+      Degrees_23: 5688959630829448663
+      Degrees_24: -2123717208910604008
+      Degrees_25: 1820537508552172847
+      Degrees_26: 3522209322378178701
+      Degrees_27: -8515103086181529919
+      Degrees_28: 6161575959114001987
+      Degrees_29: -2873924540431774575
+      Degrees_3: -7079323633515546077
+      Degrees_30: -5292422583009758302
+      Degrees_31: 3651575313441849261
+      Degrees_32: -5701265126598378299
+      Degrees_33: 3635632207935639955
+      Degrees_34: -7384893227354012413
+      Degrees_35: 4295613346034346032
+      Degrees_36: 1496902132717102395
+      Degrees_37: -2136330128874770314
+      Degrees_38: -4745833521169384355
+      Degrees_39: -7683749641140703466
+      Degrees_4: 5721182022639816453
+      Degrees_40: 3316232768202237361
+      Degrees_41: -5384201956165344032
+      Degrees_42: -9000590400257039547
+      Degrees_43: 261834446872639992
+      Degrees_44: -353302395773545357
+      Degrees_45: -4476853091071753384
+      Degrees_46: 6870245957059729382
+      Degrees_47: -8945586565939001034
+      Degrees_48: 1239184584630106395
+      Degrees_49: -7716819716108347425
+      Degrees_5: 5069364192016616828
+      Degrees_50: -313486656259585547
+      Degrees_6: 5024750357668270593
+      Degrees_7: -9011001093409076632
+      Degrees_8: -8909010794662877655
+      Degrees_9: -3322551610958436234
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

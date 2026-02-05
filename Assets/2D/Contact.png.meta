@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1072f17f8719f854daca574f9491008e
+guid: ed785006f967ce34f8316287f1b1cf4e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1585119749454585224
-    second: Radar Background_0
+      213: 2505645869028942593
+    second: Contact_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Radar Background_0
+      name: Contact_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1280
-        height: 1280
+        width: 26
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 88d52b8830a7ff510800000000000000
-      internalID: 1585119749454585224
+      spriteID: 103256474a7d5c220800000000000000
+      internalID: 2505645869028942593
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Radar Background_0: 1585119749454585224
+      Contact_0: 2505645869028942593
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
