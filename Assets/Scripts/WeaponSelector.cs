@@ -6,14 +6,16 @@ public class WeaponSelector : MonoBehaviour
     public WeaponType currentWeapon = WeaponType.SemiActive;
 
     [Header("SARH Configuration")]
-    public SpriteRenderer sarhRenderer; // The Sprite Renderer on the SARH button object
+    public GameObject sarhBeamObject; // The Active Radar Beam (Orange)
+    public SpriteRenderer sarhRenderer; 
     public Sprite sarhUnpressed;
-    public Sprite sarhPressed; // "Lit up" or pushed in
+    public Sprite sarhPressed; 
 
     [Header("ARH Configuration")]
-    public SpriteRenderer arhRenderer; // The Sprite Renderer on the ARH button object
+    public GameObject arhlineObject; // The new Compass Line
+    public SpriteRenderer arhRenderer; 
     public Sprite arhUnpressed;
-    public Sprite arhPressed; // "Lit up" or pushed in
+    public Sprite arhPressed; 
 
     void Start()
     {
@@ -36,15 +38,23 @@ public class WeaponSelector : MonoBehaviour
     {
         if (currentWeapon == WeaponType.SemiActive)
         {
-            // SARH is ON (Pressed), ARH is OFF (Unpressed)
+            // 1. Swap Buttons
             sarhRenderer.sprite = sarhPressed;
             arhRenderer.sprite = arhUnpressed;
+
+            // 2. Swap Radar Tools
+            if (sarhBeamObject != null) sarhBeamObject.SetActive(true);
+            if (arhlineObject != null) arhlineObject.SetActive(false);
         }
         else
         {
-            // SARH is OFF (Unpressed), ARH is ON (Pressed)
+            // 1. Swap Buttons
             sarhRenderer.sprite = sarhUnpressed;
             arhRenderer.sprite = arhPressed;
+
+            // 2. Swap Radar Tools
+            if (sarhBeamObject != null) sarhBeamObject.SetActive(false);
+            if (arhlineObject != null) arhlineObject.SetActive(true);
         }
     }
 }
