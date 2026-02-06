@@ -17,6 +17,9 @@ public class WeaponSelector : MonoBehaviour
     public Sprite arhUnpressed;
     public Sprite arhPressed; 
 
+    [Header("Controls")]
+    public BearingControl bearingKnobScript;
+
     void Start()
     {
         UpdateVisuals();
@@ -45,6 +48,8 @@ public class WeaponSelector : MonoBehaviour
             // 2. Swap Radar Tools
             if (sarhBeamObject != null) sarhBeamObject.SetActive(true);
             if (arhlineObject != null) arhlineObject.SetActive(false);
+
+            if (bearingKnobScript != null) bearingKnobScript.isControllable = false; // LOCK KNOB
         }
         else
         {
@@ -55,6 +60,8 @@ public class WeaponSelector : MonoBehaviour
             // 2. Swap Radar Tools
             if (sarhBeamObject != null) sarhBeamObject.SetActive(false);
             if (arhlineObject != null) arhlineObject.SetActive(true);
+
+            if (bearingKnobScript != null) bearingKnobScript.isControllable = true; // UNLOCK KNOB
         }
     }
 }

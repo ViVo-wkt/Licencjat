@@ -457,7 +457,7 @@ Transform:
   m_GameObject: {fileID: 222597595}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 605.5, y: 340.625, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1102,6 +1102,7 @@ MonoBehaviour:
   knobAngleOffset: 45
   lineAngleOffset: 180
   currentBearing: 0
+  isControllable: 1
 --- !u!212 &803538938
 SpriteRenderer:
   serializedVersion: 2
@@ -2876,6 +2877,7 @@ MonoBehaviour:
   sarhMissilePrefab: {fileID: 2891675949318454554, guid: f58100bb77a72ca468556a8af75dab80, type: 3}
   arhMissilePrefab: {fileID: 2891675949318454554, guid: 5136ef1f642118b4988569c2831ad3ba, type: 3}
   launchPoint: {fileID: 1106338171}
+  firingAngleOffset: 180
 --- !u!4 &1870372412
 Transform:
   m_ObjectHideFlags: 0
@@ -2885,7 +2887,7 @@ Transform:
   m_GameObject: {fileID: 1870372410}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.3473, y: 0.71209, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2908,7 +2910,7 @@ MonoBehaviour:
   sarhRenderer: {fileID: 955913916}
   sarhUnpressed: {fileID: 21300000, guid: 8f883d76eb1e788498af7a26ce4671cf, type: 3}
   sarhPressed: {fileID: 21300000, guid: 0adc142fc1e0cd24496b70fae09262f6, type: 3}
-  arhlineObject: {fileID: 0}
+  arhlineObject: {fileID: 1532710989}
   arhRenderer: {fileID: 23685348}
   arhUnpressed: {fileID: 21300000, guid: 8f883d76eb1e788498af7a26ce4671cf, type: 3}
   arhPressed: {fileID: 21300000, guid: 0adc142fc1e0cd24496b70fae09262f6, type: 3}

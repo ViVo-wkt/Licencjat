@@ -16,6 +16,8 @@ public class BearingControl : MonoBehaviour
     private Collider2D _myCollider;
     private bool _isDragging = false;
 
+    public bool isControllable = true; // Controlled by WeaponSelector
+
     void Awake()
     {
         _myCollider = GetComponent<Collider2D>();
@@ -27,6 +29,8 @@ public class BearingControl : MonoBehaviour
 
     void Update()
     {
+        if (!isControllable) return;
+        
         if (Mouse.current == null) return;
 
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();

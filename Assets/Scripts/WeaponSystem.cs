@@ -13,7 +13,14 @@ public class WeaponSystem : MonoBehaviour
     public GameObject arhMissilePrefab; // New Fire & Forget prefab
     public Transform launchPoint;
 
-    // Call this from Spacebar or Fire Button
+    public float firingAngleOffset = 180f; // Tweak this if missiles fly wrong way
+    void Update()
+    {
+        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            FireSequence();
+        }
+    }
     public void FireSequence()
     {
         if (selector.currentWeapon == WeaponSelector.WeaponType.SemiActive)
@@ -41,10 +48,10 @@ public class WeaponSystem : MonoBehaviour
 
     void SpawnARH()
     {
-        // Calculate launch rotation based on the knob's bearing
-        Quaternion launchRotation = Quaternion.Euler(0, 0, bearingComputer.currentBearing);
-        
-        GameObject m = Instantiate(arhMissilePrefab, launchPoint.position, Quaternion.identity);
-        m.GetComponent<ActiveHomingMissile>().Launch(launchRotation);
+    float finalAngle = bearingComputer.currentBearing + firingAngleOffset;
+    Quaternion launchRotation = Quaternion.Euler(0, 0, finalAngle);
+
+    GameObject m = Instantiate(arhMissilePrefab, launchPoint.position, Quaternion.identity);
+    m.GetComponent<ActiveHomingMissile>().Launch(launchRotation);
     }
 }
