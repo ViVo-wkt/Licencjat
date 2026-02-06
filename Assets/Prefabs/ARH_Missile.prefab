@@ -183,3 +183,5 @@ MonoBehaviour:
   turnSpeed: 150
   searchConeAngle: 45
   killDistance: 0.1
+  maxRadarRange: 6
+  maxFlightTime: 8

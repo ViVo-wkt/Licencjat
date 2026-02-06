@@ -1077,8 +1077,8 @@ GameObject:
   m_Component:
   - component: {fileID: 803538939}
   - component: {fileID: 803538938}
-  - component: {fileID: 803538937}
   - component: {fileID: 803538940}
+  - component: {fileID: 803538937}
   m_Layer: 0
   m_Name: Knob_Bearing
   m_TagString: Untagged
@@ -1098,11 +1098,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d239c8e6878008408457c31aae5e0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BearingControl
-  radarIndicatorLine: {fileID: 1532710991}
+  isControllable: 1
+  inputType: 0
+  scrollSpeed: 10
+  dragSensitivity: 0.5
   knobAngleOffset: 45
   lineAngleOffset: 180
+  radarIndicatorLine: {fileID: 1532710991}
   currentBearing: 0
-  isControllable: 1
 --- !u!212 &803538938
 SpriteRenderer:
   serializedVersion: 2
@@ -2914,6 +2917,7 @@ MonoBehaviour:
   arhRenderer: {fileID: 23685348}
   arhUnpressed: {fileID: 21300000, guid: 8f883d76eb1e788498af7a26ce4671cf, type: 3}
   arhPressed: {fileID: 21300000, guid: 0adc142fc1e0cd24496b70fae09262f6, type: 3}
+  bearingKnobScript: {fileID: 803538937}
 --- !u!1 &1932829129
 GameObject:
   m_ObjectHideFlags: 0
