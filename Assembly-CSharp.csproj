@@ -50,7 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\TargetSignature.cs" />
+    <Compile Include="Assets\Scripts\HomingMissile.cs" />
     <Compile Include="Assets\Scripts\RadarBlip.cs" />
+    <Compile Include="Assets\Scripts\WeaponSystem.cs" />
     <Compile Include="Assets\Scripts\RadarContactInteraction.cs" />
     <Compile Include="Assets\Scripts\RadarSweep.cs" />
     <Compile Include="Assets\Scripts\RadarUIManager.cs" />

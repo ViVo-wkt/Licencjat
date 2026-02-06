@@ -7,6 +7,17 @@ public class ActiveRadarSensor : MonoBehaviour
     public GameObject trackMarkerPrefab; // The Red/Orange Square
     public LayerMask targetLayer;        // "RadarTarget"
 
+    // Returns the first valid target we are currently locking
+    public GameObject GetCurrentTarget()
+    {
+        // Return the first key in the dictionary
+        foreach (var enemy in _activeLocks.Keys)
+        {
+            if (enemy != null) return enemy;
+        }
+        return null;
+    }
+
     // Stores <Enemy, Marker> pairs
     private Dictionary<GameObject, GameObject> _activeLocks = new Dictionary<GameObject, GameObject>();
 
