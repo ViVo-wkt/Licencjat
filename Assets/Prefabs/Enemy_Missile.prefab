@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7060006310463790741}
   - component: {fileID: 1021066908438429931}
   m_Layer: 6
-  m_Name: Enemy_Drone
+  m_Name: Enemy_Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,9 +142,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe1e8008e5fb74409854239b62dd8dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetSignature
-  codename: Drone
+  codename: Missile
   classification: Hostile
-  description: Slow moving, easy to intercept
+  description: Fast moving, hard target
 --- !u!114 &1021066908438429931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyNavigation
   pattern: 0
-  speed: 0.2
+  speed: 0.4
   impactDistance: 0.1
   maneuverFrequency: 1
   maneuverMagnitude: 20

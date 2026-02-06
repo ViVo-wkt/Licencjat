@@ -1,11 +1,22 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ScenarioManager : MonoBehaviour
 {
+    [System.Serializable]
+    public struct EnemyThreat
+    {
+        public string name;
+        public GameObject prefab;
+        [Range(1, 100)] public int spawnWeight; // Higher number = more frequent
+    }
+
+    [Header("Threat Definition")]
+    public EnemyThreat[] possibleThreats;
+
     [Header("Spawn Settings")]
-    public GameObject enemyPrefab;
-    public float spawnRadius = 5.0f; // Edge of the radar
-    public float spawnInterval = 5.0f; // Seconds between enemies
+    public float spawnRadius = 5.0f;
+    public float spawnInterval = 5.0f;
 
     private float _timer;
 
@@ -15,24 +26,46 @@ public class ScenarioManager : MonoBehaviour
 
         if (_timer <= 0)
         {
-            SpawnEnemy();
+            SpawnRandomThreat();
             _timer = spawnInterval;
         }
     }
 
-    void SpawnEnemy()
+    void SpawnRandomThreat()
     {
-        // 1. Pick a random angle
-        float angle = Random.Range(0f, 360f);
-        
-        // 2. Convert angle to a position on the circle edge
-        // Math: x = cos(angle) * radius, y = sin(angle) * radius
-        Vector2 spawnPos = new Vector2(
-            Mathf.Cos(angle * Mathf.Deg2Rad), 
-            Mathf.Sin(angle * Mathf.Deg2Rad)
-        ) * spawnRadius;
+        if (possibleThreats.Length == 0) return;
 
-        // 3. Spawn
-        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        // 1. Calculate Total Weight
+        int totalWeight = 0;
+        foreach (var threat in possibleThreats) totalWeight += threat.spawnWeight;
+
+        // 2. Pick Random Value
+        int randomValue = Random.Range(0, totalWeight);
+
+        // 3. Find which enemy corresponds to that value
+        GameObject selectedPrefab = null;
+        int currentWeightSum = 0;
+
+        foreach (var threat in possibleThreats)
+        {
+            currentWeightSum += threat.spawnWeight;
+            if (randomValue < currentWeightSum)
+            {
+                selectedPrefab = threat.prefab;
+                break;
+            }
+        }
+
+        // 4. Spawn logic
+        if (selectedPrefab != null)
+        {
+            float angle = Random.Range(0f, 360f);
+            Vector2 spawnPos = new Vector2(
+                Mathf.Cos(angle * Mathf.Deg2Rad), 
+                Mathf.Sin(angle * Mathf.Deg2Rad)
+            ) * spawnRadius;
+
+            Instantiate(selectedPrefab, spawnPos, Quaternion.identity);
+        }
     }
 }

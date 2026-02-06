@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7060006310463790741}
   - component: {fileID: 1021066908438429931}
   m_Layer: 6
-  m_Name: Enemy_Drone
+  m_Name: Contact_Airliner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,9 +142,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe1e8008e5fb74409854239b62dd8dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetSignature
-  codename: Drone
-  classification: Hostile
-  description: Slow moving, easy to intercept
+  codename: Airliner
+  classification: Neutral
+  description: Do not engage (optional)
 --- !u!114 &1021066908438429931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,8 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c851da2c074f447bc73af4f5ac56c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyNavigation
+  isHostile: 0
   pattern: 0
-  speed: 0.2
+  speed: 0.1
   impactDistance: 0.1
   maneuverFrequency: 1
   maneuverMagnitude: 20

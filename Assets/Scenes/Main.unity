@@ -677,7 +677,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c47ad005dc6e3744b389a16011a0dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScenarioManager
-  enemyPrefab: {fileID: 5909428910239168877, guid: efd0d3c48cef7804a83979300e89bfb9, type: 3}
+  possibleThreats:
+  - name: Drone
+    prefab: {fileID: 5909428910239168877, guid: efd0d3c48cef7804a83979300e89bfb9, type: 3}
+    spawnWeight: 50
+  - name: Missile
+    prefab: {fileID: 5909428910239168877, guid: 71460db96edf2574da7366fd63fd3463, type: 3}
+    spawnWeight: 20
+  - name: Aircraft
+    prefab: {fileID: 5909428910239168877, guid: aa440c455320a0046be6199dae543f0a, type: 3}
+    spawnWeight: 30
+  - name: Airliner
+    prefab: {fileID: 5909428910239168877, guid: 31f63e1dae302154e8cfd39b0006959c, type: 3}
+    spawnWeight: 20
   spawnRadius: 7
   spawnInterval: 8
 --- !u!4 &546544473
