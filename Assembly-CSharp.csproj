@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\RadarBlip.cs" />
     <Compile Include="Assets\Scripts\RadarSweep.cs" />
+    <Compile Include="Assets\Scripts\ActiveRadarSensor.cs" />
     <Compile Include="Assets\Scripts\RadarSensor.cs" />
     <Compile Include="Assets\Scripts\RadarKnob.cs" />
   </ItemGroup>

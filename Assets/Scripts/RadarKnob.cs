@@ -1,15 +1,17 @@
 using UnityEngine;
-using UnityEngine.InputSystem; // Required for the New Input System
+using UnityEngine.InputSystem;
 
 public class RadarKnob : MonoBehaviour
 {
     [Header("Connections")]
-    public Transform linkedBeam; // The Radar Beam object
+    public Transform linkedBeam;
 
     [Header("Settings")]
-    public float rotationSpeed = 10f; // Adjusted for New Input sensitivity
+    public float scrollSpeed = 10f;
+    public float dragSensitivity = 0.5f; // Sensitivity for mouse movement
 
     private Collider2D _myCollider;
+    private bool _isDragging = false;
 
     void Awake()
     {
@@ -18,37 +20,59 @@ public class RadarKnob : MonoBehaviour
 
     void Update()
     {
-        // 1. Safety Check: Do we have a mouse?
         if (Mouse.current == null) return;
 
-        // 2. Get Mouse Position in the World
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+        
+        bool isHovering = _myCollider.OverlapPoint(mouseWorldPos);
+        bool isLeftClickDown = Mouse.current.leftButton.wasPressedThisFrame;
+        bool isLeftClickHeld = Mouse.current.leftButton.isPressed;
 
-        // 3. Manual "OnMouseOver" Check
-        // We ask the collider: "Is this point inside you?"
-        if (_myCollider.OverlapPoint(mouseWorldPos))
+        // 1. Handle Drag Start
+        if (isHovering && isLeftClickDown)
         {
-            // 4. Read Scroll Input
-            // (The new system often returns larger values like 120, so we normalize it)
-            float scrollValue = Mouse.current.scroll.ReadValue().y;
+            _isDragging = true;
+        }
 
+        // 2. Handle Drag End
+        if (!isLeftClickHeld)
+        {
+            _isDragging = false;
+        }
+
+        float rotationAmount = 0f;
+
+        // 3. Priority: Dragging overrides Scrolling
+        if (_isDragging)
+        {
+            // Get mouse movement X (Left/Right)
+            float mouseDeltaX = Mouse.current.delta.x.ReadValue();
+            
+            // Invert direction if you want "pulling" feel vs "pushing" feel
+            rotationAmount = -mouseDeltaX * dragSensitivity;
+        }
+        else if (isHovering)
+        {
+            // 4. Fallback: Scroll Wheel
+            float scrollValue = Mouse.current.scroll.ReadValue().y;
             if (Mathf.Abs(scrollValue) > 0.01f)
             {
-                // Normalize to 1 or -1 to keep speed consistent
                 float direction = Mathf.Sign(scrollValue);
+                rotationAmount = direction * scrollSpeed * Time.deltaTime * 50f;
+            }
+        }
 
-                // Calculate rotation
-                float rotationAmount = direction * rotationSpeed * Time.deltaTime * 50f;
+        // 5. Apply Rotation
+        if (Mathf.Abs(rotationAmount) > 0.001f)
+        {
+            // Rotate Knob
+            transform.Rotate(0, 0, rotationAmount);
 
-                // Rotate Knob
-                transform.Rotate(0, 0, rotationAmount);
-
-                // Rotate Beam
-                if (linkedBeam != null)
-                {
-                    linkedBeam.rotation = transform.rotation;
-                }
+            // Rotate Beam
+            if (linkedBeam != null)
+            {
+                linkedBeam.rotation = transform.rotation;
             }
         }
     }

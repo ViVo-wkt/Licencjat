@@ -99,7 +99,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -250,10 +250,13 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: []
+      m_SelectedIDs:
+      - m_Data: -71048
       m_LastClickedID:
-        m_Data: 0
+        m_Data: -71048
       m_ExpandedIDs:
+      - m_Data: -77022
+      - m_Data: -71562
       - m_Data: -62918
       - m_Data: -62876
       - m_Data: -25854
@@ -935,9 +938,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 1.4781793, y: 0.7713331, z: -1.0260863}
+    m_Target: {x: 15, y: -7.5, z: -0.99}
     speed: 2
-    m_Value: {x: 1.2663451, y: 0.65065706, z: -1.0202261}
+    m_Value: {x: 15, y: -7.5, z: -0.99}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -987,9 +990,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 13.608618
+    m_Target: 1.266709
     speed: 2
-    m_Value: 13.022601
+    m_Value: 1.266709
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1099,7 +1102,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/2D
+    - Assets/Scripts
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1109,7 +1112,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/2D
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Unity\Projects\Licencjat
   m_LockTracker:
@@ -1118,13 +1121,12 @@ MonoBehaviour:
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs:
-    - m_Data: 49142
+    - m_Data: 49148
     m_LastClickedID:
-      m_Data: 49142
+      m_Data: 49148
     m_ExpandedIDs:
     - m_Data: 0
     - m_Data: 48858
-    - m_Data: 49146
     - m_Data: 1000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1186,14 +1188,13 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: []
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs:
+    - m_Data: -71048
+    m_LastClickedInstanceID: -71048
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs:
     - m_Data: 75700
     - m_Data: 75704
-    - m_Data: 55408
-    - m_Data: 53674
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1332,7 +1333,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 162
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:

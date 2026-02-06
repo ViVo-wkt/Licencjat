@@ -1024,8 +1024,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1083624376}
   - component: {fileID: 1083624379}
+  - component: {fileID: 1083624380}
   - component: {fileID: 1083624378}
-  - component: {fileID: 1083624377}
+  - component: {fileID: 1083624381}
   m_Layer: 0
   m_Name: Radar_Beam
   m_TagString: Untagged
@@ -1048,23 +1049,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 330939061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1083624377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083624375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3faaa9a13aeeb0542bf24e0eaa52e572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RadarSensor
-  blipPrefab: {fileID: 1465638273713955256, guid: 8fe6d673d564d93458462b32655388cd, type: 3}
-  blipParent: {fileID: 330939061}
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!60 &1083624378
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1078,7 +1062,7 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1112,11 +1096,11 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.0048380047, y: -0.05328846}
-      - {x: -2.8059406, y: -6.744978}
+      - {x: -2.3459852, y: -6.8453317}
       - {x: -1.2292275, y: -7.2037535}
       - {x: 0.0010865349, y: -7.2760367}
       - {x: 1.2472072, y: -7.1677995}
-      - {x: 2.7879663, y: -6.7090244}
+      - {x: 2.3196478, y: -6.8846436}
   m_UseDelaunayMesh: 1
 --- !u!212 &1083624379
 SpriteRenderer:
@@ -1177,6 +1161,49 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!50 &1083624380
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083624375}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1083624381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083624375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab1ce90f170de447bff4b83b6e7036f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActiveRadarSensor
+  trackMarkerPrefab: {fileID: 8265852649811164633, guid: 1a4bfa8571c1abb42becb606b8bc6fbb, type: 3}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1097382850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,7 +1438,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RadarKnob
   linkedBeam: {fileID: 1083624376}
-  rotationSpeed: 50
+  scrollSpeed: 25
+  dragSensitivity: 0.75
 --- !u!1 &1289825679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,7 +1610,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 9b1088c3e1e311f4eb01d8b27d68c77b, type: 3}
-  m_Color: {r: 0, g: 0.5018867, b: 0.063101396, a: 0.39215687}
+  m_Color: {r: 0, g: 0.5018867, b: 0, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
