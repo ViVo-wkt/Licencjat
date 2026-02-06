@@ -182,3 +182,4 @@ MonoBehaviour:
   speed: 1
   turnSpeed: 100
   killDistance: 0.1
+  maxRadarRange: 6

@@ -6,18 +6,22 @@ public class HomingMissile : MonoBehaviour
     public float speed = 5f;
     public float turnSpeed = 200f;
     public float killDistance = 0.5f;
+    
+    [Header("Safety")]
+    public float maxRadarRange = 4.5f; // Radius of your radar screen
 
     private GameObject _target;
-    private bool _hasLock = false;
+    private ActiveRadarSensor _guidanceRadar;
+    private bool _hasSignal = false;
 
-    // We call this when spawning the missile
-    public void Launch(GameObject target)
+    public void Launch(GameObject target, ActiveRadarSensor radar)
     {
         _target = target;
-        _hasLock = true;
+        _guidanceRadar = radar;
+        _hasSignal = true;
         
-        // Optional: Destroy after 10 seconds if it misses everything
-        Destroy(gameObject, 10f); 
+        // Safety timer in case it circles forever inside
+        Destroy(gameObject, 15f); 
     }
 
     void Update()
@@ -25,38 +29,50 @@ public class HomingMissile : MonoBehaviour
         // 1. Move Forward
         transform.Translate(Vector3.up * speed * Time.deltaTime);
 
-        // 2. Guidance Logic
-        if (_target != null && _hasLock)
+        // 2. RANGE CHECK (The Fix)
+        // If we fly further than the radar rim, destroy immediately.
+        // We assume the radar center is at (0,0,0). If not, use Vector3.Distance(transform.position, _guidanceRadar.transform.position)
+        if (transform.position.magnitude > maxRadarRange)
         {
-            Vector2 direction = (Vector2)_target.transform.position - (Vector2)transform.position;
-            float rotateAmount = Vector3.Cross(direction, transform.up).z;
-            transform.Rotate(0, 0, -rotateAmount * turnSpeed * Time.deltaTime);
+            Destroy(gameObject);
+            return;
+        }
 
-            if (Vector2.Distance(transform.position, _target.transform.position) < killDistance)
+        // 3. Guidance Logic
+        if (_target != null && _guidanceRadar != null)
+        {
+            if (_guidanceRadar.IsTracking(_target))
             {
-                Detonate();
+                // SIGNAL GOOD: Rotate towards target
+                Vector2 direction = (Vector2)_target.transform.position - (Vector2)transform.position;
+                float rotateAmount = Vector3.Cross(direction, transform.up).z;
+                transform.Rotate(0, 0, -rotateAmount * turnSpeed * Time.deltaTime);
+
+                // Hit Detection
+                if (Vector2.Distance(transform.position, _target.transform.position) < killDistance)
+                {
+                    Detonate();
+                }
+            }
+            else
+            {
+                // SIGNAL LOST: Fly straight (simulated by doing nothing here)
+                if (_hasSignal) 
+                {
+                    _hasSignal = false; 
+                    // Optional: Change sprite color to gray to show it's "dead"?
+                }
             }
         }
         else
         {
-            // --- NEW CODE: Self Destruct if target is lost ---
-            // If we launched but the target is gone (destroyed by another missile), 
-            // destroy this missile after a short delay so it doesn't fly forever.
-            Destroy(gameObject, 0.5f); 
+            // Target dead, keep flying straight until Range Check kills us
         }
     }
 
     void Detonate()
     {
-        // Boom
-        Debug.Log("SPLASH ONE! Target Destroyed.");
-        
-        // Destroy Enemy
         if (_target != null) Destroy(_target);
-        
-        // Destroy Missile
         Destroy(gameObject);
-        
-        // TODO: Add explosion particle effect here later
     }
 }

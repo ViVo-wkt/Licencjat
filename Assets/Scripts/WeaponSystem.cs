@@ -37,7 +37,6 @@ public class WeaponSystem : MonoBehaviour
 
     void SpawnMissile(GameObject target)
     {
-        // Spawn at launch point, or center of screen if null
         Vector3 spawnPos = launchPoint != null ? launchPoint.position : Vector3.zero;
         
         GameObject missileObj = Instantiate(missilePrefab, spawnPos, Quaternion.identity);
@@ -45,7 +44,8 @@ public class WeaponSystem : MonoBehaviour
         
         if (missileScript != null)
         {
-            missileScript.Launch(target);
+            // UPDATE: Pass 'fireControlRadar' as the second argument
+            missileScript.Launch(target, fireControlRadar);
         }
     }
 }

@@ -102,4 +102,11 @@ public class ActiveRadarSensor : MonoBehaviour
     {
         return (targetLayer.value & (1 << obj.layer)) > 0;
     }
+
+    // NEW: Allow missiles to check if a specific enemy is still locked
+    public bool IsTracking(GameObject enemy)
+    {
+        if (enemy == null) return false;
+        return _activeLocks.ContainsKey(enemy);
+    }
 }
