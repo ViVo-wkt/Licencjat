@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9b1088c3e1e311f4eb01d8b27d68c77b
+guid: 4ecc6289436e48a4ba9bc1e6acb5927b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4042964591429492445
-    second: Beam (1)_0
+      213: 5034282583614132872
+    second: Focus_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Beam (1)_0
+      name: Focus_0
       rect:
         serializedVersion: 2
-        x: 725
+        x: 428
         y: 0
-        width: 302
+        width: 599
         height: 725
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 321ec58ef1184e7c0800000000000000
-      internalID: -4042964591429492445
+      spriteID: 8829147465d5dd540800000000000000
+      internalID: 5034282583614132872
       vertices: []
       indices: 
       edges: []
@@ -126,7 +126,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Beam (1)_0: -4042964591429492445
+      Focus_0: 5034282583614132872
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
