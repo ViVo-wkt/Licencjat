@@ -61,6 +61,16 @@ public class ActiveRadarSensor : MonoBehaviour
         if (!_activeLocks.ContainsKey(enemy))
         {
             GameObject newMarker = Instantiate(trackMarkerPrefab, enemy.transform.position, Quaternion.identity);
+            
+            // --- NEW CODE START ---
+            // Initialize the interaction script on the marker
+            var interaction = newMarker.GetComponent<RadarContactInteraction>();
+            if (interaction != null)
+            {
+                interaction.Initialize(enemy);
+            }
+            // --- NEW CODE END ---
+
             _activeLocks.Add(enemy, newMarker);
         }
     }
