@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 23685349}
   - component: {fileID: 23685348}
   - component: {fileID: 23685350}
+  - component: {fileID: 23685351}
   m_Layer: 0
   m_Name: Buton_ARH
   m_TagString: Untagged
@@ -205,7 +206,7 @@ Transform:
   m_GameObject: {fileID: 23685347}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.67, y: 3, z: 0}
+  m_LocalPosition: {x: -15.67, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -241,7 +242,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -257,6 +258,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.08, y: 3.24}
   m_EdgeRadius: 0
+--- !u!114 &23685351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23685347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c385aba24f0204f92966bdab916603, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponButton
+  type: 1
+  selectorManager: {fileID: 1870372413}
 --- !u!1 &177959446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,8 +1169,9 @@ GameObject:
   - component: {fileID: 803538939}
   - component: {fileID: 803538938}
   - component: {fileID: 803538937}
+  - component: {fileID: 803538940}
   m_Layer: 0
-  m_Name: Firing Knob
+  m_Name: Knob_Bearing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1249,6 +1265,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &803538940
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803538936}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 1.515
 --- !u!1 &821322795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,7 +1386,7 @@ Transform:
   m_GameObject: {fileID: 821322795}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.67, y: 6, z: -0.01}
+  m_LocalPosition: {x: -27.67, y: -3, z: -0.01}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1648,6 +1700,7 @@ GameObject:
   - component: {fileID: 955913917}
   - component: {fileID: 955913916}
   - component: {fileID: 955913918}
+  - component: {fileID: 955913919}
   m_Layer: 0
   m_Name: Button_SARH
   m_TagString: Untagged
@@ -1723,7 +1776,7 @@ Transform:
   m_GameObject: {fileID: 955913915}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.67, y: 0, z: 0}
+  m_LocalPosition: {x: -15.67, y: -3, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1759,7 +1812,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1775,6 +1828,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.08, y: 3.24}
   m_EdgeRadius: 0
+--- !u!114 &955913919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955913915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c385aba24f0204f92966bdab916603, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponButton
+  type: 0
+  selectorManager: {fileID: 1870372413}
 --- !u!1 &957043849
 GameObject:
   m_ObjectHideFlags: 0
@@ -2776,6 +2843,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1870372412}
   - component: {fileID: 1870372411}
+  - component: {fileID: 1870372413}
   m_Layer: 0
   m_Name: Weapon_Systems
   m_TagString: Untagged
@@ -2795,9 +2863,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5439e5dfbed76143b15bf8f79342dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSystem
-  selector: {fileID: 0}
+  selector: {fileID: 1870372413}
   fireControlRadar: {fileID: 1083624381}
-  bearingComputer: {fileID: 0}
+  bearingComputer: {fileID: 803538937}
   sarhMissilePrefab: {fileID: 2891675949318454554, guid: f58100bb77a72ca468556a8af75dab80, type: 3}
   arhMissilePrefab: {fileID: 2891675949318454554, guid: 5136ef1f642118b4988569c2831ad3ba, type: 3}
   launchPoint: {fileID: 0}
@@ -2816,6 +2884,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1870372413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870372410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a552957ee8ff249b31049268967380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponSelector
+  currentWeapon: 0
+  sarhRenderer: {fileID: 955913916}
+  sarhUnpressed: {fileID: 21300000, guid: 8f883d76eb1e788498af7a26ce4671cf, type: 3}
+  sarhPressed: {fileID: 21300000, guid: 0adc142fc1e0cd24496b70fae09262f6, type: 3}
+  arhRenderer: {fileID: 23685348}
+  arhUnpressed: {fileID: 21300000, guid: 8f883d76eb1e788498af7a26ce4671cf, type: 3}
+  arhPressed: {fileID: 21300000, guid: 0adc142fc1e0cd24496b70fae09262f6, type: 3}
 --- !u!1 &1932829129
 GameObject:
   m_ObjectHideFlags: 0
