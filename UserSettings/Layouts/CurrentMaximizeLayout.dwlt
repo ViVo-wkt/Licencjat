@@ -933,9 +933,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -0.5609761, y: -2.3703895, z: 0.13914967}
+    m_Target: {x: 1.816966, y: -2.6917331, z: 0.080352224}
     speed: 2
-    m_Value: {x: -0.5609761, y: -2.3703895, z: 0.13914967}
+    m_Value: {x: 1.816966, y: -2.6917331, z: 0.080352224}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -985,9 +985,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 4.925089
+    m_Target: 10.804839
     speed: 2
-    m_Value: 4.925089
+    m_Value: 10.804839
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1097,7 +1097,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/2D
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1107,7 +1107,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/2D
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Unity\Projects\Licencjat
   m_LockTracker:
@@ -1116,9 +1116,9 @@ MonoBehaviour:
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs:
-    - m_Data: 49148
+    - m_Data: 49142
     m_LastClickedID:
-      m_Data: 49148
+      m_Data: 49142
     m_ExpandedIDs:
     - m_Data: 0
     - m_Data: 48858

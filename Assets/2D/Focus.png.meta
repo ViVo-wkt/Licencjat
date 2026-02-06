@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 579e653d099aade4388b3c14a6785bef
+guid: 4ecc6289436e48a4ba9bc1e6acb5927b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1710360996341162718
-    second: dreamstime_xxl_406548583 (1)_0
+      213: 5034282583614132872
+    second: Focus_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dreamstime_xxl_406548583 (1)_0
+      name: Focus_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 428
         y: 0
-        width: 6250
-        height: 4479
+        width: 599
+        height: 725
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 22dd6675cb39348e0800000000000000
-      internalID: -1710360996341162718
+      spriteID: 8829147465d5dd540800000000000000
+      internalID: 5034282583614132872
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dreamstime_xxl_406548583 (1)_0: -1710360996341162718
+      Focus_0: 5034282583614132872
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
