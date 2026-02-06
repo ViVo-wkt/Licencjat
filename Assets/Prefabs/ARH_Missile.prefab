@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c07466c168f33944989671a40d012c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActiveHomingMissile
-  speed: 6
-  turnSpeed: 250
+  speed: 1
+  turnSpeed: 150
   searchConeAngle: 45
-  killDistance: 0.5
+  killDistance: 0.1

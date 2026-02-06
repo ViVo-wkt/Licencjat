@@ -180,6 +180,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomingMissile
   speed: 1
-  turnSpeed: 200
+  turnSpeed: 250
   killDistance: 0.1
   maxRadarRange: 6
