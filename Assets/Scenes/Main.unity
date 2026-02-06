@@ -1109,9 +1109,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BearingControl
   radarIndicatorLine: {fileID: 39464541}
-  knobAngleOffset: 0
+  knobAngleOffset: 45
   lineAngleOffset: 0
-  currentBearing: 45
+  currentBearing: 0
 --- !u!212 &803538938
 SpriteRenderer:
   serializedVersion: 2
