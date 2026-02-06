@@ -22,28 +22,27 @@ public class HomingMissile : MonoBehaviour
 
     void Update()
     {
-        // 1. Move Forward constanty
+        // 1. Move Forward
         transform.Translate(Vector3.up * speed * Time.deltaTime);
 
         // 2. Guidance Logic
-        if (_target != null)
+        if (_target != null && _hasLock)
         {
-            // CHECK: Is the target still locked? (Does it have the Red Marker?)
-            // We assume if the marker exists as a child or is tracked by the sensor, it's locked.
-            // For this prototype, we will trust the launch command, but you can add a check here 
-            // to simulate "Lost Signal" if the player moves the beam.
-
             Vector2 direction = (Vector2)_target.transform.position - (Vector2)transform.position;
-            
-            // Rotate towards target
             float rotateAmount = Vector3.Cross(direction, transform.up).z;
             transform.Rotate(0, 0, -rotateAmount * turnSpeed * Time.deltaTime);
 
-            // 3. Proximity Fuze (Hit detection)
             if (Vector2.Distance(transform.position, _target.transform.position) < killDistance)
             {
                 Detonate();
             }
+        }
+        else
+        {
+            // --- NEW CODE: Self Destruct if target is lost ---
+            // If we launched but the target is gone (destroyed by another missile), 
+            // destroy this missile after a short delay so it doesn't fly forever.
+            Destroy(gameObject, 0.5f); 
         }
     }
 

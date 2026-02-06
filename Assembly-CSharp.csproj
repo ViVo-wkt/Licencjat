@@ -58,6 +58,7 @@
     <Compile Include="Assets\Scripts\RadarUIManager.cs" />
     <Compile Include="Assets\Scripts\ActiveRadarSensor.cs" />
     <Compile Include="Assets\Scripts\RadarSensor.cs" />
+    <Compile Include="Assets\Scripts\LaunchButton.cs" />
     <Compile Include="Assets\Scripts\RadarKnob.cs" />
   </ItemGroup>
   <ItemGroup>

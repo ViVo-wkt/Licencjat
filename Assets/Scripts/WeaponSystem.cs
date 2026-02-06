@@ -19,7 +19,7 @@ public class WeaponSystem : MonoBehaviour
         }
     }
 
-    void FireSequence()
+    public void FireSequence()
     {
         // 1. Get the current locked target from the Active Radar
         GameObject target = fireControlRadar.GetCurrentTarget();
