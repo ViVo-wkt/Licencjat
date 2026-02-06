@@ -57,6 +57,7 @@
     <Compile Include="Assets\Scripts\WeaponSystem.cs" />
     <Compile Include="Assets\Scripts\RadarContactInteraction.cs" />
     <Compile Include="Assets\Scripts\WeaponSelector.cs" />
+    <Compile Include="Assets\Scripts\ExplosionEffect.cs" />
     <Compile Include="Assets\Scripts\RadarSweep.cs" />
     <Compile Include="Assets\Scripts\RadarUIManager.cs" />
     <Compile Include="Assets\Scripts\WeaponButton.cs" />

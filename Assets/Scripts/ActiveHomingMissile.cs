@@ -12,6 +12,9 @@ public class ActiveHomingMissile : MonoBehaviour
     public float maxRadarRange = 4.8f;  // Screen radius (matches SARH setting)
     public float maxFlightTime = 10.0f; // Seconds before fuel runs out
 
+    [Header("Visuals")]
+    public GameObject interceptionEffect; // Drag FX_Interception here
+
     private GameObject _target;
     private bool _hasTarget = false;
 
@@ -105,11 +108,16 @@ public class ActiveHomingMissile : MonoBehaviour
         }
     }
 
-    void Detonate()
+   void Detonate()
     {
+        // 1. Spawn Effect
+        if (interceptionEffect != null)
+        {
+            Instantiate(interceptionEffect, transform.position, Quaternion.identity);
+        }
+
+        // 2. Destroy Target & Self
         if (_target != null) Destroy(_target);
-        
-        // TODO: Add explosion particle effect here later
         Destroy(gameObject);
     }
 }

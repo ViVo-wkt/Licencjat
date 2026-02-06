@@ -4,6 +4,9 @@ public class EnemyNavigation : MonoBehaviour
 {
     public enum MovementType { Linear, ZigZag }
 
+    [Header("Stats")]
+    public float altitude = 30000f; // in feet
+
     [Header("Identity")]
     public bool isHostile = true; // IF FALSE: Flies past the ship without hitting it
 

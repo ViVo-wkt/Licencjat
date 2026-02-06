@@ -11,6 +11,9 @@ public class HomingMissile : MonoBehaviour
     public float maxRadarRange = 4.8f;
     public float maxFlightTime = 8.0f; // NEW: Fuel limit in seconds
 
+    [Header("Visuals")]
+    public GameObject interceptionEffect;
+
     private GameObject _target;
     private ActiveRadarSensor _guidanceRadar;
     private bool _hasSignal = false;
@@ -66,6 +69,13 @@ public class HomingMissile : MonoBehaviour
 
     void Detonate()
     {
+        // 1. Spawn Effect
+        if (interceptionEffect != null)
+        {
+            Instantiate(interceptionEffect, transform.position, Quaternion.identity);
+        }
+
+        // 2. Destroy Target & Self
         if (_target != null) Destroy(_target);
         Destroy(gameObject);
     }
