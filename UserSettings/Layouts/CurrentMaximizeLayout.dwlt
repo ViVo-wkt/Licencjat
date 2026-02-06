@@ -99,7 +99,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -250,19 +250,15 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs:
-      - m_Data: -71048
+      m_SelectedIDs: []
       m_LastClickedID:
-        m_Data: -71048
+        m_Data: 0
       m_ExpandedIDs:
-      - m_Data: -77022
-      - m_Data: -71562
-      - m_Data: -62918
-      - m_Data: -62876
-      - m_Data: -25854
-      - m_Data: -19658
+      - m_Data: -1348
+      - m_Data: -1316
       - m_Data: -1314
-      - m_Data: 48722
+      - m_Data: 48856
+      - m_Data: 48864
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -938,9 +934,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 15, y: -7.5, z: -0.99}
+    m_Target: {x: -1.1824464, y: -0.21206175, z: 0.09830475}
     speed: 2
-    m_Value: {x: 15, y: -7.5, z: -0.99}
+    m_Value: {x: -1.1824464, y: -0.21206175, z: 0.09830475}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -990,9 +986,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 1.266709
+    m_Target: 12.198638
     speed: 2
-    m_Value: 1.266709
+    m_Value: 12.198638
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1102,7 +1098,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Prefabs
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1112,7 +1108,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Unity\Projects\Licencjat
   m_LockTracker:
@@ -1121,12 +1117,12 @@ MonoBehaviour:
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs:
-    - m_Data: 49148
+    - m_Data: 49528
     m_LastClickedID:
-      m_Data: 49148
+      m_Data: 49528
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 48858
+    - m_Data: 49432
     - m_Data: 1000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1160,7 +1156,7 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 48858
+    - m_Data: 49432
     - m_Data: 1000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1188,10 +1184,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs:
-    - m_Data: -71048
-    m_LastClickedInstanceID: -71048
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: []
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs:
     - m_Data: 75700
     - m_Data: 75704
