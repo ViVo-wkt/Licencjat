@@ -8,14 +8,34 @@ public class ActiveRadarSensor : MonoBehaviour
     public LayerMask targetLayer;        // "RadarTarget"
 
     // Returns the first valid target we are currently locking
+    // Returns the target closest to the center of the beam
     public GameObject GetCurrentTarget()
     {
-        // Return the first key in the dictionary
+        GameObject bestTarget = null;
+        float bestAngle = Mathf.Infinity; // Start with a very high number
+
+        // Loop through all currently locked enemies
         foreach (var enemy in _activeLocks.Keys)
         {
-            if (enemy != null) return enemy;
+            // Skip if enemy was destroyed
+            if (enemy == null) continue;
+
+            // 1. Calculate direction from Radar Center to Enemy
+            Vector2 directionToEnemy = enemy.transform.position - transform.position;
+
+            // 2. Calculate the angle difference
+            // transform.up is the direction the beam is pointing (Green/Orange Axis)
+            float angle = Vector2.Angle(transform.up, directionToEnemy);
+
+            // 3. Compare: Is this better (smaller angle) than the previous best?
+            if (angle < bestAngle)
+            {
+                bestAngle = angle;
+                bestTarget = enemy;
+            }
         }
-        return null;
+
+        return bestTarget;
     }
 
     // Stores <Enemy, Marker> pairs
