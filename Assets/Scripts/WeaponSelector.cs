@@ -39,29 +39,40 @@ public class WeaponSelector : MonoBehaviour
 
     void UpdateVisuals()
     {
+        // 1. Get the SpriteRenderer from the beam object
+        // (Make sure your Active_Beam object has a SpriteRenderer on it!)
+        SpriteRenderer beamSprite = null;
+        if (sarhBeamObject != null) beamSprite = sarhBeamObject.GetComponent<SpriteRenderer>();
+
         if (currentWeapon == WeaponType.SemiActive)
         {
-            // 1. Swap Buttons
+            // --- SARH MODE ---
             sarhRenderer.sprite = sarhPressed;
             arhRenderer.sprite = arhUnpressed;
 
-            // 2. Swap Radar Tools
-            if (sarhBeamObject != null) sarhBeamObject.SetActive(true);
+            // Enable Beam VISUALS
+            if (beamSprite != null) beamSprite.enabled = true; 
+            
+            // Hide ARH Line
             if (arhlineObject != null) arhlineObject.SetActive(false);
 
-            if (bearingKnobScript != null) bearingKnobScript.isControllable = false; // LOCK KNOB
+            // Unlock Knob
+            if (bearingKnobScript != null) bearingKnobScript.isControllable = false;
         }
         else
         {
-            // 1. Swap Buttons
+            // --- ARH MODE ---
             sarhRenderer.sprite = sarhUnpressed;
             arhRenderer.sprite = arhPressed;
 
-            // 2. Swap Radar Tools
-            if (sarhBeamObject != null) sarhBeamObject.SetActive(false);
+            // Disable Beam VISUALS only (Logic stays active!)
+            if (beamSprite != null) beamSprite.enabled = false;
+
+            // Show ARH Line
             if (arhlineObject != null) arhlineObject.SetActive(true);
 
-            if (bearingKnobScript != null) bearingKnobScript.isControllable = true; // UNLOCK KNOB
+            // Lock Knob
+            if (bearingKnobScript != null) bearingKnobScript.isControllable = true;
         }
     }
 }

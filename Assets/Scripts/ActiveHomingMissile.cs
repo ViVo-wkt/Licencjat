@@ -5,8 +5,12 @@ public class ActiveHomingMissile : MonoBehaviour
     [Header("Stats")]
     public float speed = 6f;
     public float turnSpeed = 250f;
-    public float searchConeAngle = 45f; // How wide it sees
+    public float searchConeAngle = 45f; // How wide the missile sees in front of it
     public float killDistance = 0.5f;
+
+    [Header("Limitations")]
+    public float maxRadarRange = 4.8f;  // Screen radius (matches SARH setting)
+    public float maxFlightTime = 10.0f; // Seconds before fuel runs out
 
     private GameObject _target;
     private bool _hasTarget = false;
@@ -14,25 +18,36 @@ public class ActiveHomingMissile : MonoBehaviour
     // Called by WeaponSystem upon launch
     public void Launch(Quaternion initialHeading)
     {
-        // Start facing the bearing direction
+        // Start facing the bearing direction determined by the knob
         transform.rotation = initialHeading;
-        Destroy(gameObject, 15f); // Fuel limit
+
+        // Fuel limit: Destroy self after X seconds automatically
+        Destroy(gameObject, maxFlightTime);
     }
 
     void Update()
     {
-        // 1. Move Forward
+        // 1. Move Forward constantly
         transform.Translate(Vector3.up * speed * Time.deltaTime);
 
-        // 2. Search Logic (If no target)
+        // 2. Range Safety Check (If it flies off screen)
+        if (transform.position.magnitude > maxRadarRange)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        // 3. Guidance & Search Logic
         if (!_hasTarget)
         {
+            // Phase 1: Search (Pitbull Mode)
+            // The missile looks for targets on its own
             ScanForTargets();
         }
-        // 3. Kill Logic (If target found)
         else if (_target != null)
         {
-            // Guide towards target
+            // Phase 2: Intercept (Guidance)
+            // Steer towards the locked target
             Vector2 direction = (Vector2)_target.transform.position - (Vector2)transform.position;
             float rotateAmount = Vector3.Cross(direction, transform.up).z;
             transform.Rotate(0, 0, -rotateAmount * turnSpeed * Time.deltaTime);
@@ -45,13 +60,16 @@ public class ActiveHomingMissile : MonoBehaviour
         }
         else
         {
-            _hasTarget = false; // Target lost/destroyed, go back to searching
+            // Target was locked but is now destroyed/null.
+            // Go back to search mode in case there is another target nearby.
+            _hasTarget = false;
         }
     }
 
     void ScanForTargets()
     {
-        // Find all colliders in a radius
+        // Find all colliders in a small radius around the missile
+        // 3.0f is the missile's own onboard seeker range
         Collider2D[] potentialTargets = Physics2D.OverlapCircleAll(transform.position, 3.0f);
 
         float bestDist = Mathf.Infinity;
@@ -59,15 +77,16 @@ public class ActiveHomingMissile : MonoBehaviour
 
         foreach (var col in potentialTargets)
         {
-            // Check if it's an enemy
+            // Check if it's an enemy (must have TargetSignature script)
             if (col.GetComponent<TargetSignature>() != null)
             {
                 Vector2 dirToEnemy = col.transform.position - transform.position;
                 float angle = Vector2.Angle(transform.up, dirToEnemy);
 
-                // Is it in my cone?
+                // Is it within the seeker cone?
                 if (angle < searchConeAngle / 2f)
                 {
+                    // Pick the closest one
                     float d = dirToEnemy.sqrMagnitude;
                     if (d < bestDist)
                     {
@@ -82,13 +101,15 @@ public class ActiveHomingMissile : MonoBehaviour
         {
             _target = potentialBest;
             _hasTarget = true;
-            Debug.Log("PITBULL! Missile is autonomous.");
+            // Optional: Debug.Log("PITBULL! Missile acquired target.");
         }
     }
 
     void Detonate()
     {
         if (_target != null) Destroy(_target);
+        
+        // TODO: Add explosion particle effect here later
         Destroy(gameObject);
     }
 }
