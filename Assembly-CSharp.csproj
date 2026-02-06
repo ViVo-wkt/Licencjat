@@ -52,6 +52,7 @@
     <Compile Include="Assets\Scripts\RadarBlip.cs" />
     <Compile Include="Assets\Scripts\RadarSweep.cs" />
     <Compile Include="Assets\Scripts\RadarSensor.cs" />
+    <Compile Include="Assets\Scripts\RadarKnob.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

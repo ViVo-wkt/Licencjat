@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 8bcb54bab6741364596e32137fb22f83
+guid: af2dc7d353e59574880403facb9e5b8b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 994541345675357213
-    second: Background Basic (1)_0
+      213: 2363486179540554872
+    second: Radar Scope Director_0
+  - first:
+      213: -5226300618768197099
+    second: Radar Scope Director_1
+  - first:
+      213: -6497931698688582380
+    second: Radar Scope Director_2
+  - first:
+      213: 6438862951493061703
+    second: Radar Scope Director_3
+  - first:
+      213: 6196541276097793187
+    second: Radar Scope Director_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Background Basic (1)_0
+      name: Radar Scope Director_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 7680
-        height: 4320
+        x: 308
+        y: 648
+        width: 45
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +127,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d1c2b67a5125dcd00800000000000000
-      internalID: 994541345675357213
+      spriteID: 8745f03782accc020800000000000000
+      internalID: 2363486179540554872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Radar Scope Director_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 308
+        width: 13
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51adae007437877b0800000000000000
+      internalID: -5226300618768197099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Radar Scope Director_2
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 28
+        width: 580
+        height: 586
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41d9aec2c85b2d5a0800000000000000
+      internalID: -6497931698688582380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Radar Scope Director_3
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 308
+        width: 13
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74cca256dbf6b5950800000000000000
+      internalID: 6438862951493061703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Radar Scope Director_4
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 0
+        width: 45
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3accaddb5798ef550800000000000000
+      internalID: 6196541276097793187
       vertices: []
       indices: 
       edges: []
@@ -135,7 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Background Basic (1)_0: 994541345675357213
+      Radar Scope Director_0: 2363486179540554872
+      Radar Scope Director_1: -5226300618768197099
+      Radar Scope Director_2: -6497931698688582380
+      Radar Scope Director_3: 6438862951493061703
+      Radar Scope Director_4: 6196541276097793187
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
