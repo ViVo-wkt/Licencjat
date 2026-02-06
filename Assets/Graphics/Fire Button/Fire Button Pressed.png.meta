@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3ff1e826555fd8146a0e317135912fbf
+guid: f80ac24aea1cd74438028418fac964ee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4976656302831676582
-    second: Fire Button Pressed_0
+      213: 1025503400110653034
+    second: Fire Button Pressed (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fire Button Pressed_0
+      name: Fire Button Pressed (1)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 341
-        height: 347
+        height: 357
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a535284c57d5feab0800000000000000
-      internalID: -4976656302831676582
+      spriteID: a6efc87b8e15b3e00800000000000000
+      internalID: 1025503400110653034
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Fire Button Pressed_0: -4976656302831676582
+      Fire Button Pressed (1)_0: 1025503400110653034
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
