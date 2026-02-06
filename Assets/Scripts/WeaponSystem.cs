@@ -3,49 +3,48 @@ using UnityEngine.InputSystem;
 
 public class WeaponSystem : MonoBehaviour
 {
+    [Header("Hardware")]
+    public WeaponSelector selector; // Drag your UI object here
+    public ActiveRadarSensor fireControlRadar; // Existing SARH Radar
+    public BearingControl bearingComputer; // Your NEW Compass Knob
+
     [Header("Armory")]
-    public GameObject missilePrefab;
-    public Transform launchPoint; // Where missiles come from (center of screen or a silo)
+    public GameObject sarhMissilePrefab;
+    public GameObject arhMissilePrefab; // New Fire & Forget prefab
+    public Transform launchPoint;
 
-    [Header("Sensors")]
-    public ActiveRadarSensor fireControlRadar; // Reference to the Active Beam script
-
-    void Update()
-    {
-        // Check for Spacebar input (New Input System or Old)
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            FireSequence();
-        }
-    }
-
+    // Call this from Spacebar or Fire Button
     public void FireSequence()
     {
-        // 1. Get the current locked target from the Active Radar
-        GameObject target = fireControlRadar.GetCurrentTarget();
-
-        if (target != null)
+        if (selector.currentWeapon == WeaponSelector.WeaponType.SemiActive)
         {
-            Debug.Log("Fox One! Missile away!");
-            SpawnMissile(target);
+            // --- MODE 1: SARH (Old Logic) ---
+            GameObject target = fireControlRadar.GetCurrentTarget();
+            if (target != null)
+            {
+                SpawnSARH(target);
+            }
         }
         else
         {
-            Debug.Log("Negative. No valid firing solution.");
+            // --- MODE 2: ARH (New Logic) ---
+            // No lock needed! Just fire at the compass bearing.
+            SpawnARH();
         }
     }
 
-    void SpawnMissile(GameObject target)
+    void SpawnSARH(GameObject target)
     {
-        Vector3 spawnPos = launchPoint != null ? launchPoint.position : Vector3.zero;
+        GameObject m = Instantiate(sarhMissilePrefab, launchPoint.position, Quaternion.identity);
+        m.GetComponent<HomingMissile>().Launch(target, fireControlRadar);
+    }
+
+    void SpawnARH()
+    {
+        // Calculate launch rotation based on the knob's bearing
+        Quaternion launchRotation = Quaternion.Euler(0, 0, bearingComputer.currentBearing);
         
-        GameObject missileObj = Instantiate(missilePrefab, spawnPos, Quaternion.identity);
-        HomingMissile missileScript = missileObj.GetComponent<HomingMissile>();
-        
-        if (missileScript != null)
-        {
-            // UPDATE: Pass 'fireControlRadar' as the second argument
-            missileScript.Launch(target, fireControlRadar);
-        }
+        GameObject m = Instantiate(arhMissilePrefab, launchPoint.position, Quaternion.identity);
+        m.GetComponent<ActiveHomingMissile>().Launch(launchRotation);
     }
 }

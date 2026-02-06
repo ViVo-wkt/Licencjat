@@ -1,45 +1,31 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class WeaponSelector : MonoBehaviour
 {
     public enum WeaponType { SemiActive, FireAndForget }
-    
-    [Header("State")]
     public WeaponType currentWeapon = WeaponType.SemiActive;
 
-    [Header("Button References")]
-    // Assign the GameObjects that hold your SpriteRenderers or UI Buttons
-    public GameObject sarhButtonObj; 
-    public GameObject arhButtonObj;
+    [Header("SARH Configuration")]
+    public SpriteRenderer sarhRenderer; // The Sprite Renderer on the SARH button object
+    public Sprite sarhUnpressed;
+    public Sprite sarhPressed; // "Lit up" or pushed in
 
-    [Header("Visuals")]
-    public Sprite sarhSelected;
-    public Sprite sarhUnselected;
-    public Sprite arhSelected;
-    public Sprite arhUnselected;
-
-    private SpriteRenderer _sarhRenderer;
-    private SpriteRenderer _arhRenderer;
+    [Header("ARH Configuration")]
+    public SpriteRenderer arhRenderer; // The Sprite Renderer on the ARH button object
+    public Sprite arhUnpressed;
+    public Sprite arhPressed; // "Lit up" or pushed in
 
     void Start()
     {
-        // Get renderers
-        _sarhRenderer = sarhButtonObj.GetComponent<SpriteRenderer>();
-        _arhRenderer = arhButtonObj.GetComponent<SpriteRenderer>();
-        
-        // Initialize state
         UpdateVisuals();
     }
 
-    // Call this when clicking the Semi-Active Button
     public void SelectSemiActive()
     {
         currentWeapon = WeaponType.SemiActive;
         UpdateVisuals();
     }
 
-    // Call this when clicking the Active Button
     public void SelectActive()
     {
         currentWeapon = WeaponType.FireAndForget;
@@ -50,13 +36,15 @@ public class WeaponSelector : MonoBehaviour
     {
         if (currentWeapon == WeaponType.SemiActive)
         {
-            _sarhRenderer.sprite = sarhSelected;
-            _arhRenderer.sprite = arhUnselected;
+            // SARH is ON (Pressed), ARH is OFF (Unpressed)
+            sarhRenderer.sprite = sarhPressed;
+            arhRenderer.sprite = arhUnpressed;
         }
         else
         {
-            _sarhRenderer.sprite = sarhUnselected;
-            _arhRenderer.sprite = arhSelected;
+            // SARH is OFF (Unpressed), ARH is ON (Pressed)
+            sarhRenderer.sprite = sarhUnpressed;
+            arhRenderer.sprite = arhPressed;
         }
     }
 }
