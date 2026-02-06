@@ -157,8 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c851da2c074f447bc73af4f5ac56c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyNavigation
+  altitude: 30000
+  isHostile: 1
   pattern: 1
   speed: 0.3
   impactDistance: 0.1
   maneuverFrequency: 1.5
-  maneuverMagnitude: 60
+  maneuverMagnitude: 50
