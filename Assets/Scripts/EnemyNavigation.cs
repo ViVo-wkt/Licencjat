@@ -90,6 +90,10 @@ public class EnemyNavigation : MonoBehaviour
     void Impact()
     {
         Debug.Log($"<color=red><b>IMPACT!</b> {name} hit the base!</color>");
+        if (BaseAlarm.Instance != null)
+        {
+            BaseAlarm.Instance.TriggerAlarm();
+        }
         Destroy(gameObject);
     }
 }
