@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class ActiveRadarSensor : MonoBehaviour
 {
     [Header("Configuration")]
-    public GameObject trackMarkerPrefab; // The Red/Orange Square
+    public GameObject trackMarkerPrefab;
     public LayerMask targetLayer;        // "RadarTarget"
 
     // Returns the first valid target we are currently locking
@@ -21,7 +21,6 @@ public class ActiveRadarSensor : MonoBehaviour
 
             Vector2 directionToEnemy = enemy.transform.position - transform.position;
 
-            // FIX: Use -transform.up because your Green Arrow points opposite to the beam
             float angle = Vector2.Angle(-transform.up, directionToEnemy);
 
             if (angle < minAngle)
@@ -58,7 +57,7 @@ public class ActiveRadarSensor : MonoBehaviour
     private void Update()
     {
         // 3. Update marker positions to follow moving enemies
-        // We use a separate list to track destroyed enemies to avoid errors
+        // Separate list to track destroyed enemies to avoid errors
         List<GameObject> enemiesLost = new List<GameObject>();
 
         foreach (var pair in _activeLocks)
@@ -89,14 +88,12 @@ public class ActiveRadarSensor : MonoBehaviour
         {
             GameObject newMarker = Instantiate(trackMarkerPrefab, enemy.transform.position, Quaternion.identity);
             
-            // --- NEW CODE START ---
             // Initialize the interaction script on the marker
             var interaction = newMarker.GetComponent<RadarContactInteraction>();
             if (interaction != null)
             {
                 interaction.Initialize(enemy);
             }
-            // --- NEW CODE END ---
 
             _activeLocks.Add(enemy, newMarker);
         }

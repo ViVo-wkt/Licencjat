@@ -19,7 +19,7 @@ public class RadarBlip : MonoBehaviour
         // 1. Count down
         _timer -= Time.deltaTime;
 
-        // 2. Calculate transparency (1.0 is visible, 0.0 is invisible)
+        // 2. Calculate transparency
         float alpha = Mathf.Clamp01(_timer / decayTime);
 
         // 3. Apply the fading color

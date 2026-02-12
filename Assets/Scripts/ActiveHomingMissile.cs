@@ -5,7 +5,7 @@ public class ActiveHomingMissile : MonoBehaviour
     [Header("Stats")]
     public float speed = 6f;
     public float turnSpeed = 250f;
-    public float searchConeAngle = 45f; // How wide the missile sees in front of it
+    public float searchConeAngle = 45f; // Seeker with in degrees
     public float killDistance = 0.5f;
 
     [Header("Limitations")]
@@ -63,8 +63,8 @@ public class ActiveHomingMissile : MonoBehaviour
         }
         else
         {
-            // Target was locked but is now destroyed/null.
-            // Go back to search mode in case there is another target nearby.
+            // Target was locked but is now destroyed/null
+            // Go back to search mode in case there is another target nearby
             _hasTarget = false;
         }
     }
@@ -104,7 +104,6 @@ public class ActiveHomingMissile : MonoBehaviour
         {
             _target = potentialBest;
             _hasTarget = true;
-            // Optional: Debug.Log("PITBULL! Missile acquired target.");
         }
     }
 

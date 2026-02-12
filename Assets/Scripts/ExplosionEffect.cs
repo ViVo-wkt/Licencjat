@@ -14,7 +14,6 @@ public class ExplosionEffect : MonoBehaviour
 
     void Update()
     {
-        // Make it expand rapidly for a "shockwave" look
         transform.localScale += Vector3.one * expandSpeed * Time.deltaTime;
     }
 }

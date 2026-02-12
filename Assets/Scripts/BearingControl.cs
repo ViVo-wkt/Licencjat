@@ -44,7 +44,7 @@ public class BearingControl : MonoBehaviour
         bool clickUp = Mouse.current.leftButton.wasReleasedThisFrame;
         bool isHovering = _myCollider.OverlapPoint(mouseWorldPos);
 
-        // --- SCHEME A: Scroll & Drag ---
+        //  SCHEME A: Scroll & Drag 
         if (inputType == ControlScheme.ScrollAndDrag)
         {
             if (isHovering && clickDown)
@@ -85,7 +85,7 @@ public class BearingControl : MonoBehaviour
             }
         }
         
-        // --- SCHEME B: Point & Pull ---
+        // SCHEME B: Point & Pull 
         else
         {
             if (clickDown && isHovering) _isDragging = true;
@@ -116,20 +116,16 @@ public class BearingControl : MonoBehaviour
     {
         if (radarIndicatorLine != null)
         {
-            // Calculate the difference required to match the sprites
             float relativeOffset = lineAngleOffset - knobAngleOffset;
             
-            // Apply that difference to the current knob rotation
             float finalLineAngle = transform.eulerAngles.z + relativeOffset;
             
             radarIndicatorLine.rotation = Quaternion.Euler(0, 0, finalLineAngle);
             
-            // CRITICAL FIX: The missile follows the LINE, not the Knob.
             currentBearing = finalLineAngle;
         }
         else
         {
-            // Fallback if no line exists
             currentBearing = transform.eulerAngles.z;
         }
     }

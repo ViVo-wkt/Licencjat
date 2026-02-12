@@ -9,7 +9,7 @@ public class HomingMissile : MonoBehaviour
     
     [Header("Limitations")]
     public float maxRadarRange = 4.8f;
-    public float maxFlightTime = 8.0f; // NEW: Fuel limit in seconds
+    public float maxFlightTime = 8.0f; // Fuel limit in seconds
 
     [Header("Visuals")]
     public GameObject interceptionEffect;
@@ -24,7 +24,7 @@ public class HomingMissile : MonoBehaviour
         _guidanceRadar = radar;
         _hasSignal = true;
         
-        // NEW: Self-destruct after fuel runs out
+        // Self-destruct after fuel runs out
         Destroy(gameObject, maxFlightTime); 
     }
 
