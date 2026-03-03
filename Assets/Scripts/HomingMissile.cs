@@ -9,7 +9,7 @@ public class HomingMissile : MonoBehaviour
     
     [Header("Limitations")]
     public float maxRadarRange = 4.8f;
-    public float maxFlightTime = 8.0f; // Fuel limit in seconds
+    public float maxFlightTime = 8.0f; 
 
     [Header("Visuals")]
     public GameObject interceptionEffect;
@@ -24,16 +24,19 @@ public class HomingMissile : MonoBehaviour
         _guidanceRadar = radar;
         _hasSignal = true;
         
-        // Self-destruct after fuel runs out
         Destroy(gameObject, maxFlightTime); 
     }
 
     void Update()
     {
-        // 1. Move Forward
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
+        // --- ZOOM LOGIC START ---
+        float zoomFactor = (RadarZoomSystem.Instance != null) ? RadarZoomSystem.Instance.GetSpeedMultiplier() : 1f;
+        // --- ZOOM LOGIC END ---
 
-        // 2. RANGE CHECK (Backup safety)
+        // 1. Move Forward (Scaled by Zoom)
+        transform.Translate(Vector3.up * speed * zoomFactor * Time.deltaTime);
+
+        // 2. RANGE CHECK
         if (transform.position.magnitude > maxRadarRange)
         {
             Destroy(gameObject);
@@ -48,7 +51,9 @@ public class HomingMissile : MonoBehaviour
                 // SIGNAL GOOD
                 Vector2 direction = (Vector2)_target.transform.position - (Vector2)transform.position;
                 float rotateAmount = Vector3.Cross(direction, transform.up).z;
-                transform.Rotate(0, 0, -rotateAmount * turnSpeed * Time.deltaTime);
+                
+                // Turn Speed is ALSO scaled by zoomFactor to maintain correct turn radius
+                transform.Rotate(0, 0, -rotateAmount * turnSpeed * zoomFactor * Time.deltaTime);
 
                 if (Vector2.Distance(transform.position, _target.transform.position) < killDistance)
                 {
@@ -63,19 +68,17 @@ public class HomingMissile : MonoBehaviour
         }
         else
         {
-            // Target destroyed, fly straight until fuel runs out
+            // Target destroyed, fly straight
         }
     }
 
     void Detonate()
     {
-        // 1. Spawn Effect
         if (interceptionEffect != null)
         {
             Instantiate(interceptionEffect, transform.position, Quaternion.identity);
         }
 
-        // 2. Destroy Target & Self
         if (_target != null) Destroy(_target);
         Destroy(gameObject);
     }

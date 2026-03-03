@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1489866552104311200}
   - component: {fileID: 5950177074041294424}
   - component: {fileID: 9055071135076073117}
+  - component: {fileID: -6772828313796541376}
   m_Layer: 0
   m_Name: SARH_Missile
   m_TagString: Untagged
@@ -185,3 +186,15 @@ MonoBehaviour:
   maxRadarRange: 6
   maxFlightTime: 8
   interceptionEffect: {fileID: 1465638273713955256, guid: 01eb8878b9ad0e44ebe25d57a03e7d1f, type: 3}
+--- !u!114 &-6772828313796541376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2891675949318454554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde5de8964aed2446b969748b4899475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RadarTrackable

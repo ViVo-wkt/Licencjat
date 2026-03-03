@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1269730902025461933}
   - component: {fileID: 7060006310463790741}
   - component: {fileID: 1021066908438429931}
+  - component: {fileID: -2951083765975369785}
   m_Layer: 6
   m_Name: Enemy_Aircraft
   m_TagString: Untagged
@@ -164,3 +165,15 @@ MonoBehaviour:
   impactDistance: 0.1
   maneuverFrequency: 1.5
   maneuverMagnitude: 50
+--- !u!114 &-2951083765975369785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5909428910239168877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde5de8964aed2446b969748b4899475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RadarTrackable

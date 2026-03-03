@@ -589,56 +589,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1 &222597595
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 222597597}
-  - component: {fileID: 222597596}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &222597596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 222597595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2094290bd708e7489947c4c92f4e5a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RadarUIManager
-  infoPanel: {fileID: 697150754}
-  nameText: {fileID: 555823179}
-  descriptionText: {fileID: 2006540544}
-  speedText: {fileID: 888521271}
-  altitudeText: {fileID: 599849090}
-  distanceText: {fileID: 6512316}
---- !u!4 &222597597
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 222597595}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &330939061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3935219830912260748, guid: c1e571f2c1b599c49b9ec3d2c2c84f76, type: 3}
@@ -897,6 +847,8 @@ GameObject:
   - component: {fileID: 546544473}
   - component: {fileID: 546544472}
   - component: {fileID: 546544474}
+  - component: {fileID: 546544476}
+  - component: {fileID: 546544475}
   m_Layer: 0
   m_Name: Game_Director
   m_TagString: Untagged
@@ -964,6 +916,50 @@ MonoBehaviour:
   rechargeRate: 15
   focusBar: {fileID: 1113561795}
   fillImage: {fileID: 0}
+--- !u!114 &546544475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546544471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea32081fba7b134fb4d2a09be9d7afc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RadarZoomSystem
+  zoomLevels:
+  - name: Close (10km)
+    rangeScale: 1
+    sweepSpeed: 180
+    blipLifetime: 1.5
+  - name: Medium (30km)
+    rangeScale: 3
+    sweepSpeed: 90
+    blipLifetime: 3
+  - name: Long (60km)
+    rangeScale: 6
+    sweepSpeed: 45
+    blipLifetime: 6
+  currentLevelIndex: 0
+--- !u!114 &546544476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546544471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2094290bd708e7489947c4c92f4e5a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RadarUIManager
+  infoPanel: {fileID: 697150754}
+  nameText: {fileID: 555823179}
+  descriptionText: {fileID: 2006540544}
+  speedText: {fileID: 888521271}
+  altitudeText: {fileID: 599849090}
+  distanceText: {fileID: 6512316}
 --- !u!1 &555823177
 GameObject:
   m_ObjectHideFlags: 0
@@ -2704,10 +2700,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab1ce90f170de447bff4b83b6e7036f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActiveRadarSensor
-  trackMarkerPrefab: {fileID: 8265852649811164633, guid: 1a4bfa8571c1abb42becb606b8bc6fbb, type: 3}
+  radarCenter: {fileID: 1083624376}
+  scanRange: 4
+  beamWidth: 25
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
+  lockMarkerPrefab: {fileID: 8265852649811164633, guid: 1a4bfa8571c1abb42becb606b8bc6fbb, type: 3}
 --- !u!1 &1097382850
 GameObject:
   m_ObjectHideFlags: 0
@@ -3182,6 +3181,37 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 14, y: 14, z: 14}
   m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1309509474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1309509475}
+  m_Layer: 0
+  m_Name: Radar_Cockpit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1309509475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309509474}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3926,7 +3956,6 @@ SceneRoots:
   - {fileID: 938566664}
   - {fileID: 1289825682}
   - {fileID: 1122177044}
-  - {fileID: 222597597}
   - {fileID: 1870372412}
   - {fileID: 546544473}
   - {fileID: 840494069}
@@ -3938,3 +3967,4 @@ SceneRoots:
   - {fileID: 23685349}
   - {fileID: 803538939}
   - {fileID: 1532710991}
+  - {fileID: 1309509475}

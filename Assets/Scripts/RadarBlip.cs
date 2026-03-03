@@ -11,7 +11,23 @@ public class RadarBlip : MonoBehaviour
     void Awake()
     {
         _renderer = GetComponent<SpriteRenderer>();
-        _timer = decayTime;
+    }
+
+    void Start()
+    {
+        // Default to the inspector value
+        float life = decayTime;
+
+        // OVERRIDE with Zoom System
+        // (Long range = Blips stay on screen longer)
+        if (RadarZoomSystem.Instance != null)
+        {
+            life = RadarZoomSystem.Instance.GetCurrentBlipLifetime();
+        }
+
+        // Update internal timer and reference
+        decayTime = life;
+        _timer = life;
     }
 
     void Update()
@@ -19,7 +35,7 @@ public class RadarBlip : MonoBehaviour
         // 1. Count down
         _timer -= Time.deltaTime;
 
-        // 2. Calculate transparency
+        // 2. Calculate transparency (1.0 is visible, 0.0 is invisible)
         float alpha = Mathf.Clamp01(_timer / decayTime);
 
         // 3. Apply the fading color
