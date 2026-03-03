@@ -3,13 +3,16 @@ using UnityEngine.InputSystem;
 
 public class RadarKnob : MonoBehaviour
 {
-    [Header("Connections")]
-    public Transform linkedBeam; 
-
     [Header("Settings")]
-    public float scrollSpeed = 10f;
-    public float dragSensitivity = 0.5f; 
-    public float angleOffset = 0f; // NEW: Adjust this to sync visual orientation
+    public bool isControllable = true; 
+    public float rotationSpeed = 10f;
+    public float dragSensitivity = 0.5f;
+
+    [Header("Calibration")]
+    public float rotationOffset = 90f; // Tweak this (0, 90, 180, -90) to align them!
+
+    [Header("References")]
+    public Transform radarBeam;
 
     private Collider2D _myCollider;
     private bool _isDragging = false;
@@ -22,21 +25,22 @@ public class RadarKnob : MonoBehaviour
 
     void Update()
     {
+        if (!isControllable) return;
         if (Mouse.current == null) return;
 
-        // --- Input Logic (Same as before) ---
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
-        bool isLeftClickDown = Mouse.current.leftButton.wasPressedThisFrame;
-        bool isLeftClickReleased = Mouse.current.leftButton.wasReleasedThisFrame;
+        
+        bool clickDown = Mouse.current.leftButton.wasPressedThisFrame;
+        bool clickUp = Mouse.current.leftButton.wasReleasedThisFrame;
         bool isHovering = _myCollider.OverlapPoint(mouseWorldPos);
 
-        if (isHovering && isLeftClickDown)
+        if (isHovering && clickDown)
         {
             _isDragging = true;
             _lastMousePos = mouseScreenPos;
         }
-        if (isLeftClickReleased) _isDragging = false;
+        if (clickUp) _isDragging = false;
 
         float rotationAmount = 0f;
 
@@ -52,22 +56,23 @@ public class RadarKnob : MonoBehaviour
             if (Mathf.Abs(scrollValue) > 0.01f)
             {
                 float direction = Mathf.Sign(scrollValue);
-                rotationAmount = direction * scrollSpeed * Time.deltaTime * 50f;
+                rotationAmount = direction * rotationSpeed * Time.deltaTime * 50f;
             }
         }
 
-        // --- Rotation Application (Updated) ---
-        if (Mathf.Abs(rotationAmount) > 0.001f || linkedBeam != null)
+        if (Mathf.Abs(rotationAmount) > 0.001f)
         {
-            // Rotate the Knob itself
+            // 1. Rotate the Knob itself
             transform.Rotate(0, 0, rotationAmount);
 
-            // Rotate the Beam to match Knob + Offset
-            if (linkedBeam != null)
+            // 2. Rotate the Beam with OFFSET
+            if (radarBeam != null)
             {
-                // We set the beam's Z rotation to equal Knob's Z rotation + Offset
-                float currentKnobAngle = transform.eulerAngles.z;
-                linkedBeam.rotation = Quaternion.Euler(0, 0, currentKnobAngle + angleOffset);
+                // Get the knob's current angle
+                float knobAngle = transform.eulerAngles.z;
+                
+                // Apply offset to match the visual sprites
+                radarBeam.rotation = Quaternion.Euler(0, 0, knobAngle + rotationOffset);
             }
         }
     }

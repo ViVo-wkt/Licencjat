@@ -3,25 +3,46 @@ using System.Collections.Generic;
 
 public class ActiveRadarSensor : MonoBehaviour
 {
-    [Header("Configuration")]
-    public GameObject trackMarkerPrefab;
-    public LayerMask targetLayer;        // "RadarTarget"
+    [Header("Sensor Settings")]
+    public Transform radarCenter;
+    public float scanRange = 4.0f;
+    public float beamWidth = 25f;
+    public LayerMask targetLayer;
+    public GameObject lockMarkerPrefab;
 
-    // Returns the first valid target we are currently locking
-    // Returns the target closest to the center of the beam
+    // Internal State
+    private Dictionary<GameObject, GameObject> _activeLocks = new Dictionary<GameObject, GameObject>();
+    private bool _isGhostMode = false; // If true, markers are hidden but tracking continues
+
+    void Start()
+    {
+        if (radarCenter == null) radarCenter = transform;
+    }
+
+    // --- NEW: Toggle Visibility without breaking lock ---
+    public void SetGhostMode(bool enabled)
+    {
+        _isGhostMode = enabled;
+        
+        // Update all existing markers immediately
+        foreach (var marker in _activeLocks.Values)
+        {
+            if (marker != null) marker.SetActive(!_isGhostMode);
+        }
+    }
 
     public GameObject GetCurrentTarget()
     {
         GameObject bestTarget = null;
         float minAngle = Mathf.Infinity;
+        Vector3 forwardDir = -radarCenter.up;
 
         foreach (var enemy in _activeLocks.Keys)
         {
             if (enemy == null) continue;
 
-            Vector2 directionToEnemy = enemy.transform.position - transform.position;
-
-            float angle = Vector2.Angle(-transform.up, directionToEnemy);
+            Vector2 directionToEnemy = enemy.transform.position - radarCenter.position;
+            float angle = Vector2.Angle(forwardDir, directionToEnemy);
 
             if (angle < minAngle)
             {
@@ -29,97 +50,93 @@ public class ActiveRadarSensor : MonoBehaviour
                 bestTarget = enemy;
             }
         }
-
         return bestTarget;
     }
 
-    // Stores <Enemy, Marker> pairs
-    private Dictionary<GameObject, GameObject> _activeLocks = new Dictionary<GameObject, GameObject>();
-
-    private void OnTriggerEnter2D(Collider2D other)
+    public bool IsTracking(GameObject target)
     {
-        // 1. New target entered the beam
-        if (IsTarget(other.gameObject))
-        {
-            AddLock(other.gameObject);
-        }
+        return target != null && _activeLocks.ContainsKey(target);
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    void Update()
     {
-        // 2. Target left the beam
-        if (_activeLocks.ContainsKey(other.gameObject))
+        if (radarCenter == null) return;
+
+        Vector3 forwardDir = -radarCenter.up; // Assuming beam sprite points Down
+
+        // 1. SCAN
+        Collider2D[] hits = Physics2D.OverlapCircleAll(radarCenter.position, scanRange, targetLayer);
+        foreach (var hit in hits)
         {
-            RemoveLock(other.gameObject);
-        }
-    }
+            if (hit == null) continue;
 
-    private void Update()
-    {
-        // 3. Update marker positions to follow moving enemies
-        // Separate list to track destroyed enemies to avoid errors
-        List<GameObject> enemiesLost = new List<GameObject>();
+            Vector2 dirToTarget = hit.transform.position - radarCenter.position;
+            float angle = Vector2.Angle(forwardDir, dirToTarget);
 
-        foreach (var pair in _activeLocks)
-        {
-            GameObject enemy = pair.Key;
-            GameObject marker = pair.Value;
-
-            if (enemy != null && marker != null)
+            if (angle < beamWidth / 2f)
             {
-                marker.transform.position = enemy.transform.position;
-            }
-            else
-            {
-                enemiesLost.Add(enemy);
+                if (!_activeLocks.ContainsKey(hit.gameObject))
+                {
+                    // Create Marker
+                    GameObject marker = null;
+                    if (lockMarkerPrefab != null)
+                    {
+                        marker = Instantiate(lockMarkerPrefab, hit.transform.position, Quaternion.identity);
+                        
+                        // IMPORTANT: Respect Ghost Mode on spawn
+                        marker.SetActive(!_isGhostMode);
+                    }
+                    _activeLocks.Add(hit.gameObject, marker);
+                }
             }
         }
 
-        // Cleanup destroyed enemies
-        foreach (var enemy in enemiesLost)
-        {
-            RemoveLock(enemy);
-        }
-    }
+        // 2. MAINTAIN
+        List<GameObject> toRemove = new List<GameObject>();
 
-    void AddLock(GameObject enemy)
-    {
-        if (!_activeLocks.ContainsKey(enemy))
+        foreach (var kvp in _activeLocks)
         {
-            GameObject newMarker = Instantiate(trackMarkerPrefab, enemy.transform.position, Quaternion.identity);
-            
-            // Initialize the interaction script on the marker
-            var interaction = newMarker.GetComponent<RadarContactInteraction>();
-            if (interaction != null)
+            GameObject enemy = kvp.Key;
+            GameObject marker = kvp.Value;
+
+            // Check if valid
+            bool isLost = (enemy == null);
+            if (!isLost)
             {
-                interaction.Initialize(enemy);
+                Vector2 dirToEnemy = enemy.transform.position - radarCenter.position;
+                float angle = Vector2.Angle(forwardDir, dirToEnemy);
+                
+                // Lost check: Angle or Range
+                if (angle > beamWidth / 2f || dirToEnemy.magnitude > scanRange)
+                {
+                    isLost = true;
+                }
             }
 
-            _activeLocks.Add(enemy, newMarker);
-        }
-    }
-
-    void RemoveLock(GameObject enemy)
-    {
-        if (_activeLocks.ContainsKey(enemy))
-        {
-            if (_activeLocks[enemy] != null)
+            if (isLost)
             {
-                Destroy(_activeLocks[enemy]);
+                toRemove.Add(enemy);
+                if (marker != null) Destroy(marker);
             }
-            _activeLocks.Remove(enemy);
+            else if (marker != null)
+            {
+                // Update Position
+                Vector3 newPos = enemy.transform.position;
+                newPos.z = -1f; // Force on top of background
+                marker.transform.position = newPos;
+                
+                // Enforce Visibility (in case it was changed)
+                if (marker.activeSelf == _isGhostMode)
+                {
+                    marker.SetActive(!_isGhostMode);
+                }
+            }
         }
-    }
 
-    bool IsTarget(GameObject obj)
-    {
-        return (targetLayer.value & (1 << obj.layer)) > 0;
-    }
-
-    // NEW: Allow missiles to check if a specific enemy is still locked
-    public bool IsTracking(GameObject enemy)
-    {
-        if (enemy == null) return false;
-        return _activeLocks.ContainsKey(enemy);
+        // 3. CLEANUP
+        foreach (var dead in toRemove)
+        {
+            _activeLocks.Remove(dead);
+        }
     }
 }

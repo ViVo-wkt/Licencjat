@@ -6,19 +6,18 @@ public class WeaponSelector : MonoBehaviour
     public WeaponType currentWeapon = WeaponType.SemiActive;
 
     [Header("SARH Configuration")]
-    public GameObject sarhBeamObject; 
-    public SpriteRenderer sarhRenderer; 
+    public GameObject sarhBeamObject; // The Active_Beam GameObject
+    public SpriteRenderer sarhRenderer; // Button visual
     public Sprite sarhUnpressed;
-    public Sprite sarhPressed; 
+    public Sprite sarhPressed;
+    public RadarKnob sarhKnobScript; // DRAG "Radar_Knob" HERE
 
     [Header("ARH Configuration")]
     public GameObject arhlineObject; 
-    public SpriteRenderer arhRenderer; 
+    public SpriteRenderer arhRenderer; // Button visual
     public Sprite arhUnpressed;
     public Sprite arhPressed; 
-
-    [Header("Controls")]
-    public BearingControl bearingKnobScript;
+    public BearingControl bearingKnobScript; // DRAG "Knob_Bearing" HERE
 
     void Start()
     {
@@ -39,39 +38,49 @@ public class WeaponSelector : MonoBehaviour
 
     void UpdateVisuals()
     {
-        // 1. Get the SpriteRenderer from the beam object
+        // 1. Get Components on the Beam
         SpriteRenderer beamSprite = null;
-        if (sarhBeamObject != null) beamSprite = sarhBeamObject.GetComponent<SpriteRenderer>();
+        ActiveRadarSensor sensor = null;
 
+        if (sarhBeamObject != null)
+        {
+            // Ensure object is ACTIVE so scripts run
+            sarhBeamObject.SetActive(true); 
+            
+            beamSprite = sarhBeamObject.GetComponent<SpriteRenderer>();
+            sensor = sarhBeamObject.GetComponent<ActiveRadarSensor>();
+        }
+
+        // 2. Apply Logic
         if (currentWeapon == WeaponType.SemiActive)
         {
             // --- SARH MODE ---
-            sarhRenderer.sprite = sarhPressed;
-            arhRenderer.sprite = arhUnpressed;
+            if (sarhRenderer) sarhRenderer.sprite = sarhPressed;
+            if (arhRenderer) arhRenderer.sprite = arhUnpressed;
 
-            // Enable Beam VISUALS only
-            if (beamSprite != null) beamSprite.enabled = true; 
-            
-            // Hide ARH Line
-            if (arhlineObject != null) arhlineObject.SetActive(false);
+            // SARH: Visible, Controllable, Markers ON
+            if (beamSprite) beamSprite.enabled = true;
+            if (sarhKnobScript) sarhKnobScript.isControllable = true;
+            if (sensor) sensor.SetGhostMode(false);
 
-            // Lock Knob
-            if (bearingKnobScript != null) bearingKnobScript.isControllable = false;
+            // ARH: Hidden, Locked
+            if (arhlineObject) arhlineObject.SetActive(false);
+            if (bearingKnobScript) bearingKnobScript.isControllable = false;
         }
         else
         {
             // --- ARH MODE ---
-            sarhRenderer.sprite = sarhUnpressed;
-            arhRenderer.sprite = arhPressed;
+            if (sarhRenderer) sarhRenderer.sprite = sarhUnpressed;
+            if (arhRenderer) arhRenderer.sprite = arhPressed;
 
-            // Disable Beam VISUALS only (Logic stays active!)
-            if (beamSprite != null) beamSprite.enabled = false;
+            // SARH: Invisible (Ghost), Locked, Markers OFF
+            if (beamSprite) beamSprite.enabled = false;
+            if (sarhKnobScript) sarhKnobScript.isControllable = false; // LOCK IT
+            if (sensor) sensor.SetGhostMode(true); // GHOST MODE
 
-            // Show ARH Line
-            if (arhlineObject != null) arhlineObject.SetActive(true);
-
-            // Unlock Knob
-            if (bearingKnobScript != null) bearingKnobScript.isControllable = true;
+            // ARH: Visible, Controllable
+            if (arhlineObject) arhlineObject.SetActive(true);
+            if (bearingKnobScript) bearingKnobScript.isControllable = true;
         }
     }
 }

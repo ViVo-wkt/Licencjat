@@ -445,150 +445,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &177959446
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 177959447}
-  - component: {fileID: 177959450}
-  - component: {fileID: 177959449}
-  - component: {fileID: 177959448}
-  m_Layer: 6
-  m_Name: Test_Enemy (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &177959447
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 177959446}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.6, y: -5.08, z: 0.12328771}
-  m_LocalScale: {x: 0.68493146, y: 0.68493146, z: 0.68493146}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 330939061}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &177959448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 177959446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbe1e8008e5fb74409854239b62dd8dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TargetSignature
-  codename: TEST TARGET 2
-  classification: Neutral
-  description: A second dummy drone
---- !u!58 &177959449
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 177959446}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.13
---- !u!212 &177959450
-SpriteRenderer:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 177959446}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: ed785006f967ce34f8316287f1b1cf4e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.26, y: 0.26}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_SpriteSortPoint: 0
 --- !u!4 &330939061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3935219830912260748, guid: c1e571f2c1b599c49b9ec3d2c2c84f76, type: 3}
@@ -828,12 +684,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3935219830912260748, guid: c1e571f2c1b599c49b9ec3d2c2c84f76, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1083624376}
-    - targetCorrespondingSourceObject: {fileID: 3935219830912260748, guid: c1e571f2c1b599c49b9ec3d2c2c84f76, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 910768517}
-    - targetCorrespondingSourceObject: {fileID: 3935219830912260748, guid: c1e571f2c1b599c49b9ec3d2c2c84f76, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 177959447}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1e571f2c1b599c49b9ec3d2c2c84f76, type: 3}
 --- !u!1 &546544471
@@ -933,12 +783,12 @@ MonoBehaviour:
     rangeScale: 1
     sweepSpeed: 180
     blipLifetime: 1.5
-  - name: Medium (30km)
-    rangeScale: 3
+  - name: Medium (20km)
+    rangeScale: 2
     sweepSpeed: 90
     blipLifetime: 3
-  - name: Long (60km)
-    rangeScale: 6
+  - name: Long (40km)
+    rangeScale: 4
     sweepSpeed: 45
     blipLifetime: 6
   currentLevelIndex: 0
@@ -1806,150 +1656,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888521269}
   m_CullTransparentMesh: 1
---- !u!1 &910768516
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 910768517}
-  - component: {fileID: 910768520}
-  - component: {fileID: 910768519}
-  - component: {fileID: 910768518}
-  m_Layer: 6
-  m_Name: Test_Enemy
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &910768517
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 910768516}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.82, y: -5.08, z: 0.12328771}
-  m_LocalScale: {x: 0.68493146, y: 0.68493146, z: 0.68493146}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 330939061}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &910768518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 910768516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbe1e8008e5fb74409854239b62dd8dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TargetSignature
-  codename: TEST TARGET 2
-  classification: Neutral
-  description: A second dummy drone
---- !u!58 &910768519
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 910768516}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.13
---- !u!212 &910768520
-SpriteRenderer:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 910768516}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: ed785006f967ce34f8316287f1b1cf4e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.26, y: 0.26}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_SpriteSortPoint: 0
 --- !u!1 &938566662
 GameObject:
   m_ObjectHideFlags: 0
@@ -2700,8 +2406,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab1ce90f170de447bff4b83b6e7036f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActiveRadarSensor
-  radarCenter: {fileID: 1083624376}
-  scanRange: 4
+  radarCenter: {fileID: 0}
+  scanRange: 7.5
   beamWidth: 25
   targetLayer:
     serializedVersion: 2
@@ -3034,10 +2740,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f0a1cff77feee43beec40de2fe3687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RadarKnob
-  linkedBeam: {fileID: 1083624376}
-  scrollSpeed: 25
+  isControllable: 1
+  rotationSpeed: 10
   dragSensitivity: 0.5
-  angleOffset: 135
+  rotationOffset: 135
+  radarBeam: {fileID: 1083624376}
 --- !u!1 &1271628840
 GameObject:
   m_ObjectHideFlags: 0
@@ -3581,6 +3288,7 @@ MonoBehaviour:
   sarhRenderer: {fileID: 955913916}
   sarhUnpressed: {fileID: 21300000, guid: 8f883d76eb1e788498af7a26ce4671cf, type: 3}
   sarhPressed: {fileID: 21300000, guid: 0adc142fc1e0cd24496b70fae09262f6, type: 3}
+  sarhKnobScript: {fileID: 1178233585}
   arhlineObject: {fileID: 1532710989}
   arhRenderer: {fileID: 23685348}
   arhUnpressed: {fileID: 21300000, guid: 8f883d76eb1e788498af7a26ce4671cf, type: 3}
