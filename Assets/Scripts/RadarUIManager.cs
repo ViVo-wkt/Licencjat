@@ -79,4 +79,14 @@ public class RadarUIManager : MonoBehaviour
             }
         }
     }
+    // Add this method to allow closing the panel
+    public void DeselectTarget()
+    {
+        // IMPORTANT: Replace 'targetInfoPanel' with the actual name of your UI panel variable
+        // It might be called 'infoPanel', 'panelObject', etc. check your variables at the top.
+        if (infoPanel != null)
+        {
+            infoPanel.SetActive(false);
+        }
+    }
 }

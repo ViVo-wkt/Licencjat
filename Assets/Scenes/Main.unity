@@ -815,6 +815,7 @@ GameObject:
   - component: {fileID: 546544474}
   - component: {fileID: 546544476}
   - component: {fileID: 546544475}
+  - component: {fileID: 546544477}
   m_Layer: 0
   m_Name: Game_Director
   m_TagString: Untagged
@@ -926,6 +927,22 @@ MonoBehaviour:
   speedText: {fileID: 888521271}
   altitudeText: {fileID: 599849090}
   distanceText: {fileID: 6512316}
+--- !u!114 &546544477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546544471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33464f9ce7fc74b4ab1f88a0d731e446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RadarContactInteraction
+  uiManager: {fileID: 546544476}
+  contactLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &555823177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1313,7 +1330,7 @@ GameObject:
   - component: {fileID: 697150757}
   - component: {fileID: 697150756}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: InfoPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2591,7 +2608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActiveRadarSensor
   radarCenter: {fileID: 0}
-  scanRange: 7
+  scanRange: 6.5
   beamWidth: 25
   targetLayer:
     serializedVersion: 2

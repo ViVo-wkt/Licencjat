@@ -1,56 +1,84 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class RadarContactInteraction : MonoBehaviour
 {
-    private TargetSignature _enemyData;
-    private Collider2D _myCollider;
+    [Header("References")]
+    public RadarUIManager uiManager;
+    public LayerMask contactLayer = ~0;
 
     void Awake()
     {
-        _myCollider = GetComponent<Collider2D>();
+        if (GetComponent<TargetSignature>() != null || GetComponent<Collider2D>() != null)
+        {
+            Debug.Log($"<color=orange>[RadarContactInteraction]</color> Self-destructing on {gameObject.name} because it has a Collider/TargetSignature.");
+            Destroy(this);
+            return;
+        }
     }
 
-    // Called by ActiveRadarSensor when spawning this marker
-    public void Initialize(GameObject enemy)
+    void Start()
     {
-        if (enemy != null)
+        if (uiManager == null)
         {
-            _enemyData = enemy.GetComponent<TargetSignature>();
+            uiManager = FindAnyObjectByType<RadarUIManager>();
+            if (uiManager == null)
+                Debug.LogError("<color=red>[RadarContactInteraction]</color> Could not find RadarUIManager in the scene!");
+            else
+                Debug.Log("<color=green>[RadarContactInteraction]</color> Successfully found and linked RadarUIManager.");
         }
     }
 
     void Update()
     {
-        // 1. Safety Checks
-        if (Mouse.current == null || _myCollider == null) return;
+        if (Mouse.current == null) return;
+        if (!Mouse.current.leftButton.wasPressedThisFrame) return;
 
-        // 2. Detect Left Click
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        Debug.Log("<color=cyan>--- CLICK DETECTED ---</color>");
+
+        // 1. Check if UI is blocking
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
         {
-            // 3. Check if mouse is over THIS object
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            
-            if (_myCollider.OverlapPoint(mousePos))
-            {
-                SelectTarget();
-            }
+            Debug.Log("<color=yellow>[Interaction]</color> Click ignored: The pointer is over a UI element (or invisible UI panel).");
+            return;
         }
-    }
 
-    void SelectTarget()
-    {
-        if (_enemyData != null)
+        Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
+        Vector2 worldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+
+        Debug.Log($"<color=yellow>[Interaction]</color> Raycasting at World Position: {worldPos}");
+
+        // 2. Perform Raycast
+        RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero, Mathf.Infinity, contactLayer);
+
+        if (hit.collider != null)
         {
-            Debug.Log($"Selected Target: {_enemyData.codename}");
-            
-            if (RadarUIManager.Instance != null)
+            Debug.Log($"<color=green>[Interaction]</color> Raycast HIT object: <b>{hit.collider.gameObject.name}</b>");
+
+            // 3. Look for Target Signature
+            TargetSignature target = hit.collider.GetComponent<TargetSignature>();
+            if (target == null) target = hit.collider.GetComponentInParent<TargetSignature>();
+
+            if (target != null)
             {
-                RadarUIManager.Instance.ShowTargetInfo(_enemyData);
+                Debug.Log($"<color=green>[Interaction]</color> TargetSignature found on <b>{target.gameObject.name}</b>. Sending to UI Manager.");
+                if (uiManager != null)
+                {
+                    uiManager.ShowTargetInfo(target);
+                }
             }
             else
             {
-                Debug.LogWarning("RadarUIManager Instance not found in scene!");
+                Debug.Log($"<color=orange>[Interaction]</color> Object <b>{hit.collider.gameObject.name}</b> does NOT have a TargetSignature script attached.");
+            }
+        }
+        else
+        {
+            Debug.Log("<color=yellow>[Interaction]</color> Raycast hit NOTHING (clicked empty space). Deselecting target.");
+            if (uiManager != null)
+            {
+                uiManager.DeselectTarget();
             }
         }
     }
