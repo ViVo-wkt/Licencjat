@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e830061f124015c4ea8af7623be55d68
+guid: fbb0d9f96b9945247932694d85744b4d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5333453236467976550
-    second: Fan Remade_0
+      213: -1905684861663631648
+    second: Group 40_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fan Remade_0
+      name: Group 40_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a963b2e0a84cbf5b0800000000000000
-      internalID: -5333453236467976550
+      spriteID: 0e623be07b5ad85e0800000000000000
+      internalID: -1905684861663631648
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Fan Remade_0: -5333453236467976550
+      Group 40_0: -1905684861663631648
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

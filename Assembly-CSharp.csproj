@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\RadarZoomSystem.cs" />
     <Compile Include="Assets\Scripts\RadarUIManager.cs" />
     <Compile Include="Assets\Scripts\WeaponButton.cs" />
+    <Compile Include="Assets\Scripts\Extra\FanRotator.cs" />
     <Compile Include="Assets\Scripts\ActiveRadarSensor.cs" />
     <Compile Include="Assets\Scripts\ZoomPanel.cs" />
     <Compile Include="Assets\Scripts\TimeController.cs" />
