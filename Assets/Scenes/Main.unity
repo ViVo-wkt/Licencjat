@@ -921,12 +921,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2094290bd708e7489947c4c92f4e5a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RadarUIManager
-  infoPanel: {fileID: 697150754}
-  nameText: {fileID: 555823179}
-  descriptionText: {fileID: 2006540544}
+  targetInfoPanel: {fileID: 697150754}
+  typeText: {fileID: 0}
   speedText: {fileID: 888521271}
   altitudeText: {fileID: 599849090}
   distanceText: {fileID: 6512316}
+  distanceMultiplier: 10
+  distanceUnit: km
+  speedUnit: kn
+  altitudeUnit: ft
 --- !u!114 &546544477
 MonoBehaviour:
   m_ObjectHideFlags: 0

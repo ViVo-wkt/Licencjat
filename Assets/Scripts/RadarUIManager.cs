@@ -1,92 +1,91 @@
 using UnityEngine;
-using TMPro; // Standard Unity UI Text
+using TMPro;
 
 public class RadarUIManager : MonoBehaviour
 {
-    public static RadarUIManager Instance;
+    [Header("UI Panels")]
+    public GameObject targetInfoPanel;
 
-    [Header("UI References")]
-    public GameObject infoPanel;
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI descriptionText;
-    
-    [Header("Live Telemetry")]
-    public TextMeshProUGUI speedText;
-    public TextMeshProUGUI altitudeText;
-    public TextMeshProUGUI distanceText;
+    [Header("Text Fields")]
+    public TMP_Text typeText;
+    public TMP_Text speedText;
+    public TMP_Text altitudeText;
+    public TMP_Text distanceText;
 
-    private TargetSignature _selectedTarget;
+    [Header("Formatting Settings")]
+    public float distanceMultiplier = 10f;
+    public string distanceUnit = "km";
+    public string speedUnit = "kn";
+    public string altitudeUnit = "ft";
 
-    void Awake()
+    private TargetSignature currentTarget;
+
+    void Start()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
-
-        // Hide panel at start
-        if (infoPanel != null) infoPanel.SetActive(false);
-    }
-
-    public void ShowTargetInfo(TargetSignature target)
-    {
-        _selectedTarget = target;
-        
-        if (infoPanel != null) infoPanel.SetActive(true);
-
-        // Set Static Info (Name/Desc)
-        if (nameText != null) nameText.text = target.codename;
-        if (descriptionText != null) descriptionText.text = target.description;
-    }
-
-    public void Deselect()
-    {
-        _selectedTarget = null;
-        if (infoPanel != null) infoPanel.SetActive(false);
+        if (targetInfoPanel != null)
+        {
+            targetInfoPanel.SetActive(false);
+        }
     }
 
     void Update()
     {
-        // If we have a target, update the numbers live
-        if (_selectedTarget != null)
+        if (currentTarget != null && targetInfoPanel.activeSelf)
         {
-            // 1. Calculate Distance (from center 0,0)
-            // We multiply by 10 to simulate kilometers/miles instead of Unity Units
-            float dist = Vector3.Distance(Vector3.zero, _selectedTarget.transform.position) * 10f;
-            
-            // 2. Get Speed & Altitude
-            float speed = 0f;
-            float alt = 0f;
-
-            // Try to find the navigation script on the enemy
-            var nav = _selectedTarget.GetComponent<EnemyNavigation>();
-            if (nav != null)
-            {
-                // Multiply speed for display flair (e.g. Mach 1.5 logic)
-                speed = nav.speed * 1000f; 
-                alt = nav.altitude;
-            }
-
-            // 3. Update Text Mesh Pro fields
-            if (distanceText != null) distanceText.text = $"RNG: {dist:F1} km";
-            if (speedText != null)    speedText.text    = $"SPD: {speed:F0} kts";
-            if (altitudeText != null) altitudeText.text = $"ALT: {alt:F0} ft";
-        }
-        else
-        {
-            // If target was destroyed while selected, close panel
-            if (infoPanel != null && infoPanel.activeSelf) 
-            {
-                Deselect();
-            }
+            UpdateDynamicData();
         }
     }
-    // Add this method to allow closing the panel
+
+    public void ShowTargetInfo(TargetSignature target)
+    {
+        if (target == null || targetInfoPanel == null) return;
+
+        currentTarget = target;
+
+        // FIXED: Using 'classification' instead of 'targetType'
+        if (typeText != null) typeText.text = "TYPE:\n" + target.classification;
+
+        // FIXED: Using the new speed and altitude fields
+        if (speedText != null) speedText.text = "SPD:\n" + target.speed + " " + speedUnit;
+        if (altitudeText != null) altitudeText.text = "ALT:\n" + target.altitude + " " + altitudeUnit;
+
+        UpdateDynamicData();
+        targetInfoPanel.SetActive(true);
+    }
+
     public void DeselectTarget()
     {
-        // IMPORTANT: Replace 'targetInfoPanel' with the actual name of your UI panel variable
-        // It might be called 'infoPanel', 'panelObject', etc. check your variables at the top.
-        if (infoPanel != null)
+        currentTarget = null;
+        if (targetInfoPanel != null)
         {
-            infoPanel.SetActive(false);
+            targetInfoPanel.SetActive(false);
         }
+    }
+
+    private void UpdateDynamicData()
+    {
+        if (currentTarget == null || distanceText == null) return;
+
+        float rawDistance = currentTarget.transform.position.magnitude;
+
+        float currentZoomScale = 1f;
+        if (RadarZoomSystem.Instance != null)
+        {
+            // FIXED: Digging into your ZoomLevel list to get the actual rangeScale
+            int idx = RadarZoomSystem.Instance.currentLevelIndex;
+
+            if (idx >= 0 && idx < RadarZoomSystem.Instance.zoomLevels.Count)
+            {
+                currentZoomScale = RadarZoomSystem.Instance.zoomLevels[idx].rangeScale;
+            }
+
+            if (currentZoomScale <= 0f) currentZoomScale = 1f;
+        }
+
+        // Calculate True Distance
+        float normalizedDistance = rawDistance / currentZoomScale;
+        float calculatedDistance = normalizedDistance * distanceMultiplier;
+
+        distanceText.text = "DIST:\n" + calculatedDistance.ToString("F1") + " " + distanceUnit;
     }
 }
