@@ -27,6 +27,14 @@ public class HomingMissile : MonoBehaviour
         Destroy(gameObject, maxFlightTime); 
     }
 
+    public void LoseLock()
+    {
+        // Wipes the target data so the missile flies dumb
+        _target = null;
+        _guidanceRadar = null;
+        _hasSignal = false; 
+    }
+
     void Update()
     {
         // --- ZOOM LOGIC START ---
