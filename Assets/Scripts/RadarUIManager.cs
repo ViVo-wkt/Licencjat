@@ -1,10 +1,10 @@
 using UnityEngine;
-using TMPro;
+using TMPro; 
 
 public class RadarUIManager : MonoBehaviour
 {
     [Header("UI Panels")]
-    public GameObject targetInfoPanel;
+    public GameObject targetInfoPanel; 
 
     [Header("Text Fields")]
     public TMP_Text typeText;
@@ -13,7 +13,7 @@ public class RadarUIManager : MonoBehaviour
     public TMP_Text distanceText;
 
     [Header("Formatting Settings")]
-    public float distanceMultiplier = 10f;
+    public float distanceMultiplier = 10f; 
     public string distanceUnit = "km";
     public string speedUnit = "kn";
     public string altitudeUnit = "ft";
@@ -30,9 +30,16 @@ public class RadarUIManager : MonoBehaviour
 
     void Update()
     {
-        if (currentTarget != null && targetInfoPanel.activeSelf)
+        if (targetInfoPanel != null && targetInfoPanel.activeSelf)
         {
-            UpdateDynamicData();
+            if (currentTarget == null)
+            {
+                DeselectTarget();
+            }
+            else
+            {
+                UpdateDynamicData();
+            }
         }
     }
 
@@ -42,15 +49,17 @@ public class RadarUIManager : MonoBehaviour
 
         currentTarget = target;
 
-        // FIXED: Using 'classification' instead of 'targetType'
-        if (typeText != null) typeText.text = "TYPE:\n" + target.classification;
-
-        // FIXED: Using the new speed and altitude fields
+        // UPGRADE: Now it will say "TYPE: UNKNOWN Hostile" or "TYPE: BOGEY Drone"
+        if (typeText != null) typeText.text = "TYPE:\n" + target.codename + " " + target.classification;
         if (speedText != null) speedText.text = "SPD:\n" + target.speed + " " + speedUnit;
         if (altitudeText != null) altitudeText.text = "ALT:\n" + target.altitude + " " + altitudeUnit;
 
         UpdateDynamicData();
-        targetInfoPanel.SetActive(true);
+        
+        if (!targetInfoPanel.activeSelf) 
+        {
+            targetInfoPanel.SetActive(true);
+        }
     }
 
     public void DeselectTarget()
@@ -71,18 +80,16 @@ public class RadarUIManager : MonoBehaviour
         float currentZoomScale = 1f;
         if (RadarZoomSystem.Instance != null)
         {
-            // FIXED: Digging into your ZoomLevel list to get the actual rangeScale
             int idx = RadarZoomSystem.Instance.currentLevelIndex;
-
+            
             if (idx >= 0 && idx < RadarZoomSystem.Instance.zoomLevels.Count)
             {
                 currentZoomScale = RadarZoomSystem.Instance.zoomLevels[idx].rangeScale;
             }
-
-            if (currentZoomScale <= 0f) currentZoomScale = 1f;
+            
+            if (currentZoomScale <= 0f) currentZoomScale = 1f; 
         }
 
-        // Calculate True Distance
         float normalizedDistance = rawDistance / currentZoomScale;
         float calculatedDistance = normalizedDistance * distanceMultiplier;
 
