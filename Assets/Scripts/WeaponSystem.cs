@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro; // Required for UI Text
+using TMPro; 
 
 public class WeaponSystem : MonoBehaviour
 {
@@ -14,13 +14,24 @@ public class WeaponSystem : MonoBehaviour
     public Transform launchPoint;
     public float firingAngleOffset = 180f; 
 
+    [Header("Ammunition & Logistics")]
+    public int sarhAmmo = 20;            // Starting SARH missiles
+    public int arhAmmo = 10;             // Starting ARH missiles
+    public TMP_Text sarhAmmoText;        // Drag UI Text for SARH ammo here
+    public TMP_Text arhAmmoText;         // Drag UI Text for ARH ammo here
+
     [Header("ARH Settings")]
-    public float arhCooldownTime = 5.0f; // Seconds between ARH launches
-    public TMP_Text arhCooldownText;     // Drag your UI Text here
+    public float arhCooldownTime = 5.0f; 
+    public TMP_Text arhCooldownText;     
     private float _currentArhCooldown = 0f;
 
-    // We store a reference to the single active SARH missile
     private HomingMissile _activeSARHMissile;
+
+    void Start()
+    {
+        // Force the UI to show the starting ammo right away
+        UpdateAmmoUI();
+    }
 
     void Update()
     {
@@ -29,7 +40,6 @@ public class WeaponSystem : MonoBehaviour
         {
             _currentArhCooldown -= Time.deltaTime;
             
-            // Update UI Text while cooling down
             if (arhCooldownText != null)
             {
                 arhCooldownText.text = _currentArhCooldown > 0 ? _currentArhCooldown.ToString("F1") + "s" : "RDY";
@@ -37,7 +47,6 @@ public class WeaponSystem : MonoBehaviour
         }
         else if (arhCooldownText != null && arhCooldownText.text != "RDY")
         {
-            // Safety catch to ensure it says RDY when at 0
             arhCooldownText.text = "RDY";
         }
     }
@@ -47,37 +56,57 @@ public class WeaponSystem : MonoBehaviour
         if (selector.currentWeapon == WeaponSelector.WeaponType.SemiActive)
         {
             // --- MODE 1: SARH ---
-            GameObject target = fireControlRadar.GetCurrentTarget();
-            if (target != null)
+            if (sarhAmmo > 0)
             {
-                SpawnSARH(target);
+                GameObject target = fireControlRadar.GetCurrentTarget();
+                if (target != null)
+                {
+                    SpawnSARH(target);
+                }
+                else
+                {
+                    Debug.Log("No target locked! Cannot fire SARH.");
+                }
+            }
+            else
+            {
+                Debug.Log("Out of SARH missiles!");
             }
         }
         else
         {
             // --- MODE 2: ARH ---
-            // Only fire if the cooldown has finished!
-            if (_currentArhCooldown <= 0f)
+            if (arhAmmo > 0)
             {
-                SpawnARH();
-                _currentArhCooldown = arhCooldownTime; // Start the timer!
+                if (_currentArhCooldown <= 0f)
+                {
+                    SpawnARH();
+                    _currentArhCooldown = arhCooldownTime; 
+                }
+                else
+                {
+                    Debug.Log("ARH is still reloading...");
+                }
             }
             else
             {
-                Debug.Log("ARH is still reloading...");
+                Debug.Log("Out of ARH missiles!");
             }
         }
     }
 
     void SpawnSARH(GameObject target)
     {
-        // 1. If we already have a missile flying, tell it to drop the lock!
+        // If we already have a missile flying, tell it to drop the lock!
         if (_activeSARHMissile != null)
         {
             _activeSARHMissile.LoseLock();
         }
 
-        // 2. Spawn the new missile and save it as the active one
+        // Deduct ammo
+        sarhAmmo--;
+        UpdateAmmoUI();
+
         GameObject m = Instantiate(sarhMissilePrefab, launchPoint.position, Quaternion.identity);
         _activeSARHMissile = m.GetComponent<HomingMissile>();
         _activeSARHMissile.Launch(target, fireControlRadar);
@@ -85,10 +114,22 @@ public class WeaponSystem : MonoBehaviour
 
     void SpawnARH()
     {
+        // Deduct ammo
+        arhAmmo--;
+        UpdateAmmoUI();
+
         float finalAngle = bearingComputer.currentBearing + firingAngleOffset;
         Quaternion launchRotation = Quaternion.Euler(0, 0, finalAngle);
 
         GameObject m = Instantiate(arhMissilePrefab, launchPoint.position, Quaternion.identity);
         m.GetComponent<ActiveHomingMissile>().Launch(launchRotation);
+    }
+
+    // A helper method to easily update both text elements at the same time
+    void UpdateAmmoUI()
+    {
+        // You can format this string however you want your panel to look!
+        if (sarhAmmoText != null) sarhAmmoText.text = sarhAmmo.ToString("D2"); 
+        if (arhAmmoText != null) arhAmmoText.text = arhAmmo.ToString("D2"); 
     }
 }
