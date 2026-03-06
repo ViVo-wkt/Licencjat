@@ -1,26 +1,21 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class WeaponSystem : MonoBehaviour
 {
     [Header("Hardware")]
-    public WeaponSelector selector; // Drag your UI object here
-    public ActiveRadarSensor fireControlRadar; // Existing SARH Radar
-    public BearingControl bearingComputer; // Your NEW Compass Knob
+    public WeaponSelector selector; 
+    public ActiveRadarSensor fireControlRadar; 
+    public BearingControl bearingComputer; 
 
     [Header("Armory")]
     public GameObject sarhMissilePrefab;
-    public GameObject arhMissilePrefab; // New Fire & Forget prefab
+    public GameObject arhMissilePrefab; 
     public Transform launchPoint;
 
-    public float firingAngleOffset = 180f; // Tweak this if missiles fly wrong way
-    void Update()
-    {
-        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            FireSequence();
-        }
-    }
+    public float firingAngleOffset = 180f; 
+
+    // Note: Update() with the Spacebar input was removed from here
+
     public void FireSequence()
     {
         if (selector.currentWeapon == WeaponSelector.WeaponType.SemiActive)
@@ -35,7 +30,6 @@ public class WeaponSystem : MonoBehaviour
         else
         {
             // --- MODE 2: ARH (New Logic) ---
-            // No lock needed! Just fire at the compass bearing.
             SpawnARH();
         }
     }
@@ -48,10 +42,10 @@ public class WeaponSystem : MonoBehaviour
 
     void SpawnARH()
     {
-    float finalAngle = bearingComputer.currentBearing + firingAngleOffset;
-    Quaternion launchRotation = Quaternion.Euler(0, 0, finalAngle);
+        float finalAngle = bearingComputer.currentBearing + firingAngleOffset;
+        Quaternion launchRotation = Quaternion.Euler(0, 0, finalAngle);
 
-    GameObject m = Instantiate(arhMissilePrefab, launchPoint.position, Quaternion.identity);
-    m.GetComponent<ActiveHomingMissile>().Launch(launchRotation);
+        GameObject m = Instantiate(arhMissilePrefab, launchPoint.position, Quaternion.identity);
+        m.GetComponent<ActiveHomingMissile>().Launch(launchRotation);
     }
 }

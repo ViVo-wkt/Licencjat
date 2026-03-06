@@ -12,7 +12,10 @@ public class LaunchButton : MonoBehaviour
 
     private SpriteRenderer _renderer;
     private Collider2D _myCollider;
-    private bool _isPressed;
+    
+    // We track these separately so holding the mouse and space at the same time doesn't glitch the visuals
+    private bool _isMousePressed;
+    private bool _isSpacePressed;
 
     void Awake()
     {
@@ -25,41 +28,69 @@ public class LaunchButton : MonoBehaviour
 
     void Update()
     {
-        if (Mouse.current == null) return;
-
-        bool clickDown = Mouse.current.leftButton.wasPressedThisFrame;
-        bool clickUp = Mouse.current.leftButton.wasReleasedThisFrame;
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-
-        // Check if we clicked ON the button
-        if (clickDown && _myCollider.OverlapPoint(mousePos))
+        // 1. MOUSE INPUT
+        if (Mouse.current != null)
         {
-            Press();
+            bool clickDown = Mouse.current.leftButton.wasPressedThisFrame;
+            bool clickUp = Mouse.current.leftButton.wasReleasedThisFrame;
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+
+            // Press
+            if (clickDown && _myCollider.OverlapPoint(mousePos))
+            {
+                _isMousePressed = true;
+                UpdateVisuals(true);
+            }
+
+            // Release
+            if (clickUp && _isMousePressed)
+            {
+                _isMousePressed = false;
+                UpdateVisuals(_isSpacePressed); // Only pop up if space isn't also being held
+
+                // Fire only if mouse was released while hovering over the button
+                if (_myCollider.OverlapPoint(mousePos))
+                {
+                    Fire();
+                }
+            }
         }
 
-        // Release anywhere (standard button behavior)
-        if (clickUp && _isPressed)
+        // 2. KEYBOARD INPUT (Spacebar)
+        if (Keyboard.current != null)
         {
-            Release(mousePos);
+            // Press Space
+            if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                _isSpacePressed = true;
+                UpdateVisuals(true);
+                Fire(); // Fire immediately on space down
+            }
+
+            // Release Space
+            if (Keyboard.current.spaceKey.wasReleasedThisFrame)
+            {
+                _isSpacePressed = false;
+                UpdateVisuals(_isMousePressed); // Only pop up if mouse isn't also being held
+            }
         }
     }
 
-    void Press()
+    void UpdateVisuals(bool isDown)
     {
-        _isPressed = true;
-        if (pressedSprite != null) _renderer.sprite = pressedSprite;
+        if (isDown && pressedSprite != null)
+        {
+            _renderer.sprite = pressedSprite;
+        }
+        else if (!isDown && unpressedSprite != null)
+        {
+            _renderer.sprite = unpressedSprite;
+        }
     }
 
-    void Release(Vector2 mousePos)
+    void Fire()
     {
-        _isPressed = false;
-        if (unpressedSprite != null) _renderer.sprite = unpressedSprite;
-
-        // Only fire if we release the mouse WHILE still hovering over the button
-        if (_myCollider.OverlapPoint(mousePos))
-        {
-            Debug.Log("Button Fire!");
-            if (weaponSystem != null) weaponSystem.FireSequence();
-        }
+        Debug.Log("Button Fire!");
+        if (weaponSystem != null) weaponSystem.FireSequence();
     }
 }
