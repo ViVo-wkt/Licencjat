@@ -99,7 +99,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -110,18 +110,18 @@ MonoBehaviour:
       y: 21
       width: 1113.2001
       height: 545
-    m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 556.60004, y: 272.5}
+    m_Scale: {x: 1.1940521, y: 1.1940521}
+    m_Translation: {x: 578.3988, y: 279.46417}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -556.60004
-      y: -272.5
-      width: 1113.2001
-      height: 545
+      x: -484.39996
+      y: -234.04689
+      width: 932.28766
+      height: 456.429
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 1391.5001, y: 707.5}
@@ -251,16 +251,20 @@ MonoBehaviour:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs:
-      - m_Data: -68926
+      - m_Data: 76858
       m_LastClickedID:
-        m_Data: -68926
+        m_Data: 76858
       m_ExpandedIDs:
+      - m_Data: -68926
       - m_Data: -67660
       - m_Data: -66006
       - m_Data: -65688
+      - m_Data: -61696
       - m_Data: -61694
       - m_Data: -60824
-      - m_Data: 76756
+      - m_Data: 76526
+      - m_Data: 76658
+      - m_Data: 76682
       - m_Data: 76810
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -937,9 +941,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -10.1252985, y: 1.8811082, z: -0.042385682}
+    m_Target: {x: -5.5869794, y: -3.2198374, z: 0.010295514}
     speed: 2
-    m_Value: {x: -10.1252985, y: 1.8811082, z: -0.042385682}
+    m_Value: {x: -5.5869794, y: -3.2198374, z: 0.010295514}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -969,7 +973,7 @@ MonoBehaviour:
       m_Fade:
         m_Target: 0
         speed: 2
-        m_Value: 1
+        m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
@@ -987,11 +991,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0, y: 0, z: 0, w: 1}
     speed: 2
-    m_Value: {x: -0.000000023272746, y: 0.000000010821391, z: -0.00000000451679, w: -1}
+    m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 4.6886516
+    m_Target: 9.261538
     speed: 2
-    m_Value: 4.6886516
+    m_Value: 9.261538
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1009,7 +1013,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.37813082, y: 0.17582375, z: -0.07338788, w: -0.90593565}
+  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
   m_LastSceneViewOrtho: 0
   m_Viewpoint:
     m_SceneView: {fileID: 8}
@@ -1101,7 +1105,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/3D
+    - Assets/2D
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1111,21 +1115,23 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/3D
+  - Assets/2D
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\wwoznia3\Desktop\Licencjat
   m_LockTracker:
     m_IsLocked: 0
   m_LastLocalAssetsSearchArea: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
+    scrollPos: {x: 0, y: 33.19995}
     m_SelectedIDs:
-    - m_Data: 77614
+    - m_Data: 76392
     m_LastClickedID:
-      m_Data: 77614
+      m_Data: 76392
     m_ExpandedIDs:
     - m_Data: 0
     - m_Data: 66700
+    - m_Data: 75886
+    - m_Data: 76392
     - m_Data: 1000000000
     - m_Data: 2147483647
     m_RenameOverlay:
@@ -1158,7 +1164,11 @@ MonoBehaviour:
     m_SelectedIDs: []
     m_LastClickedID:
       m_Data: 0
-    m_ExpandedIDs: []
+    m_ExpandedIDs:
+    - m_Data: 0
+    - m_Data: 66700
+    - m_Data: 1000000000
+    - m_Data: 2147483647
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1186,12 +1196,14 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
     m_SelectedInstanceIDs:
-    - m_Data: -68926
-    m_LastClickedInstanceID: -68926
+    - m_Data: 76858
+    m_LastClickedInstanceID: 76858
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs:
     - m_Data: 75700
     - m_Data: 75704
+    - m_Data: 77656
+    - m_Data: 96294
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
