@@ -15,6 +15,10 @@ public class RadarBlip : MonoBehaviour
 
     void Start()
     {
+
+        Vector3 fixedPos = transform.position;
+        fixedPos.z = -0.1f;
+        transform.position = fixedPos;
         // Default to the inspector value
         float life = decayTime;
 

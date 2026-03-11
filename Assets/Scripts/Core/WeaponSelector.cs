@@ -22,9 +22,12 @@ public class WeaponSelector : MonoBehaviour
     public Sprite unpressedSprite;
     public Sprite pressedSprite;
 
+    [Header("Indicators")]
+    [Tooltip("Drag your ARH Indicator (the cone/line) here!")]
+    public GameObject arhIndicator;
+
     void Start()
     {
-        // Force the visuals to match the starting weapon immediately
         UpdateVisuals();
     }
 
@@ -32,12 +35,10 @@ public class WeaponSelector : MonoBehaviour
     {
         if (Mouse.current == null) return;
 
-        // Detect a mouse click
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
-            // Check if the click landed on any of our 3 buttons
             for (int i = 0; i < buttonColliders.Length; i++)
             {
                 if (buttonColliders[i] != null && buttonColliders[i].OverlapPoint(mousePos))
@@ -57,20 +58,19 @@ public class WeaponSelector : MonoBehaviour
 
     void UpdateVisuals()
     {
-        // Loop through all buttons and set the correct sprite
+        // 1. Swap button graphics
         for (int i = 0; i < buttonRenderers.Length; i++)
         {
             if (buttonRenderers[i] != null)
             {
-                if (i == (int)currentWeapon)
-                {
-                    buttonRenderers[i].sprite = pressedSprite; // Pushed down
-                }
-                else
-                {
-                    buttonRenderers[i].sprite = unpressedSprite; // Popped up
-                }
+                buttonRenderers[i].sprite = (i == (int)currentWeapon) ? pressedSprite : unpressedSprite;
             }
+        }
+
+        // 2. Toggle the ARH visual indicator!
+        if (arhIndicator != null)
+        {
+            arhIndicator.SetActive(currentWeapon == WeaponType.Active);
         }
     }
 }
