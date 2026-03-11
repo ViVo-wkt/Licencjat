@@ -3,16 +3,18 @@ using UnityEngine.InputSystem;
 
 public class ScrollWheelControl : MonoBehaviour
 {
-    [Header("Input Sensitivity")]
+    [Header("Input Settings")]
     public float dragSensitivity = 0.005f;
     public float scrollSensitivity = 0.05f;
+
+    [Tooltip("If true, dragging the mouse Left/Right will rotate this wheel instead of Up/Down.")]
+    public bool useHorizontalMouseDrag = false; // NEW TOGGLE
 
     [Header("State (-1 to 1)")]
     [Range(-1f, 1f)]
     public float currentValue = 0f;
 
     [Header("Visual Rotation")]
-    [Tooltip("The axis to rotate visually. Usually Vector3.right (X), up (Y), or forward (Z)")]
     public Vector3 rotationAxis = Vector3.right;
     public float maxRotationAngle = 360f;
 
@@ -22,7 +24,7 @@ public class ScrollWheelControl : MonoBehaviour
 
     void Start()
     {
-        _myCollider = GetComponent<Collider>(); // Requires a 3D collider!
+        _myCollider = GetComponent<Collider>();
         _mainCam = Camera.main;
     }
 
@@ -33,28 +35,31 @@ public class ScrollWheelControl : MonoBehaviour
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
         bool isHovering = false;
 
-        // 1. Raycast to check if mouse is over this 3D object
         Ray ray = _mainCam.ScreenPointToRay(mouseScreenPos);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             if (hit.collider == _myCollider) isHovering = true;
         }
 
-        // 2. Drag Logic
         if (isHovering && Mouse.current.leftButton.wasPressedThisFrame) _isDragging = true;
         if (Mouse.current.leftButton.wasReleasedThisFrame) _isDragging = false;
 
         float valueChange = 0f;
 
-        // 3. Process Input
         if (_isDragging)
         {
-            // Dragging Up/Down
-            valueChange = Mouse.current.delta.ReadValue().y * dragSensitivity;
+            // NEW: Choose which mouse axis to read!
+            if (useHorizontalMouseDrag)
+            {
+                valueChange = Mouse.current.delta.ReadValue().x * dragSensitivity;
+            }
+            else
+            {
+                valueChange = Mouse.current.delta.ReadValue().y * dragSensitivity;
+            }
         }
         else if (isHovering)
         {
-            // Mouse Scroll Wheel
             float scrollValue = Mouse.current.scroll.ReadValue().y;
             if (Mathf.Abs(scrollValue) > 0.01f)
             {
@@ -62,14 +67,26 @@ public class ScrollWheelControl : MonoBehaviour
             }
         }
 
-        // 4. Apply Changes
+        // Apply
         if (valueChange != 0f)
         {
             currentValue += valueChange;
             currentValue = Mathf.Clamp(currentValue, -1f, 1f);
 
-            // Rotate the physical 3D model
-            transform.localRotation = Quaternion.Euler(rotationAxis * (currentValue * maxRotationAngle));
+            // The 'override' limits we apply later in TargetingBracket might try to 
+            // force this value, but we rotate visually based on the user's input
+            UpdateVisualRotation();
         }
+    }
+
+    public void ForceValue(float val)
+    {
+        currentValue = Mathf.Clamp(val, -1f, 1f);
+        UpdateVisualRotation();
+    }
+
+    private void UpdateVisualRotation()
+    {
+        transform.localRotation = Quaternion.Euler(rotationAxis * (currentValue * maxRotationAngle));
     }
 }

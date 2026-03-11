@@ -3073,7 +3073,7 @@ Transform:
   m_GameObject: {fileID: 1001120546}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.1}
+  m_LocalPosition: {x: 0, y: -0.035, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3352,6 +3352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScrollWheelControl
   dragSensitivity: 0.005
   scrollSensitivity: 0.05
+  useHorizontalMouseDrag: 0
   currentValue: 0
   rotationAxis: {x: 1, y: 0, z: 0}
   maxRotationAngle: 360
@@ -4882,6 +4883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScrollWheelControl
   dragSensitivity: 0.005
   scrollSensitivity: 0.05
+  useHorizontalMouseDrag: 1
   currentValue: 0
   rotationAxis: {x: 1, y: 0, z: 0}
   maxRotationAngle: 360

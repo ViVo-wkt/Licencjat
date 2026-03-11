@@ -23,31 +23,39 @@ public class TargetingBracket : MonoBehaviour
 
     void Update()
     {
-        // 1. Move the bracket based on 3D wheel values
         if (xWheel != null && yWheel != null)
         {
+            // 1. Calculate intended position based on the wheels
             float xPos = xWheel.currentValue * radarRadius;
             float yPos = yWheel.currentValue * radarRadius;
 
-            // Clamp so it stays inside the circular radar bounds
-            Vector2 newPos = new Vector2(xPos, yPos);
-            if (newPos.magnitude > radarRadius)
+            Vector2 intendedPos = new Vector2(xPos, yPos);
+
+            // 2. TRUE CIRCULAR CLAMPING
+            // If the bracket tries to leave the circle, we push it back to the edge.
+            if (intendedPos.magnitude > radarRadius)
             {
-                newPos = newPos.normalized * radarRadius;
+                intendedPos = intendedPos.normalized * radarRadius;
+
+                // IMPORTANT: We must tell the wheels to "roll back" to match the 
+                // clamped position, otherwise they will keep spinning freely but 
+                // the bracket will be stuck against the wall!
+                xWheel.ForceValue(intendedPos.x / radarRadius);
+                yWheel.ForceValue(intendedPos.y / radarRadius);
             }
 
-            transform.localPosition = newPos;
+            // 3. FIX Z-DEPTH
+            // We force Z to -0.1 so it always draws on top of the radar screen
+            transform.localPosition = new Vector3(intendedPos.x, intendedPos.y, -0.1f);
         }
 
-        // 2. Visuals: Only show the bracket if Auto Mode (index 2) is selected
+        // Visuals
         if (weaponSelector != null && _sprite != null)
         {
             _sprite.enabled = ((int)weaponSelector.currentWeapon == 2);
         }
     }
 
-    // Handles both entering and staying. This way, if you select Auto Mode 
-    // while a target is ALREADY inside the bracket, it still fires!
     void ProcessTarget(Collider2D other)
     {
         if (weaponSelector == null || (int)weaponSelector.currentWeapon != 2) return;
