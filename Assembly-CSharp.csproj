@@ -61,26 +61,27 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.8f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Weapon 1\PassiveMissile.cs" />
+    <Compile Include="Assets\Scripts\Core\WeaponSystem.cs" />
+    <Compile Include="Assets\Scripts\Core\WeaponSelector.cs" />
     <Compile Include="Assets\Scripts\RadarTrackable.cs" />
     <Compile Include="Assets\Scripts\TargetSignature.cs" />
-    <Compile Include="Assets\Scripts\HomingMissile.cs" />
-    <Compile Include="Assets\Scripts\ActiveHomingMissile.cs" />
+    <Compile Include="Assets\Scripts\Weapon 3\TargetingBracket.cs" />
     <Compile Include="Assets\Scripts\BearingControl.cs" />
     <Compile Include="Assets\Scripts\RadarBlip.cs" />
-    <Compile Include="Assets\Scripts\WeaponSystem.cs" />
+    <Compile Include="Assets\Scripts\Weapon 2\ActiveMissile.cs" />
     <Compile Include="Assets\Scripts\RadarContactInteraction.cs" />
-    <Compile Include="Assets\Scripts\WeaponSelector.cs" />
     <Compile Include="Assets\Scripts\ExplosionEffect.cs" />
     <Compile Include="Assets\Scripts\RadarSweep.cs" />
     <Compile Include="Assets\Scripts\RadarZoomSystem.cs" />
     <Compile Include="Assets\Scripts\RadarUIManager.cs" />
-    <Compile Include="Assets\Scripts\WeaponButton.cs" />
     <Compile Include="Assets\Scripts\Extra\FanRotator.cs" />
     <Compile Include="Assets\Scripts\ActiveRadarSensor.cs" />
     <Compile Include="Assets\Scripts\ZoomPanel.cs" />
     <Compile Include="Assets\Scripts\TimeController.cs" />
     <Compile Include="Assets\Scripts\EnemyNavigation.cs" />
     <Compile Include="Assets\Scripts\RadarSensor.cs" />
+    <Compile Include="Assets\Scripts\Weapon 3\ScrollWheelControl.cs" />
     <Compile Include="Assets\Scripts\LaunchButton.cs" />
     <Compile Include="Assets\Scripts\ScenarioManager.cs" />
     <Compile Include="Assets\Scripts\BaseAlarm.cs" />
