@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3357045177687843944}
   - component: {fileID: 1489866552104311200}
   - component: {fileID: 5950177074041294424}
-  - component: {fileID: 9055071135076073117}
   - component: {fileID: -6772828313796541376}
+  - component: {fileID: 2812857873306131051}
   m_Layer: 0
   m_Name: AUTO_Missile
   m_TagString: Untagged
@@ -168,24 +168,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.2, y: 0.26}
   m_EdgeRadius: 0
---- !u!114 &9055071135076073117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2891675949318454554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 544c91e52980de541b86cdde5360fbed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HomingMissile
-  speed: 1
-  turnSpeed: 250
-  killDistance: 0.1
-  maxRadarRange: 6
-  maxFlightTime: 8
-  interceptionEffect: {fileID: 1465638273713955256, guid: 01eb8878b9ad0e44ebe25d57a03e7d1f, type: 3}
 --- !u!114 &-6772828313796541376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,3 +180,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde5de8964aed2446b969748b4899475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RadarTrackable
+--- !u!114 &2812857873306131051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2891675949318454554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 544c91e52980de541b86cdde5360fbed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HomingMissile
+  speed: 2
+  turnSpeed: 200
+  killDistance: 0.2
+  maxRadarRange: 6
+  maxFlightTime: 8
+  interceptionEffect: {fileID: 1465638273713955256, guid: 01eb8878b9ad0e44ebe25d57a03e7d1f, type: 3}

@@ -11,17 +11,17 @@ public class WeaponSystem : MonoBehaviour
     [Header("Armory")]
     public GameObject sarhMissilePrefab;
     public GameObject arhMissilePrefab;
-    public GameObject autoMissilePrefab; // NEW: The 3rd missile
+    public GameObject autoMissilePrefab;
     public Transform launchPoint;
     public float firingAngleOffset = 180f;
 
     [Header("Ammunition & Logistics")]
     public int sarhAmmo = 20;
     public int arhAmmo = 10;
-    public int autoAmmo = 15;            // NEW: Auto missile ammo
+    public int autoAmmo = 15;
     public TMP_Text sarhAmmoText;
     public TMP_Text arhAmmoText;
-    public TMP_Text autoAmmoText;        // NEW: Auto ammo UI text
+    public TMP_Text autoAmmoText;
 
     [Header("ARH Settings")]
     public float arhCooldownTime = 5.0f;
@@ -29,19 +29,15 @@ public class WeaponSystem : MonoBehaviour
     private float _currentArhCooldown = 0f;
 
     [Header("Auto Missile Settings")]
-    public float autoCooldownTime = 1.0f; // Time between automatic launches
+    public float autoCooldownTime = 1.0f;
     private float _currentAutoCooldown = 0f;
 
-    private HomingMissile _activeSARHMissile;
+    private PassiveMissile _activeSARHMissile;
 
-    void Start()
-    {
-        UpdateAmmoUI();
-    }
+    void Start() { UpdateAmmoUI(); }
 
     void Update()
     {
-        // ARH Cooldown
         if (_currentArhCooldown > 0)
         {
             _currentArhCooldown -= Time.deltaTime;
@@ -51,14 +47,9 @@ public class WeaponSystem : MonoBehaviour
         else if (arhCooldownText != null && arhCooldownText.text != "RDY")
             arhCooldownText.text = "RDY";
 
-        // Auto Missile Cooldown
-        if (_currentAutoCooldown > 0)
-        {
-            _currentAutoCooldown -= Time.deltaTime;
-        }
+        if (_currentAutoCooldown > 0) _currentAutoCooldown -= Time.deltaTime;
     }
 
-    // Manual Fire (triggered by Launch Button)
     public void FireSequence()
     {
         if ((int)selector.currentWeapon == 0)
@@ -77,26 +68,24 @@ public class WeaponSystem : MonoBehaviour
                 _currentArhCooldown = arhCooldownTime;
             }
         }
-        else
-        {
-            Debug.Log("Auto Mode Selected: Missiles fire automatically via the Targeting Bracket.");
-        }
     }
 
-    // NEW: Automatic Fire (Triggered by the Bracket)
-    public void FireAutoMissile(GameObject target)
+    // CHANGED: Now returns a bool, and passes 'null' to radar!
+    public bool FireAutoMissile(GameObject target)
     {
-        // Check ammo and ensure cooldown is finished
         if (autoAmmo > 0 && _currentAutoCooldown <= 0f)
         {
             autoAmmo--;
             UpdateAmmoUI();
             _currentAutoCooldown = autoCooldownTime;
 
-            // Spawn and launch
             GameObject m = Instantiate(autoMissilePrefab, launchPoint.position, Quaternion.identity);
-            m.GetComponent<HomingMissile>().Launch(target, fireControlRadar);
+
+            // PASSING NULL disconnects it from the SARH dependency!
+            m.GetComponent<PassiveMissile>().Launch(target, null);
+            return true;
         }
+        return false; // Failed to fire (cooldown or no ammo)
     }
 
     void SpawnSARH(GameObject target)
@@ -106,7 +95,7 @@ public class WeaponSystem : MonoBehaviour
         UpdateAmmoUI();
 
         GameObject m = Instantiate(sarhMissilePrefab, launchPoint.position, Quaternion.identity);
-        _activeSARHMissile = m.GetComponent<HomingMissile>();
+        _activeSARHMissile = m.GetComponent<PassiveMissile>();
         _activeSARHMissile.Launch(target, fireControlRadar);
     }
 

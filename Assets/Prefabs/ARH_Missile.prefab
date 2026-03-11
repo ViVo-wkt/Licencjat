@@ -183,7 +183,7 @@ MonoBehaviour:
   speed: 1
   turnSpeed: 150
   searchConeAngle: 45
-  killDistance: 0.1
+  killDistance: 0.2
   maxRadarRange: 6
   maxFlightTime: 8
   interceptionEffect: {fileID: 1465638273713955256, guid: 01eb8878b9ad0e44ebe25d57a03e7d1f, type: 3}

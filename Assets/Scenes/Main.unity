@@ -1172,7 +1172,7 @@ Transform:
   m_GameObject: {fileID: 484981687}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.04, y: -8.95, z: 0}
+  m_LocalPosition: {x: 9.04, y: -8.95, z: -1}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1417,6 +1417,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3935219830912260748, guid: c1e571f2c1b599c49b9ec3d2c2c84f76, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1083624376}
+    - targetCorrespondingSourceObject: {fileID: 3935219830912260748, guid: c1e571f2c1b599c49b9ec3d2c2c84f76, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1532710991}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1e571f2c1b599c49b9ec3d2c2c84f76, type: 3}
 --- !u!1 &546544471
@@ -3093,7 +3096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TargetingBracket
   xWheel: {fileID: 1657668557}
   yWheel: {fileID: 1067240365}
-  radarRadius: 5
+  radarRadius: 6
   weaponSystem: {fileID: 1870372411}
   weaponSelector: {fileID: 1870372413}
 --- !u!1 &1010306430
@@ -3391,7 +3394,7 @@ GameObject:
   - component: {fileID: 1083624378}
   - component: {fileID: 1083624381}
   m_Layer: 0
-  m_Name: Radar_Beam
+  m_Name: SARH Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4785,11 +4788,11 @@ Transform:
   m_GameObject: {fileID: 1532710989}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.9238796, w: 0.3826833}
-  m_LocalPosition: {x: 0, y: 0, z: -0.1}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalPosition: {x: 0, y: 0.06521739, z: 0.96739125}
+  m_LocalScale: {x: 0.27173913, y: 0.27173913, z: 0.27173913}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 330939061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 135}
 --- !u!1 &1557188596
 GameObject:
@@ -4994,6 +4997,7 @@ MonoBehaviour:
   unpressedSprite: {fileID: 21300000, guid: 8f883d76eb1e788498af7a26ce4671cf, type: 3}
   pressedSprite: {fileID: 21300000, guid: 0adc142fc1e0cd24496b70fae09262f6, type: 3}
   arhIndicator: {fileID: 1532710989}
+  sarhIndicatorVisual: {fileID: 1083624375}
 --- !u!1001 &1920850736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5700,7 +5704,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2834020344410572225, guid: 9a55c0e2a530d1343a9484a764e48b38, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15
+      value: 14.85
       objectReference: {fileID: 0}
     - target: {fileID: 2834020344410572225, guid: 9a55c0e2a530d1343a9484a764e48b38, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5794,7 +5798,6 @@ SceneRoots:
   - {fileID: 23685349}
   - {fileID: 433446093}
   - {fileID: 803538939}
-  - {fileID: 1532710991}
   - {fileID: 207348379}
   - {fileID: 484981689}
   - {fileID: 681208142}
