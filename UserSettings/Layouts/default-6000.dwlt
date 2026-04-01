@@ -1346,7 +1346,7 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -6.92884, y: -1.1444178, z: -0.21038148}
+    m_Target: {x: -6.183881, y: 2.5653386, z: 4.0458703}
     speed: 2
     m_Value: {x: -6.92884, y: -1.1444178, z: -0.21038148}
   m_RenderMode: 0
@@ -1398,7 +1398,7 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 4.9718213
+    m_Target: 9.041201
     speed: 2
     m_Value: 4.9718213
   m_Ortho:
@@ -1483,7 +1483,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/3D/Selector Knob
+    - Assets/3D
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1507,7 +1507,7 @@ MonoBehaviour:
       m_Data: 50700
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 49978
+    - m_Data: 50074
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1540,7 +1540,7 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 49978
+    - m_Data: 50074
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
