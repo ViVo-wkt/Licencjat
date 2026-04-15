@@ -3,66 +3,42 @@ using UnityEngine.InputSystem;
 
 public class RadarKnob : MonoBehaviour
 {
-    // NEW: Creates a dropdown menu in the Inspector
     public enum RotationAxis { X, Y, Z }
 
     [Header("Settings")]
     public bool isControllable = true; 
     public float rotationSpeed = 10f;
     public float dragSensitivity = 0.5f;
-
-    [Tooltip("Which axis should the physical 3D knob rotate around?")]
-    public RotationAxis knobAxis = RotationAxis.Z; // Change this directly in Unity!
+    
+    [Tooltip("Which axis should the knob rotate around?")]
+    public RotationAxis knobAxis = RotationAxis.Z;
 
     [Header("Calibration")]
-    public float rotationOffset = 90f; 
+    public float rotationOffset = 90f; // Tweak this (0, 90, 180, -90) to align them!
 
     [Header("References")]
     public Transform radarBeam;
 
-    // Upgraded to support both 2D and 3D colliders!
-    private Collider2D _myCollider2D;
-    private Collider _myCollider3D;
-    private Camera _mainCam;
-    
+    private Collider2D _myCollider;
     private bool _isDragging = false;
     private Vector2 _lastMousePos;
 
     void Awake()
     {
-        // The script checks for whichever collider you have attached
-        _myCollider2D = GetComponent<Collider2D>();
-        _myCollider3D = GetComponent<Collider>();
-        _mainCam = Camera.main;
+        _myCollider = GetComponent<Collider2D>();
     }
 
     void Update()
     {
         if (!isControllable) return;
-        if (Mouse.current == null || _mainCam == null) return;
+        if (Mouse.current == null) return;
 
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
+        Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
         
-        // --- 1. HOVER DETECTION (2D & 3D SUPPORT) ---
-        bool isHovering = false;
-        
-        if (_myCollider2D != null)
-        {
-            Vector2 mouseWorldPos = _mainCam.ScreenToWorldPoint(mouseScreenPos);
-            isHovering = _myCollider2D.OverlapPoint(mouseWorldPos);
-        }
-        else if (_myCollider3D != null)
-        {
-            Ray ray = _mainCam.ScreenPointToRay(mouseScreenPos);
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                if (hit.collider == _myCollider3D) isHovering = true;
-            }
-        }
-        
-        // --- 2. INPUT DETECTION ---
         bool clickDown = Mouse.current.leftButton.wasPressedThisFrame;
         bool clickUp = Mouse.current.leftButton.wasReleasedThisFrame;
+        bool isHovering = _myCollider.OverlapPoint(mouseWorldPos);
 
         if (isHovering && clickDown)
         {
@@ -89,27 +65,23 @@ public class RadarKnob : MonoBehaviour
             }
         }
 
-        // --- 3. APPLY ROTATION ---
         if (Mathf.Abs(rotationAmount) > 0.001f)
         {
-            // Apply rotation to the axis you selected in the Inspector
-            Vector3 rotationVector = Vector3.zero;
-            if (knobAxis == RotationAxis.X) rotationVector.x = rotationAmount;
-            else if (knobAxis == RotationAxis.Y) rotationVector.y = rotationAmount;
-            else if (knobAxis == RotationAxis.Z) rotationVector.z = rotationAmount;
-            
-            transform.Rotate(rotationVector);
+            // 1. Rotate the Knob itself on the chosen axis
+            if (knobAxis == RotationAxis.X) transform.Rotate(rotationAmount, 0, 0);
+            else if (knobAxis == RotationAxis.Y) transform.Rotate(0, rotationAmount, 0);
+            else transform.Rotate(0, 0, rotationAmount);
 
-            // Sync the 2D Radar Beam to match the 3D Knob
+            // 2. Rotate the Beam with OFFSET
             if (radarBeam != null)
             {
-                // Read the angle from the correct axis
+                // Get the knob's current angle from the chosen axis
                 float knobAngle = 0f;
                 if (knobAxis == RotationAxis.X) knobAngle = transform.eulerAngles.x;
                 else if (knobAxis == RotationAxis.Y) knobAngle = transform.eulerAngles.y;
-                else if (knobAxis == RotationAxis.Z) knobAngle = transform.eulerAngles.z;
+                else knobAngle = transform.eulerAngles.z;
                 
-                // The 2D radar beam itself is always rotated on the Z axis
+                // Apply offset to match the visual sprites
                 radarBeam.rotation = Quaternion.Euler(0, 0, knobAngle + rotationOffset);
             }
         }
