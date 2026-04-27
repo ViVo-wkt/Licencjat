@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &19942621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2043,6 +2043,7 @@ MonoBehaviour:
   isControllable: 1
   rotationSpeed: 10
   dragSensitivity: 0.5
+  knobAxis: 2
   rotationOffset: 135
   radarBeam: {fileID: 106015124}
 --- !u!1 &958673960
