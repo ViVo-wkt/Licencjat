@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8d753e7653f650f4f8ed4b2ce0688dc0
+guid: 389b44830568c9f4ea5c19cebc9a58d3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7738136867640415737
-    second: M_Console_Radar_01_0
+      213: -9123302280481773397
+    second: M_Timer_01_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: M_Console_Radar_01_0
+      name: M_Timer_01_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 817
-        height: 817
+        width: 810
+        height: 806
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 70a60fc648d9c9490800000000000000
-      internalID: -7738136867640415737
+      spriteID: ba86f59c9e4836180800000000000000
+      internalID: -9123302280481773397
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      M_Console_Radar_01_0: -7738136867640415737
+      M_Timer_01_0: -9123302280481773397
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
