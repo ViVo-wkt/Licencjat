@@ -154,6 +154,7 @@ MonoBehaviour:
   xWheel: {fileID: 1443032551}
   yWheel: {fileID: 1329008561}
   radarRadius: 6
+  glowColor: {r: 1, g: 1, b: 1, a: 0.09803922}
   weaponSystem: {fileID: 1456269393}
   weaponSelector: {fileID: 1456269392}
 --- !u!50 &19942622

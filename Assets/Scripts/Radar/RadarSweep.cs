@@ -5,7 +5,7 @@ public class RadarSweep : MonoBehaviour
 {
     [Header("Settings")]
     public float rotationSpeed = -50f;
-    public float detectionRadius = 150.0f; 
+    public float detectionRadius = 140.0f; 
     public float sweepAngleWidth = 15f; 
     public bool flipDetectionDirection = false; 
 

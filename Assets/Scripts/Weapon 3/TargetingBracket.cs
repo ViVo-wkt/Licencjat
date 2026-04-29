@@ -10,6 +10,10 @@ public class TargetingBracket : MonoBehaviour
     [Header("Radar Settings")]
     public float radarRadius = 5.5f;
 
+    [Header("Visuals")]
+    [ColorUsage(true, true)]
+    public Color glowColor = new Color(0f, 1f, 0f, 1f);
+
     [Header("Links")]
     public WeaponSystem weaponSystem;
     public WeaponSelector weaponSelector;
@@ -17,7 +21,38 @@ public class TargetingBracket : MonoBehaviour
     private SpriteRenderer _sprite;
     private HashSet<GameObject> _engagedTargets = new HashSet<GameObject>();
 
-    void Start() { _sprite = GetComponent<SpriteRenderer>(); }
+    void Awake()
+    {
+        _sprite = GetComponent<SpriteRenderer>();
+        if (_sprite != null) _sprite.color = glowColor;
+    }
+
+    void OnValidate()
+    {
+        if (_sprite == null) _sprite = GetComponent<SpriteRenderer>();
+        if (_sprite != null) _sprite.color = glowColor;
+    }
+
+    // --- THE ZOOM FIX ---
+    void OnEnable()
+    {
+        // Listen for the zoom change event
+        RadarZoomSystem.OnZoomChanged += HandleZoomChange;
+    }
+
+    void OnDisable()
+    {
+        RadarZoomSystem.OnZoomChanged -= HandleZoomChange;
+    }
+
+    void HandleZoomChange(float oldScale, float newScale)
+    {
+        // When the radar zooms out (newScale is larger), the bracket must shrink
+        // so it represents the exact same physical area of sky on a wider map!
+        float ratio = oldScale / newScale;
+        transform.localScale = transform.localScale * ratio;
+    }
+    // --------------------
 
     void Update()
     {
@@ -35,16 +70,8 @@ public class TargetingBracket : MonoBehaviour
                 yWheel.ForceValue(intendedPos.y / radarRadius);
             }
 
-            // --- THE ZOOM FIX ---
-            // If our parent radar scales down, our local position needs to scale up 
-            // to stay in the exact same physical spot on the glass screen!
-            if (transform.parent != null)
-            {
-                intendedPos.x /= transform.parent.localScale.x;
-                intendedPos.y /= transform.parent.localScale.y;
-            }
-            // --------------------
-
+            // We apply the position cleanly. 
+            // The physical scroll wheels dictate the absolute position on the glass.
             transform.localPosition = new Vector3(intendedPos.x, intendedPos.y, -0.1f);
         }
 
