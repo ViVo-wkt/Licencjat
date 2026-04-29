@@ -117,4 +117,40 @@ public class WeaponSystem : MonoBehaviour
         if (arhAmmoText != null) arhAmmoText.text = "ARH: " + arhAmmo.ToString("D2");
         if (autoAmmoText != null) autoAmmoText.text = "AUTO: " + autoAmmo.ToString("D2");
     }
+
+    public void FireSelectedWeapon()
+    {
+        if (selector == null) return;
+
+        // Fire ARH
+        if (selector.currentWeapon == WeaponSelector.WeaponType.Active)
+        {
+            if (_currentArhCooldown <= 0 && arhAmmo > 0)
+            {
+                SpawnARH();
+                _currentArhCooldown = arhCooldownTime;
+            }
+        }
+        // Fire SARH
+        else if (selector.currentWeapon == WeaponSelector.WeaponType.SemiActive)
+        {
+            if (sarhAmmo > 0 && fireControlRadar != null)
+            {
+                GameObject target = fireControlRadar.GetCurrentTarget();
+                if (target != null)
+                {
+                    SpawnSARH(target);
+                }
+            }
+        }
+        // Fire AUTO
+        else if (selector.currentWeapon == WeaponSelector.WeaponType.AutoTarget)
+        {
+             // For AUTO, the TargetingBracket handles the actual firing, 
+             // but if you want the button to trigger a general sweep or just click, 
+             // you might need to link the TargetBracket here. 
+             // For now, we will leave this blank because your Targeting Bracket handles AUTO firing on its own!
+             Debug.Log("Auto Missiles are fired automatically via the Targeting Bracket!");
+        }
+    }
 }

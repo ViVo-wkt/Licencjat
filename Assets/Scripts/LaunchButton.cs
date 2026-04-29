@@ -3,9 +3,19 @@ using UnityEngine.InputSystem;
 
 public class LaunchButton : MonoBehaviour
 {
-    [Header("Visuals")]
+    [Header("2D Visuals")]
     public Sprite unpressedSprite;
     public Sprite pressedSprite;
+
+    // --- NEW SECTION ---
+    [Header("3D Visuals (Optional)")]
+    [Tooltip("Drag your 3D button model here")]
+    public Renderer buttonMeshRenderer; 
+    
+    [Tooltip("Drag your raw .jpg / .png textures here")]
+    public Texture2D unpressedTexture;
+    public Texture2D pressedTexture;
+    // -------------------
 
     [Header("Connections")]
     public WeaponSystem weaponSystem;
@@ -13,84 +23,88 @@ public class LaunchButton : MonoBehaviour
     private SpriteRenderer _renderer;
     private Collider2D _myCollider;
     
-    // We track these separately so holding the mouse and space at the same time doesn't glitch the visuals
-    private bool _isMousePressed;
-    private bool _isSpacePressed;
+    // We track these separately so holding the mouse and spacebar at the same time doesn't double-fire
+    private bool _isPressed = false;
+    private float _resetTimer = 0f;
+    private float _pressedDuration = 0.2f;
 
     void Awake()
     {
         _renderer = GetComponent<SpriteRenderer>();
         _myCollider = GetComponent<Collider2D>();
         
-        // Start with default look
-        if (unpressedSprite != null) _renderer.sprite = unpressedSprite;
+        // Ensure we start in the unpressed visual state
+        ResetVisuals();
     }
 
     void Update()
     {
-        // 1. MOUSE INPUT
-        if (Mouse.current != null)
+        // 1. Handle visual resetting after the button is pressed
+        if (_isPressed)
         {
-            bool clickDown = Mouse.current.leftButton.wasPressedThisFrame;
-            bool clickUp = Mouse.current.leftButton.wasReleasedThisFrame;
+            _resetTimer -= Time.deltaTime;
+            if (_resetTimer <= 0)
+            {
+                _isPressed = false;
+                ResetVisuals();
+            }
+        }
+
+        // 2. Handle Inputs
+        if (Mouse.current == null || Keyboard.current == null) return;
+
+        bool spacebarPressed = Keyboard.current.spaceKey.wasPressedThisFrame;
+        bool clickPressed = false;
+
+        // Check if the physical mouse clicked exactly on the button's 2D collider
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-
-            // Press
-            if (clickDown && _myCollider.OverlapPoint(mousePos))
+            if (_myCollider != null && _myCollider.OverlapPoint(mousePos))
             {
-                _isMousePressed = true;
-                UpdateVisuals(true);
-            }
-
-            // Release
-            if (clickUp && _isMousePressed)
-            {
-                _isMousePressed = false;
-                UpdateVisuals(_isSpacePressed); // Only pop up if space isn't also being held
-
-                // Fire only if mouse was released while hovering over the button
-                if (_myCollider.OverlapPoint(mousePos))
-                {
-                    Fire();
-                }
+                clickPressed = true;
             }
         }
 
-        // 2. KEYBOARD INPUT (Spacebar)
-        if (Keyboard.current != null)
+        // 3. Trigger the Launch!
+        if ((spacebarPressed || clickPressed) && !_isPressed)
         {
-            // Press Space
-            if (Keyboard.current.spaceKey.wasPressedThisFrame)
-            {
-                _isSpacePressed = true;
-                UpdateVisuals(true);
-                Fire(); // Fire immediately on space down
-            }
-
-            // Release Space
-            if (Keyboard.current.spaceKey.wasReleasedThisFrame)
-            {
-                _isSpacePressed = false;
-                UpdateVisuals(_isMousePressed); // Only pop up if mouse isn't also being held
-            }
+            TriggerLaunch();
         }
     }
 
-    void UpdateVisuals(bool isDown)
+    private void TriggerLaunch()
     {
-        if (isDown && pressedSprite != null)
+        _isPressed = true;
+        _resetTimer = _pressedDuration;
+
+        // Swap 2D Sprite
+        if (_renderer != null) _renderer.sprite = pressedSprite;
+
+        // Swap 3D Material Texture
+        if (buttonMeshRenderer != null && pressedTexture != null)
         {
-            _renderer.sprite = pressedSprite;
+            buttonMeshRenderer.material.mainTexture = pressedTexture;
         }
-        else if (!isDown && unpressedSprite != null)
+
+        // Fire the weapon! 
+        if (weaponSystem != null)
         {
-            _renderer.sprite = unpressedSprite;
+            // IMPORTANT: If your original script used a slightly different method name 
+            // (like LaunchMissile() or FireSelectedWeapon()), just update this single line to match!
+            weaponSystem.FireSelectedWeapon();
         }
     }
 
-    void Fire()
+    private void ResetVisuals()
     {
-        Debug.Log("Button Fire!");
-        if (weaponSystem != null) weaponSystem.FireSequence();
+        // Reset 2D Sprite
+        if (_renderer != null) _renderer.sprite = unpressedSprite;
+
+        // Reset 3D Material Texture
+        if (buttonMeshRenderer != null && unpressedTexture != null)
+        {
+            buttonMeshRenderer.material.mainTexture = unpressedTexture;
+        }
     }
 }
