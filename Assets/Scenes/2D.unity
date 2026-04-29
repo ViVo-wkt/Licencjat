@@ -5849,7 +5849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 974d303e9e4e2d646872b7eb171b66d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rotator
-  axis: 0
+  axis: 2
   rotationSpeed: -200
 --- !u!212 &2039424786
 SpriteRenderer:
