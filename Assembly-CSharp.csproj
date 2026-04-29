@@ -67,7 +67,6 @@
     <Compile Include="Assets\Scripts\Radar\TargetSignature.cs" />
     <Compile Include="Assets\Scripts\TimeController.cs" />
     <Compile Include="Assets\Scripts\EnemyNavigation.cs" />
-    <Compile Include="Assets\Scripts\RadarSensor.cs" />
     <Compile Include="Assets\Scripts\Weapon 3\ScrollWheelControl.cs" />
     <Compile Include="Assets\Scripts\LaunchButton.cs" />
     <Compile Include="Assets\Scripts\ScenarioManager.cs" />

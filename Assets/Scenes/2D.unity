@@ -4853,7 +4853,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781373308}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3faaa9a13aeeb0542bf24e0eaa52e572, type: 3}
   m_Name: 
@@ -4861,7 +4861,6 @@ MonoBehaviour:
   blipPrefab: {fileID: 1465638273713955256, guid: 8fe6d673d564d93458462b32655388cd, type: 3}
   blipParent: {fileID: 1029004074}
   targetLayer:
-    serializedVersion: 2
     m_Bits: 64
 --- !u!60 &1781373311
 PolygonCollider2D:

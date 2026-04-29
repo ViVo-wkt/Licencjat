@@ -13,15 +13,16 @@ public class TargetSignature : MonoBehaviour
 
     [Header("Radar Visuals")]
     public GameObject blipPrefab; 
-    
-    [Tooltip("The yellow ring that appears when locked by the SARH beam")]
-    public GameObject activeLockIndicatorPrefab; // NEW SLOT!
+    public GameObject activeLockIndicatorPrefab;
 
     private GameObject _myBlip;
-    private GameObject _myLockIndicator; // Tracks the yellow ring
-    private float _blipMemoryTime = 6f; 
+    private GameObject _myLockIndicator; 
+    
+    // INCREASED: If the radar takes ~7.2 seconds to do a 360-degree rotation, 
+    // the blip needs to survive for 8 seconds so it doesn't vanish before the refresh!
+    private float _blipMemoryTime = 8f; 
     private float _blipTimer = 0f;
-    private float _lockTimer = 0f; // Tracks how long the beam stays on them
+    private float _lockTimer = 0f; 
 
     [HideInInspector] public Vector3 lastKnownPosition;
 
@@ -29,6 +30,7 @@ public class TargetSignature : MonoBehaviour
     {
         if (blipPrefab != null)
         {
+            // We spawn exactly ONE blip for this enemy!
             _myBlip = Instantiate(blipPrefab, transform.position, Quaternion.identity);
             
             Vector3 fixedPos = _myBlip.transform.position;
@@ -37,11 +39,10 @@ public class TargetSignature : MonoBehaviour
             
             _myBlip.SetActive(false); 
 
-            // Initialize the yellow lock indicator as a child of the blip!
             if (activeLockIndicatorPrefab != null)
             {
                 _myLockIndicator = Instantiate(activeLockIndicatorPrefab, _myBlip.transform);
-                _myLockIndicator.transform.localPosition = new Vector3(0, 0, -0.05f); // Slightly above the blip
+                _myLockIndicator.transform.localPosition = new Vector3(0, 0, -0.05f); 
                 _myLockIndicator.SetActive(false);
             }
         }
@@ -58,7 +59,6 @@ public class TargetSignature : MonoBehaviour
             }
         }
 
-        // Handle the yellow lock ring disappearing
         if (_myLockIndicator != null && _myLockIndicator.activeSelf)
         {
             _lockTimer -= Time.deltaTime;
@@ -78,6 +78,7 @@ public class TargetSignature : MonoBehaviour
     {
         if (_myBlip != null)
         {
+            // We simply MOVE our one existing blip to the newest location
             lastKnownPosition = transform.position;
 
             Vector3 snapPos = lastKnownPosition;
@@ -85,7 +86,7 @@ public class TargetSignature : MonoBehaviour
             _myBlip.transform.position = snapPos;
 
             _myBlip.SetActive(true);
-            _blipTimer = _blipMemoryTime;
+            _blipTimer = _blipMemoryTime; // Reset the fade timer
         }
     }
 
@@ -102,17 +103,17 @@ public class TargetSignature : MonoBehaviour
             _myBlip.SetActive(true);
             _blipTimer = 0.5f; 
 
-            // Turn on the yellow ring!
             if (_myLockIndicator != null)
             {
                 _myLockIndicator.SetActive(true);
-                _lockTimer = 0.2f; // Instantly turns off if the beam leaves
+                _lockTimer = 0.2f; 
             }
         }
     }
 
     void OnDestroy()
     {
+        // If the enemy is destroyed (or despawns), the one blip is destroyed with it
         if (_myBlip != null)
         {
             Destroy(_myBlip);

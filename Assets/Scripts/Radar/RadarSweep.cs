@@ -5,24 +5,18 @@ public class RadarSweep : MonoBehaviour
 {
     [Header("Settings")]
     public float rotationSpeed = -50f;
-    
-    [Tooltip("CRITICAL: Set this to a huge number (e.g. 150) so the sweep circle reaches all the way to the edge of the map, regardless of zoom level!")]
     public float detectionRadius = 150.0f; 
     public float sweepAngleWidth = 15f; 
-    
     public bool flipDetectionDirection = false; 
 
     [Header("Visuals")]
     public Transform sweepVisual;
 
     private HashSet<TargetSignature> _targetsSeenThisSweep = new HashSet<TargetSignature>();
-    
-    // NEW: A much safer way to track when to clear the radar memory!
     private float _accumulatedAngle = 0f; 
 
     void Update()
     {
-        // 1. Rotate the sweep
         float step = rotationSpeed * Time.deltaTime;
         transform.Rotate(0, 0, step);
         
@@ -31,7 +25,6 @@ public class RadarSweep : MonoBehaviour
             sweepVisual.rotation = transform.rotation;
         }
 
-        // 2. THE FIX: Safely clear the memory every full 360-degree rotation
         _accumulatedAngle += Mathf.Abs(step);
         if (_accumulatedAngle >= 360f)
         {
@@ -39,7 +32,6 @@ public class RadarSweep : MonoBehaviour
             _targetsSeenThisSweep.Clear();
         }
 
-        // 3. Find enemies
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius);
 
         foreach (var hitCollider in hitColliders)
@@ -58,6 +50,8 @@ public class RadarSweep : MonoBehaviour
                 {
                     if (!_targetsSeenThisSweep.Contains(target))
                     {
+                        // THE FIX: We ONLY tell the enemy to update its one, single blip.
+                        // No new objects are spawned here!
                         target.PingLocation();
                         _targetsSeenThisSweep.Add(target);
                     }
