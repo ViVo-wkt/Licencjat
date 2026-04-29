@@ -145,7 +145,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TargetSignature
   codename: Missile
   classification: Hostile
-  description: Fast moving, hard target
+  speed: 400
+  altitude: 15000
+  maxDistanceBeforeDespawn: 150
+  blipPrefab: {fileID: 1465638273713955256, guid: 8fe6d673d564d93458462b32655388cd, type: 3}
+  activeLockIndicatorPrefab: {fileID: 8265852649811164633, guid: 1a4bfa8571c1abb42becb606b8bc6fbb, type: 3}
+  lastKnownPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1021066908438429931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,13 +163,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c851da2c074f447bc73af4f5ac56c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyNavigation
-  altitude: 30000
   isHostile: 1
   pattern: 0
   speed: 0.4
   impactDistance: 0.1
   maneuverFrequency: 1
   maneuverMagnitude: 20
+  altitude: 30000
 --- !u!114 &-7438652361830202266
 MonoBehaviour:
   m_ObjectHideFlags: 0

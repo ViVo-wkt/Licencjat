@@ -145,7 +145,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TargetSignature
   codename: Airliner
   classification: Neutral
-  description: Do not engage (optional)
+  speed: 400
+  altitude: 15000
+  maxDistanceBeforeDespawn: 150
+  blipPrefab: {fileID: 1465638273713955256, guid: 8fe6d673d564d93458462b32655388cd, type: 3}
+  activeLockIndicatorPrefab: {fileID: 8265852649811164633, guid: 1a4bfa8571c1abb42becb606b8bc6fbb, type: 3}
+  lastKnownPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1021066908438429931
 MonoBehaviour:
   m_ObjectHideFlags: 0
