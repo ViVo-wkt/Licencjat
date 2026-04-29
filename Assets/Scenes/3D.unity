@@ -2884,10 +2884,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeController
   slowTimeScale: 0.3
   maxFocus: 1000
-  drainRate: 15
+  drainRate: 45
   rechargeRate: 15
   focusBar: {fileID: 1113561795}
-  fillImage: {fileID: 0}
+  focusTubeFill: {fileID: 1123802761}
+  tubeShrinkAxis: 1
+  hasCenterPivot: 1
+  invertDrainDirection: 0
 --- !u!114 &546544475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6445,7 +6448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 93d5b6779431142418438de09d204919, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.1373334
+      value: 1.0008534
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 93d5b6779431142418438de09d204919, type: 3}
       propertyPath: m_LocalScale.z
