@@ -1435,7 +1435,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -650, y: 13}
+  m_AnchoredPosition: {x: -666, y: 13}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &333195702
@@ -2895,6 +2895,7 @@ MonoBehaviour:
   focusTubeFill: {fileID: 1123802761}
   tubeShrinkAxis: 1
   hasCenterPivot: 1
+  modelLengthMultiplier: 2
   invertDrainDirection: 0
 --- !u!114 &546544475
 MonoBehaviour:
@@ -3682,7 +3683,7 @@ Transform:
   m_GameObject: {fileID: 681208140}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalPosition: {x: 0, y: -0.25, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -6748,7 +6749,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -650, y: 200.5}
+  m_AnchoredPosition: {x: -666, y: 200.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1232463989
@@ -9929,7 +9930,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -650, y: -16}
+  m_AnchoredPosition: {x: -666, y: -16}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2097958657
@@ -10057,7 +10058,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -650, y: -204.7}
+  m_AnchoredPosition: {x: -666, y: -204.7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2126292756
@@ -10186,7 +10187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2834020344410572225, guid: 9a55c0e2a530d1343a9484a764e48b38, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7
+      value: -6.75
       objectReference: {fileID: 0}
     - target: {fileID: 2834020344410572225, guid: 9a55c0e2a530d1343a9484a764e48b38, type: 3}
       propertyPath: m_LocalPosition.z
