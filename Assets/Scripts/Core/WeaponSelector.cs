@@ -9,17 +9,26 @@ public class WeaponSelector : MonoBehaviour
     public WeaponType currentWeapon = WeaponType.SemiActive;
 
     [Header("Button Setup")]
-    public SpriteRenderer[] buttonRenderers;
-    public Collider2D[] buttonColliders;
+    public SpriteRenderer[] buttonRenderers; 
+    public Collider2D[] buttonColliders;     
 
-    [Header("Visuals")]
+    [Header("2D Visuals")]
     public Sprite unpressedSprite;
     public Sprite pressedSprite;
 
+    // --- UPDATED SECTION ---
+    [Header("3D Visuals (Optional)")]
+    [Tooltip("Drag your new 3D button models here in the exact same order as the 2D renderers!")]
+    public Renderer[] buttonMeshRenderers; 
+    
+    [Tooltip("Drag your raw .jpg / .png textures here!")]
+    public Texture2D unpressedTexture;
+    public Texture2D pressedTexture;
+    // -----------------------
+
     [Header("Indicators")]
     public GameObject arhIndicator;
-    [Tooltip("Drag the VISUAL graphic of the SARH beam here (not the sensor itself, just the sprite)")]
-    public GameObject sarhIndicatorVisual; // NEW
+    public GameObject sarhIndicatorVisual; 
 
     void Start() { UpdateVisuals(); }
 
@@ -50,11 +59,19 @@ public class WeaponSelector : MonoBehaviour
     {
         for (int i = 0; i < buttonRenderers.Length; i++)
         {
+            // 1. Update old 2D Sprites
             if (buttonRenderers[i] != null)
                 buttonRenderers[i].sprite = (i == (int)currentWeapon) ? pressedSprite : unpressedSprite;
+                
+            // 2. Update new 3D Meshes with raw Textures!
+            if (buttonMeshRenderers != null && i < buttonMeshRenderers.Length && buttonMeshRenderers[i] != null)
+            {
+                // We access the mainTexture property of the model's underlying material directly
+                Texture2D targetTex = (i == (int)currentWeapon) ? pressedTexture : unpressedTexture;
+                buttonMeshRenderers[i].material.mainTexture = targetTex;
+            }
         }
 
-        // Toggle both visuals correctly!
         if (arhIndicator != null) arhIndicator.SetActive(currentWeapon == WeaponType.Active);
         if (sarhIndicatorVisual != null) sarhIndicatorVisual.SetActive(currentWeapon == WeaponType.SemiActive);
     }

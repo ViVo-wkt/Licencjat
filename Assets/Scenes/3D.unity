@@ -1134,7 +1134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 286124806}
   m_Layer: 0
-  m_Name: Selector Button
+  m_Name: AUTO Selector Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1211,6 +1211,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d39a05372d8a59744ada245ee2dc984c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d39a05372d8a59744ada245ee2dc984c, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d39a05372d8a59744ada245ee2dc984c, type: 3}
@@ -5017,6 +5021,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ef75dc12b2304b64996fc106d74877bd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ef75dc12b2304b64996fc106d74877bd, type: 3}
       propertyPath: m_Name
       value: F_Button_Frame_01
@@ -7717,6 +7725,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 640292827ce1a464692a96f3113ed7fd, type: 3}
   m_PrefabInstance: {fileID: 1506956012}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1506956014 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 640292827ce1a464692a96f3113ed7fd, type: 3}
+  m_PrefabInstance: {fileID: 1506956012}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1510180763
 GameObject:
   m_ObjectHideFlags: 0
@@ -7727,7 +7740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1510180764}
   m_Layer: 0
-  m_Name: Selector Button (1)
+  m_Name: ARH Selector Button (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7831,6 +7844,11 @@ PrefabInstance:
 --- !u!4 &1527717309 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 640292827ce1a464692a96f3113ed7fd, type: 3}
+  m_PrefabInstance: {fileID: 1527717308}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1527717310 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 640292827ce1a464692a96f3113ed7fd, type: 3}
   m_PrefabInstance: {fileID: 1527717308}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1532710989
@@ -8359,7 +8377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1821343160}
   m_Layer: 0
-  m_Name: Selector Button (2)
+  m_Name: SARH Selector Button (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8501,6 +8519,12 @@ MonoBehaviour:
   - {fileID: 433446091}
   unpressedSprite: {fileID: 21300000, guid: 8f883d76eb1e788498af7a26ce4671cf, type: 3}
   pressedSprite: {fileID: 21300000, guid: 0adc142fc1e0cd24496b70fae09262f6, type: 3}
+  buttonMeshRenderers:
+  - {fileID: 1959954635}
+  - {fileID: 1506956014}
+  - {fileID: 1527717310}
+  unpressedTexture: {fileID: 2800000, guid: 2bbad3cf74cb32141a59292cf83b030f, type: 3}
+  pressedTexture: {fileID: 2800000, guid: 1627a7d66485f2a4a969ef8e86aac0c7, type: 3}
   arhIndicator: {fileID: 1532710989}
   sarhIndicatorVisual: {fileID: 1083624375}
 --- !u!1001 &1875887658
@@ -8927,7 +8951,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1932829130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9046,12 +9070,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932829129}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.67, y: -7.5, z: -0.1}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.009, z: 0.009}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 0.12}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2050213430}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1941639123
 PrefabInstance:
@@ -9216,6 +9240,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c71ffd3e5e453504e811db3f1ca0bf96, type: 3}
   m_PrefabInstance: {fileID: 1953767784}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1959954635 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 640292827ce1a464692a96f3113ed7fd, type: 3}
+  m_PrefabInstance: {fileID: 1067141777}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1968957096
 PrefabInstance:
@@ -9765,6 +9794,7 @@ Transform:
   m_Children:
   - {fileID: 297593284}
   - {fileID: 952243857}
+  - {fileID: 1932829133}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2054798200
@@ -10276,7 +10306,6 @@ SceneRoots:
   - {fileID: 484981689}
   - {fileID: 1234873311}
   - {fileID: 2050213430}
-  - {fileID: 1932829133}
   - {fileID: 97520355}
   - {fileID: 3181573990500594811}
   - {fileID: 69696091}
