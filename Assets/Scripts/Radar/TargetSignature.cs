@@ -18,8 +18,6 @@ public class TargetSignature : MonoBehaviour
     private GameObject _myBlip;
     private GameObject _myLockIndicator; 
     
-    // INCREASED: If the radar takes ~7.2 seconds to do a 360-degree rotation, 
-    // the blip needs to survive for 8 seconds so it doesn't vanish before the refresh!
     private float _blipMemoryTime = 8f; 
     private float _blipTimer = 0f;
     private float _lockTimer = 0f; 
@@ -30,7 +28,6 @@ public class TargetSignature : MonoBehaviour
     {
         if (blipPrefab != null)
         {
-            // We spawn exactly ONE blip for this enemy!
             _myBlip = Instantiate(blipPrefab, transform.position, Quaternion.identity);
             
             Vector3 fixedPos = _myBlip.transform.position;
@@ -78,7 +75,6 @@ public class TargetSignature : MonoBehaviour
     {
         if (_myBlip != null)
         {
-            // We simply MOVE our one existing blip to the newest location
             lastKnownPosition = transform.position;
 
             Vector3 snapPos = lastKnownPosition;

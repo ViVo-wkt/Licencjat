@@ -33,7 +33,6 @@ public class TargetingBracket : MonoBehaviour
         if (_sprite != null) _sprite.color = glowColor;
     }
 
-    // --- THE ZOOM FIX ---
     void OnEnable()
     {
         // Listen for the zoom change event
@@ -47,8 +46,6 @@ public class TargetingBracket : MonoBehaviour
 
     void HandleZoomChange(float oldScale, float newScale)
     {
-        // When the radar zooms out (newScale is larger), the bracket must shrink
-        // so it represents the exact same physical area of sky on a wider map!
         float ratio = oldScale / newScale;
         transform.localScale = transform.localScale * ratio;
     }
@@ -70,8 +67,6 @@ public class TargetingBracket : MonoBehaviour
                 yWheel.ForceValue(intendedPos.y / radarRadius);
             }
 
-            // We apply the position cleanly. 
-            // The physical scroll wheels dictate the absolute position on the glass.
             transform.localPosition = new Vector3(intendedPos.x, intendedPos.y, -0.1f);
         }
 
