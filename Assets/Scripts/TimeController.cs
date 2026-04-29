@@ -21,6 +21,12 @@ public class TimeController : MonoBehaviour
     
     [Tooltip("Keep checked if the cylinder shrinks towards its middle.")]
     public bool hasCenterPivot = true; 
+    
+    // --- THE FIX ---
+    [Tooltip("If the tube shrinks from both sides, tweak this number! (Standard Unity cylinders are 2)")]
+    public float modelLengthMultiplier = 2f; 
+    // ---------------
+
     [Tooltip("Check this if the tube drains from the wrong side!")]
     public bool invertDrainDirection = false;
 
@@ -35,7 +41,6 @@ public class TimeController : MonoBehaviour
         _currentFocus = maxFocus;
         if (focusBar != null) focusBar.maxValue = maxFocus;
 
-        // Initialize the 3D Tube Starting State
         if (focusTubeFill != null)
         {
             _tubeStartScale = focusTubeFill.localScale;
@@ -52,10 +57,8 @@ public class TimeController : MonoBehaviour
 
     void HandleInput()
     {
-        // Check if a keyboard exists before trying to read it
         if (Keyboard.current == null) return;
 
-        // Uses the Shift key (Left or Right Shift)
         if (Keyboard.current.shiftKey.wasPressedThisFrame && _currentFocus > 0)
         {
             StartSlowdown();
@@ -70,7 +73,6 @@ public class TimeController : MonoBehaviour
     {
         if (_isSlowingTime)
         {
-            // Drain focus (Remember to multiply by unscaledDeltaTime because Time.deltaTime is slowed!)
             _currentFocus -= drainRate * Time.unscaledDeltaTime;
             
             if (_currentFocus <= 0)
@@ -81,7 +83,6 @@ public class TimeController : MonoBehaviour
         }
         else if (_currentFocus < maxFocus)
         {
-            // Recharge focus
             _currentFocus += rechargeRate * Time.unscaledDeltaTime;
             if (_currentFocus > maxFocus) _currentFocus = maxFocus;
         }
@@ -91,7 +92,7 @@ public class TimeController : MonoBehaviour
     {
         _isSlowingTime = true;
         Time.timeScale = slowTimeScale;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale; // Keeps physics smooth
+        Time.fixedDeltaTime = 0.02f * Time.timeScale; 
     }
 
     void StopSlowdown()
@@ -103,15 +104,12 @@ public class TimeController : MonoBehaviour
 
     void UpdateVisuals()
     {
-        // 1. Update the 2D UI Slider
         if (focusBar != null) focusBar.value = _currentFocus;
 
-        // 2. Update the 3D Glass Tube
         if (focusTubeFill != null)
         {
             float fillRatio = _currentFocus / maxFocus; 
 
-            // Scale the cylinder
             Vector3 newScale = _tubeStartScale;
             float shrinkAmount = 0f;
 
@@ -133,15 +131,15 @@ public class TimeController : MonoBehaviour
 
             focusTubeFill.localScale = newScale;
 
-            // Slide the base to keep it planted if it's a center-pivot model
             if (hasCenterPivot)
             {
                 float directionMultiplier = invertDrainDirection ? 1f : -1f;
                 Vector3 newPos = _tubeStartPos;
 
-                if (tubeShrinkAxis == ShrinkAxis.X) newPos.x += (shrinkAmount / 2f) * directionMultiplier;
-                else if (tubeShrinkAxis == ShrinkAxis.Y) newPos.y += (shrinkAmount / 2f) * directionMultiplier;
-                else if (tubeShrinkAxis == ShrinkAxis.Z) newPos.z += (shrinkAmount / 2f) * directionMultiplier;
+                // We multiply the math by the length of your specific 3D model!
+                if (tubeShrinkAxis == ShrinkAxis.X) newPos.x += (shrinkAmount / 2f) * modelLengthMultiplier * directionMultiplier;
+                else if (tubeShrinkAxis == ShrinkAxis.Y) newPos.y += (shrinkAmount / 2f) * modelLengthMultiplier * directionMultiplier;
+                else if (tubeShrinkAxis == ShrinkAxis.Z) newPos.z += (shrinkAmount / 2f) * modelLengthMultiplier * directionMultiplier;
                 
                 focusTubeFill.localPosition = newPos;
             }
