@@ -4859,10 +4859,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3faaa9a13aeeb0542bf24e0eaa52e572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RadarSensor
-  blipPrefab: {fileID: 1465638273713955256, guid: 8fe6d673d564d93458462b32655388cd, type: 3}
-  blipParent: {fileID: 1029004074}
-  targetLayer:
-    m_Bits: 64
 --- !u!60 &1781373311
 PolygonCollider2D:
   m_ObjectHideFlags: 0
