@@ -924,7 +924,11 @@ MonoBehaviour:
   drainRate: 15
   rechargeRate: 15
   focusBar: {fileID: 1690024337}
-  fillImage: {fileID: 0}
+  focusTubeFill: {fileID: 0}
+  tubeShrinkAxis: 1
+  hasCenterPivot: 1
+  modelLengthMultiplier: 2
+  invertDrainDirection: 0
 --- !u!114 &132750476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4195,6 +4199,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LaunchButton
   unpressedSprite: {fileID: 21300000, guid: b65f0e863cf46d445953894ab4bcb916, type: 3}
   pressedSprite: {fileID: 21300000, guid: f80ac24aea1cd74438028418fac964ee, type: 3}
+  buttonMeshRenderer: {fileID: 0}
+  unpressedTexture: {fileID: 0}
+  pressedTexture: {fileID: 0}
   weaponSystem: {fileID: 1456269393}
 --- !u!58 &1388728447
 CircleCollider2D:
@@ -4523,6 +4530,9 @@ MonoBehaviour:
   - {fileID: 357921992}
   unpressedSprite: {fileID: 21300000, guid: 8f883d76eb1e788498af7a26ce4671cf, type: 3}
   pressedSprite: {fileID: 21300000, guid: 0adc142fc1e0cd24496b70fae09262f6, type: 3}
+  buttonMeshRenderers: []
+  unpressedTexture: {fileID: 0}
+  pressedTexture: {fileID: 0}
   arhIndicator: {fileID: 244092911}
   sarhIndicatorVisual: {fileID: 106015123}
 --- !u!114 &1456269393
