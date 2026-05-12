@@ -3,67 +3,92 @@ using UnityEngine.InputSystem;
 
 public class ZoomPanel : MonoBehaviour
 {
-    [Header("Visuals")]
-    [Tooltip("The SpriteRenderer of this panel object")]
-    public SpriteRenderer panelRenderer;
+    public enum ZoomLevel { Near, Medium, Far }
 
-    [Tooltip("The 3 sprites representing the panel states.\nElement 0 = Close Range Active\nElement 1 = Medium Range Active\nElement 2 = Long Range Active")]
-    public Sprite[] stateSprites;
+    [Header("Current State")]
+    public ZoomLevel currentZoom = ZoomLevel.Near;
 
-    [Header("Triggers")]
-    [Tooltip("The 3 colliders for the buttons.\nElement 0 = Click zone for Close\nElement 1 = Click zone for Medium\nElement 2 = Click zone for Long")]
-    public Collider2D[] triggerZones;
+    [Header("Connections")]
+    public RadarZoomSystem radarZoomSystem; 
+
+    [Header("Button Setup")]
+    [Tooltip("The invisible colliders that detect mouse clicks.")]
+    public Collider2D[] buttonColliders; 
+    public Collider[] buttonColliders3D; 
+
+    [Header("3D Visual Objects")]
+    [Tooltip("Drag your 3 state models here in order (Near, Medium, Far).")]
+    public GameObject[] activeStateObjects; 
+
+    private Camera _cam;
 
     void Start()
     {
-        // Initial setup
-        UpdateVisuals(0, 0);
-    }
-
-    void OnEnable()
-    {
-        RadarZoomSystem.OnZoomChanged += UpdateVisuals;
-    }
-
-    void OnDisable()
-    {
-        RadarZoomSystem.OnZoomChanged -= UpdateVisuals;
-    }
-
-    // Parameters (a, b) are required by the event signature but we ignore them
-    // and read the true index directly from the system for accuracy.
-    void UpdateVisuals(float oldScale, float newScale)
-    {
-        if (RadarZoomSystem.Instance == null || panelRenderer == null) return;
-        if (stateSprites == null || stateSprites.Length == 0) return;
-
-        int index = RadarZoomSystem.Instance.currentLevelIndex;
-
-        // Safety check to prevent crash if index is out of bounds
-        if (index >= 0 && index < stateSprites.Length)
-        {
-            panelRenderer.sprite = stateSprites[index];
-        }
+        _cam = Camera.main;
+        UpdateVisuals();
     }
 
     void Update()
     {
-        // 1. Check for Mouse Input
-        if (Mouse.current == null) return;
-        if (!Mouse.current.leftButton.wasPressedThisFrame) return;
+        if (Mouse.current == null || _cam == null) return;
 
-        // 2. Raycast to find what was clicked
-        Vector2 mousePos = Mouse.current.position.ReadValue();
-        Vector2 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
-
-        // 3. Check each trigger zone
-        for (int i = 0; i < triggerZones.Length; i++)
+        if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            if (triggerZones[i] != null && triggerZones[i].OverlapPoint(worldPos))
+            Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
+            Vector2 mouseWorldPos2D = _cam.ScreenToWorldPoint(mouseScreenPos);
+            
+            Ray ray = _cam.ScreenPointToRay(mouseScreenPos);
+            bool hit3D = Physics.Raycast(ray, out RaycastHit hitInfo);
+
+            // Check 2D Colliders
+            for (int i = 0; i < buttonColliders.Length; i++)
             {
-                // Click detected! Switch zoom.
-                RadarZoomSystem.Instance.ApplyZoom(i);
-                return; // Stop checking
+                if (buttonColliders[i] != null && buttonColliders[i].OverlapPoint(mouseWorldPos2D))
+                {
+                    SetZoomLevel(i);
+                    return; 
+                }
+            }
+
+            // Check 3D Colliders (if applicable)
+            if (buttonColliders3D != null)
+            {
+                for (int i = 0; i < buttonColliders3D.Length; i++)
+                {
+                    if (hit3D && buttonColliders3D[i] != null && hitInfo.collider == buttonColliders3D[i])
+                    {
+                        SetZoomLevel(i);
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    public void SetZoomLevel(int index)
+    {
+        currentZoom = (ZoomLevel)index;
+        
+        // --- THE FIX IS HERE ---
+        if (radarZoomSystem != null)
+        {
+            // We use your exact method name: ApplyZoom!
+            radarZoomSystem.ApplyZoom(index); 
+        }
+        
+        UpdateVisuals();
+    }
+
+    void UpdateVisuals()
+    {
+        if (activeStateObjects != null)
+        {
+            for (int i = 0; i < activeStateObjects.Length; i++)
+            {
+                if (activeStateObjects[i] != null)
+                {
+                    activeStateObjects[i].SetActive(i == (int)currentZoom);
+                }
             }
         }
     }
