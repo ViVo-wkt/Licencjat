@@ -5,10 +5,20 @@ using System.Collections;
 
 public class MenuButton : MonoBehaviour
 {
-    [Header("Visuals")]
+    [Header("2D Visuals")]
     public Sprite unpressedSprite;
     public Sprite pressedSprite;
     private SpriteRenderer _spriteRenderer;
+
+    // --- NEW SECTION ---
+    [Header("3D Visuals (Optional)")]
+    [Tooltip("Drag your 3D button model here")]
+    public Renderer buttonMeshRenderer; 
+    
+    [Tooltip("Drag your raw .jpg / .png textures here")]
+    public Texture2D unpressedTexture;
+    public Texture2D pressedTexture;
+    // -------------------
 
     [Header("Settings")]
     public float actionDelay = 0.2f;
@@ -17,7 +27,7 @@ public class MenuButton : MonoBehaviour
     public UnityEvent onClickAction;
 
     private Collider2D _col2D;
-    private Collider _col3D; // Future-proofed in case you change to 3D buttons
+    private Collider _col3D; 
     private Camera _cam;
     private bool _isPressed = false;
 
@@ -28,8 +38,12 @@ public class MenuButton : MonoBehaviour
         _col3D = GetComponent<Collider>();
         _cam = Camera.main;
         
+        // Setup initial state
         if (_spriteRenderer != null && unpressedSprite != null)
             _spriteRenderer.sprite = unpressedSprite;
+
+        if (buttonMeshRenderer != null && unpressedTexture != null)
+            buttonMeshRenderer.material.mainTexture = unpressedTexture;
     }
 
     void Update()
@@ -41,7 +55,6 @@ public class MenuButton : MonoBehaviour
             Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
             bool hit = false;
 
-            // Support both 2D and 3D colliders
             if (_col2D != null) 
             {
                 if (_col2D.OverlapPoint(_cam.ScreenToWorldPoint(mouseScreenPos))) hit = true;
@@ -60,19 +73,25 @@ public class MenuButton : MonoBehaviour
     {
         _isPressed = true;
         
-        // Swap to pressed visual
+        // 1. Swap to pressed visual (2D & 3D)
         if (_spriteRenderer != null && pressedSprite != null)
             _spriteRenderer.sprite = pressedSprite;
 
-        // Wait for the delay
+        if (buttonMeshRenderer != null && pressedTexture != null)
+            buttonMeshRenderer.material.mainTexture = pressedTexture;
+
+        // 2. Wait for the delay
         yield return new WaitForSeconds(actionDelay);
 
-        // Execute the assigned action
+        // 3. Execute the assigned action!
         onClickAction.Invoke();
 
-        // Swap back to normal visual (in case this is the Options/Back button)
+        // 4. Swap back to normal visual (in case this is the Options/Back button)
         if (_spriteRenderer != null && unpressedSprite != null)
             _spriteRenderer.sprite = unpressedSprite;
+
+        if (buttonMeshRenderer != null && unpressedTexture != null)
+            buttonMeshRenderer.material.mainTexture = unpressedTexture;
             
         _isPressed = false;
     }
