@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\RadarUIManager.cs" />
     <Compile Include="Assets\Scripts\Extra\FanRotator.cs" />
     <Compile Include="Assets\Scripts\Radar\RadarSweep.cs" />
+    <Compile Include="Assets\Scripts\Extra\BaseAlarm.cs" />
     <Compile Include="Assets\Scripts\ZoomPanel.cs" />
     <Compile Include="Assets\Scripts\Radar\TargetSignature.cs" />
     <Compile Include="Assets\Scripts\TimeController.cs" />
@@ -75,7 +76,6 @@
     <Compile Include="Assets\Scripts\BriefingAcknowledgeObject.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuManager.cs" />
     <Compile Include="Assets\Scripts\ScenarioManager.cs" />
-    <Compile Include="Assets\Scripts\BaseAlarm.cs" />
     <Compile Include="Assets\Scripts\RadarKnob.cs" />
   </ItemGroup>
   <ItemGroup>

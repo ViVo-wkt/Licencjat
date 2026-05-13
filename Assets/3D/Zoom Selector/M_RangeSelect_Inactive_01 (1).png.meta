@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: 497ca4558ab8ebe4785885b48ccab830
+guid: b98a02efc8af66745931c4471d3913b6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8322284904959883832
-    second: S T A R T_0
-  - first:
-      213: 298937714335071400
-    second: S T A R T_1
-  - first:
-      213: 8930935254514681884
-    second: S T A R T_2
-  - first:
-      213: -4442812459817509931
-    second: S T A R T_3
-  - first:
-      213: -4157152099060849504
-    second: S T A R T_4
+      213: 542516691037435741
+    second: M_RangeSelect_Inactive_01 (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -87,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -112,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: S T A R T_0
+      name: M_RangeSelect_Inactive_01 (1)_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 40
-        width: 35
-        height: 39
+        x: 109
+        y: 304
+        width: 584
+        height: 507
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,96 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8c54548e8fd418c80800000000000000
-      internalID: -8322284904959883832
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: S T A R T_1
-      rect:
-        serializedVersion: 2
-        x: 77
-        y: 53
-        width: 37
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8acb8e0744a062400800000000000000
-      internalID: 298937714335071400
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: S T A R T_2
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 32
-        width: 42
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c184c5dbb4e01fb70800000000000000
-      internalID: 8930935254514681884
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: S T A R T_3
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 3
-        width: 39
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5dbd5e85b95f752c0800000000000000
-      internalID: -4442812459817509931
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: S T A R T_4
-      rect:
-        serializedVersion: 2
-        x: 155
-        y: 7
-        width: 38
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0a465320134de46c0800000000000000
-      internalID: -4157152099060849504
+      spriteID: d57b10e5e08678700800000000000000
+      internalID: 542516691037435741
       vertices: []
       indices: 
       edges: []
@@ -225,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -235,11 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      S T A R T_0: -8322284904959883832
-      S T A R T_1: 298937714335071400
-      S T A R T_2: 8930935254514681884
-      S T A R T_3: -4442812459817509931
-      S T A R T_4: -4157152099060849504
+      M_RangeSelect_Inactive_01 (1)_0: 542516691037435741
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
