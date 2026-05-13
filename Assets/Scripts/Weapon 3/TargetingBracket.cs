@@ -18,24 +18,26 @@ public class TargetingBracket : MonoBehaviour
     public WeaponSystem weaponSystem;
     public WeaponSelector weaponSelector;
 
-    private SpriteRenderer _sprite;
+    // CHANGED: Using base Renderer class so it supports BOTH 2D Sprites and 3D Meshes!
+    private Renderer _myRenderer;
     private HashSet<GameObject> _engagedTargets = new HashSet<GameObject>();
 
     void Awake()
     {
-        _sprite = GetComponent<SpriteRenderer>();
-        if (_sprite != null) _sprite.color = glowColor;
+        _myRenderer = GetComponent<Renderer>();
+        
+        // Only apply the color tint if it is still a 2D Sprite!
+        if (_myRenderer is SpriteRenderer sr) sr.color = glowColor;
     }
 
     void OnValidate()
     {
-        if (_sprite == null) _sprite = GetComponent<SpriteRenderer>();
-        if (_sprite != null) _sprite.color = glowColor;
+        if (_myRenderer == null) _myRenderer = GetComponent<Renderer>();
+        if (_myRenderer is SpriteRenderer sr) sr.color = glowColor;
     }
 
     void OnEnable()
     {
-        // Listen for the zoom change event
         RadarZoomSystem.OnZoomChanged += HandleZoomChange;
     }
 
@@ -49,7 +51,6 @@ public class TargetingBracket : MonoBehaviour
         float ratio = oldScale / newScale;
         transform.localScale = transform.localScale * ratio;
     }
-    // --------------------
 
     void Update()
     {
@@ -70,15 +71,17 @@ public class TargetingBracket : MonoBehaviour
             transform.localPosition = new Vector3(intendedPos.x, intendedPos.y, -0.1f);
         }
 
-        if (weaponSelector != null && _sprite != null)
+        if (weaponSelector != null && _myRenderer != null)
         {
-            _sprite.enabled = ((int)weaponSelector.currentWeapon == 2); 
+            // CHANGED: Safely compares the exact state instead of using a hardcoded '2'
+            _myRenderer.enabled = (weaponSelector.currentWeapon == WeaponSelector.WeaponType.AutoTarget); 
         }
     }
 
     void ProcessTarget(Collider2D other)
     {
-        if (weaponSelector == null || (int)weaponSelector.currentWeapon != 2) return;
+        // Safely checks enum here as well!
+        if (weaponSelector == null || weaponSelector.currentWeapon != WeaponSelector.WeaponType.AutoTarget) return;
 
         TargetSignature target = other.GetComponent<TargetSignature>();
         if (target == null) target = other.GetComponentInParent<TargetSignature>();

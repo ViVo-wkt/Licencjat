@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 public class BriefingAcknowledgeObject : MonoBehaviour
 {
     [Header("Connections")]
-    [Tooltip("Drag your Mission Manager here!")]
     public BriefingManager briefingManager;
 
     private Collider _myCollider3D;
@@ -22,13 +21,11 @@ public class BriefingAcknowledgeObject : MonoBehaviour
     {
         if (Mouse.current == null || _cam == null || briefingManager == null) return;
 
-        // Listen for the click even while Time.timeScale is 0!
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
             bool clickedMe = false;
 
-            // Check for 3D Colliders
             if (_myCollider3D != null)
             {
                 Ray ray = _cam.ScreenPointToRay(mouseScreenPos);
@@ -37,7 +34,6 @@ public class BriefingAcknowledgeObject : MonoBehaviour
                     clickedMe = true;
                 }
             }
-            // Check for 2D Colliders (just in case!)
             else if (_myCollider2D != null)
             {
                 if (_myCollider2D.OverlapPoint(_cam.ScreenToWorldPoint(mouseScreenPos)))
@@ -46,10 +42,10 @@ public class BriefingAcknowledgeObject : MonoBehaviour
                 }
             }
 
-            // If we clicked the speaker, tell the manager to start the game!
             if (clickedMe)
             {
-                briefingManager.AcknowledgeAndStart();
+                // --- THIS IS THE ONLY CHANGED LINE ---
+                briefingManager.ToggleMessage();
             }
         }
     }
