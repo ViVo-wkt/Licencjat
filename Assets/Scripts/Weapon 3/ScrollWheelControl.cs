@@ -8,11 +8,17 @@ public class ScrollWheelControl : MonoBehaviour
     public float scrollSensitivity = 0.05f;
 
     [Tooltip("If true, dragging the mouse Left/Right will rotate this wheel instead of Up/Down.")]
-    public bool useHorizontalMouseDrag = false; // NEW TOGGLE
+    public bool useHorizontalMouseDrag = false;
+
+    // --- NEW: Mechanical Limits ---
+    [Header("Mechanical Limits")]
+    [Tooltip("How fast the targeting bracket catches up to the wheel (-1 to 1 scale)")]
+    public float maxMoveSpeed = 1.5f; 
 
     [Header("State (-1 to 1)")]
     [Range(-1f, 1f)]
     public float currentValue = 0f;
+    private float _targetValue = 0f;
 
     [Header("Visual Rotation")]
     public Vector3 rotationAxis = Vector3.right;
@@ -26,6 +32,10 @@ public class ScrollWheelControl : MonoBehaviour
     {
         _myCollider = GetComponent<Collider>();
         _mainCam = Camera.main;
+        
+        // Sync starting position
+        _targetValue = currentValue;
+        UpdateVisualRotation();
     }
 
     void Update()
@@ -48,7 +58,6 @@ public class ScrollWheelControl : MonoBehaviour
 
         if (_isDragging)
         {
-            // NEW: Choose which mouse axis to read!
             if (useHorizontalMouseDrag)
             {
                 valueChange = Mouse.current.delta.ReadValue().x * dragSensitivity;
@@ -67,26 +76,33 @@ public class ScrollWheelControl : MonoBehaviour
             }
         }
 
-        // Apply
         if (valueChange != 0f)
         {
-            currentValue += valueChange;
-            currentValue = Mathf.Clamp(currentValue, -1f, 1f);
+            // 1. Apply Input to the Target instantly
+            _targetValue += valueChange;
+            _targetValue = Mathf.Clamp(_targetValue, -1f, 1f);
 
-            // The 'override' limits we apply later in TargetingBracket might try to 
-            // force this value, but we rotate visually based on the user's input
+            // 2. Instantly rotate the physical wheel so input feels highly responsive
             UpdateVisualRotation();
         }
+
+        // --- THE MECHANICAL DELAY ---
+        // Smoothly move the heavy targeting bracket towards the target
+        currentValue = Mathf.MoveTowards(currentValue, _targetValue, maxMoveSpeed * Time.deltaTime);
     }
 
     public void ForceValue(float val)
     {
+        // This is called by the TargetingBracket when it hits the edge of the radar.
+        // We must update BOTH values instantly so the bracket doesn't "rubber-band" back!
         currentValue = Mathf.Clamp(val, -1f, 1f);
+        _targetValue = currentValue; 
         UpdateVisualRotation();
     }
 
     private void UpdateVisualRotation()
     {
-        transform.localRotation = Quaternion.Euler(rotationAxis * (currentValue * maxRotationAngle));
+        // We use the TARGET value so the wheel spins instantly when the player scrolls
+        transform.localRotation = Quaternion.Euler(rotationAxis * (_targetValue * maxRotationAngle));
     }
 }

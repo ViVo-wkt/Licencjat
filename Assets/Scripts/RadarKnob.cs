@@ -7,25 +7,54 @@ public class RadarKnob : MonoBehaviour
 
     [Header("Settings")]
     public bool isControllable = true; 
-    public float rotationSpeed = 10f;
+    public float scrollSensitivity = 10f;
     public float dragSensitivity = 0.5f;
     
     [Tooltip("Which axis should the knob rotate around?")]
     public RotationAxis knobAxis = RotationAxis.Z;
 
     [Header("Calibration")]
-    public float rotationOffset = 90f; // Tweak this (0, 90, 180, -90) to align them!
+    public float rotationOffset = 90f; 
 
     [Header("References")]
     public Transform radarBeam;
+
+    [Header("Mechanical Speed Limits")]
+    public bool limitKnobSpeed = true;
+    [Tooltip("Max speed the player can spin the physical knob (Degrees per second)")]
+    public float maxKnobSpeed = 270f; 
+    
+    public bool limitBeamSpeed = false;
+    [Tooltip("How fast the heavy radar beam physically catches up (Degrees per second)")]
+    public float maxBeamSpeed = 45f; 
 
     private Collider2D _myCollider;
     private bool _isDragging = false;
     private Vector2 _lastMousePos;
 
+    private float _currentBeamAngle = 0f;
+    private float _targetBeamAngle = 0f;
+    
+    private float _currentKnobAngle = 0f;
+
     void Awake()
     {
         _myCollider = GetComponent<Collider2D>();
+    }
+
+    void Start()
+    {
+        _currentKnobAngle = GetKnobAngle();
+        if (_currentKnobAngle > 180f) _currentKnobAngle -= 360f;
+
+        float startAngle = _currentKnobAngle + rotationOffset;
+        _targetBeamAngle = startAngle;
+        _currentBeamAngle = startAngle;
+
+        if (radarBeam != null)
+        {
+            radarBeam.rotation = Quaternion.Euler(0, 0, _currentBeamAngle);
+        }
     }
 
     void Update()
@@ -38,7 +67,7 @@ public class RadarKnob : MonoBehaviour
         
         bool clickDown = Mouse.current.leftButton.wasPressedThisFrame;
         bool clickUp = Mouse.current.leftButton.wasReleasedThisFrame;
-        bool isHovering = _myCollider.OverlapPoint(mouseWorldPos);
+        bool isHovering = (_myCollider != null && _myCollider.OverlapPoint(mouseWorldPos));
 
         if (isHovering && clickDown)
         {
@@ -61,29 +90,49 @@ public class RadarKnob : MonoBehaviour
             if (Mathf.Abs(scrollValue) > 0.01f)
             {
                 float direction = Mathf.Sign(scrollValue);
-                rotationAmount = direction * rotationSpeed * Time.deltaTime * 50f;
+                rotationAmount = direction * scrollSensitivity * Time.deltaTime * 50f;
             }
         }
 
         if (Mathf.Abs(rotationAmount) > 0.001f)
         {
-            // 1. Rotate the Knob itself on the chosen axis
-            if (knobAxis == RotationAxis.X) transform.Rotate(rotationAmount, 0, 0);
-            else if (knobAxis == RotationAxis.Y) transform.Rotate(0, rotationAmount, 0);
-            else transform.Rotate(0, 0, rotationAmount);
-
-            // 2. Rotate the Beam with OFFSET
-            if (radarBeam != null)
+            // --- THE KNOB SPEED CAP ---
+            if (limitKnobSpeed)
             {
-                // Get the knob's current angle from the chosen axis
-                float knobAngle = 0f;
-                if (knobAxis == RotationAxis.X) knobAngle = transform.eulerAngles.x;
-                else if (knobAxis == RotationAxis.Y) knobAngle = transform.eulerAngles.y;
-                else knobAngle = transform.eulerAngles.z;
-                
-                // Apply offset to match the visual sprites
-                radarBeam.rotation = Quaternion.Euler(0, 0, knobAngle + rotationOffset);
+                float maxStepThisFrame = maxKnobSpeed * Time.deltaTime;
+                rotationAmount = Mathf.Clamp(rotationAmount, -maxStepThisFrame, maxStepThisFrame);
             }
+
+            _currentKnobAngle += rotationAmount;
+
+            if (knobAxis == RotationAxis.X) transform.localRotation = Quaternion.Euler(_currentKnobAngle, 0, 0);
+            else if (knobAxis == RotationAxis.Y) transform.localRotation = Quaternion.Euler(0, _currentKnobAngle, 0);
+            else transform.localRotation = Quaternion.Euler(0, 0, _currentKnobAngle);
+
+            _targetBeamAngle = _currentKnobAngle + rotationOffset;
         }
+
+        // --- THE BEAM SPEED CAP ---
+        if (radarBeam != null)
+        {
+            if (limitBeamSpeed)
+            {
+                _currentBeamAngle = Mathf.MoveTowardsAngle(_currentBeamAngle, _targetBeamAngle, maxBeamSpeed * Time.deltaTime);
+            }
+            else
+            {
+                // If the limit is off, the beam instantly matches the target!
+                _currentBeamAngle = _targetBeamAngle;
+            }
+            
+            radarBeam.rotation = Quaternion.Euler(0, 0, _currentBeamAngle);
+        }
+    }
+
+    private float GetKnobAngle()
+    {
+        if (knobAxis == RotationAxis.X) return transform.localEulerAngles.x;
+        if (knobAxis == RotationAxis.Y) return transform.localEulerAngles.y;
+        return transform.localEulerAngles.z;
     }
 }

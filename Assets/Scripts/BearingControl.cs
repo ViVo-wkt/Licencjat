@@ -20,8 +20,15 @@ public class BearingControl : MonoBehaviour
     [Header("Visual Connections")]
     public Transform radarIndicatorLine; 
 
+    // --- NEW: Mechanical Limits ---
+    [Header("Mechanical Limits")]
+    [Tooltip("How fast the heavy dish physically turns (Degrees per second)")]
+    public float maxTurnSpeed = 45f; 
+    // ------------------------------
+
     [Header("Output")]
     public float currentBearing = 0f;
+    private float _targetBearing = 0f; // Hidden target that the player actually controls
 
     private Collider2D _myCollider;
     private bool _isDragging = false;
@@ -31,6 +38,11 @@ public class BearingControl : MonoBehaviour
     {
         _myCollider = GetComponent<Collider2D>();
         if (radarIndicatorLine != null) radarIndicatorLine.gameObject.SetActive(false);
+
+        // Sync the starting target so the beam doesn't wildly sweep the moment the game starts
+        float relativeOffset = lineAngleOffset - knobAngleOffset;
+        _targetBearing = transform.eulerAngles.z + relativeOffset;
+        currentBearing = _targetBearing;
     }
 
     void Update()
@@ -42,9 +54,9 @@ public class BearingControl : MonoBehaviour
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
         bool clickDown = Mouse.current.leftButton.wasPressedThisFrame;
         bool clickUp = Mouse.current.leftButton.wasReleasedThisFrame;
-        bool isHovering = _myCollider.OverlapPoint(mouseWorldPos);
 
-        //  SCHEME A: Scroll & Drag 
+        bool isHovering = (_myCollider != null && _myCollider.OverlapPoint(mouseWorldPos));
+
         if (inputType == ControlScheme.ScrollAndDrag)
         {
             if (isHovering && clickDown)
@@ -54,38 +66,33 @@ public class BearingControl : MonoBehaviour
             }
             if (clickUp) _isDragging = false;
 
-            float rotationAmount = 0f;
+            float deltaAngle = 0f;
 
-            // 1. Dragging
             if (_isDragging)
             {
-                float deltaX = mouseScreenPos.x - _lastMousePos.x;
-                rotationAmount = -deltaX * dragSensitivity;
+                Vector2 mouseDelta = mouseScreenPos - _lastMousePos;
+                deltaAngle = -mouseDelta.x * dragSensitivity;
                 _lastMousePos = mouseScreenPos;
             }
-            // 2. Scrolling
             else if (isHovering)
             {
                 float scrollValue = Mouse.current.scroll.ReadValue().y;
                 if (Mathf.Abs(scrollValue) > 0.01f)
                 {
-                    float direction = Mathf.Sign(scrollValue);
-                    rotationAmount = direction * scrollSpeed * Time.deltaTime * 50f;
+                    deltaAngle = -Mathf.Sign(scrollValue) * scrollSpeed;
                 }
             }
 
-            // Apply Rotation
-            if (Mathf.Abs(rotationAmount) > 0.001f)
+            if (Mathf.Abs(deltaAngle) > 0.001f)
             {
-                // Rotate Knob
-                transform.Rotate(0, 0, rotationAmount);
+                Vector3 currentEuler = transform.eulerAngles;
+                // The Knob physically rotates instantly
+                transform.rotation = Quaternion.Euler(currentEuler.x, currentEuler.y, currentEuler.z + deltaAngle);
                 
-                // Sync Line & Update Bearing
-                UpdateLineAndBearingFromKnob();
+                // But we only update our TARGET bearing, not the actual beam!
+                UpdateTargetBearingFromKnob();
             }
         }
-        
-        // SCHEME B: Point & Pull 
         else
         {
             if (clickDown && isHovering) _isDragging = true;
@@ -96,37 +103,30 @@ public class BearingControl : MonoBehaviour
                 Vector2 direction = mouseWorldPos - (Vector2)transform.position;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-                // Knob Rotation
+                // Knob rotates instantly
                 float knobRotation = angle - 90f + knobAngleOffset;
                 transform.rotation = Quaternion.Euler(0, 0, knobRotation);
                 
-                // Line Rotation & Bearing
-                if (radarIndicatorLine != null)
-                {
-                    float lineRotation = angle - 90f + lineAngleOffset;
-                    radarIndicatorLine.rotation = Quaternion.Euler(0, 0, lineRotation);
-                    currentBearing = lineRotation;
-                }
+                // Update Target Bearing
+                _targetBearing = angle - 90f + lineAngleOffset;
             }
+        }
+
+        // --- THE MECHANICAL DELAY ---
+        // Smoothly move the heavy machinery toward the target bearing the player requested
+        currentBearing = Mathf.MoveTowardsAngle(currentBearing, _targetBearing, maxTurnSpeed * Time.deltaTime);
+
+        // Apply the lagging visual rotation to the glowing line on the glass
+        if (radarIndicatorLine != null)
+        {
+            radarIndicatorLine.rotation = Quaternion.Euler(0, 0, currentBearing);
         }
     }
 
-    // Helper function to ensure consistent math
-    void UpdateLineAndBearingFromKnob()
+    // Helper function to figure out where the beam SHOULD be based on the dial
+    void UpdateTargetBearingFromKnob()
     {
-        if (radarIndicatorLine != null)
-        {
-            float relativeOffset = lineAngleOffset - knobAngleOffset;
-            
-            float finalLineAngle = transform.eulerAngles.z + relativeOffset;
-            
-            radarIndicatorLine.rotation = Quaternion.Euler(0, 0, finalLineAngle);
-            
-            currentBearing = finalLineAngle;
-        }
-        else
-        {
-            currentBearing = transform.eulerAngles.z;
-        }
+        float relativeOffset = lineAngleOffset - knobAngleOffset;
+        _targetBearing = transform.eulerAngles.z + relativeOffset;
     }
 }

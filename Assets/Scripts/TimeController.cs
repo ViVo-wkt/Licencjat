@@ -50,6 +50,8 @@ public class TimeController : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0f) return;
+
         HandleInput();
         UpdateFocus();
         UpdateVisuals();

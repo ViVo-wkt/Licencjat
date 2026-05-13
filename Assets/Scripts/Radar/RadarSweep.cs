@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class RadarSweep : MonoBehaviour
 {
     [Header("Settings")]
-    public float rotationSpeed = -50f;
+    // We removed 'rotationSpeed' because the Zoom System controls this now!
     public float detectionRadius = 140.0f; 
     public float sweepAngleWidth = 15f; 
     public bool flipDetectionDirection = false; 
@@ -17,8 +17,14 @@ public class RadarSweep : MonoBehaviour
 
     void Update()
     {
-        float step = rotationSpeed * Time.deltaTime;
+        // --- THE FIX IS HERE ---
+        // Get the exact speed the Zoom System wants us to go.
+        // We use a negative sign to keep your original clockwise spin direction!
+        float currentSpeed = -RadarZoomSystem.Instance.GetCurrentSweepSpeed(); 
+        
+        float step = currentSpeed * Time.deltaTime;
         transform.Rotate(0, 0, step);
+        // -----------------------
         
         if (sweepVisual != null)
         {
