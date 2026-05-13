@@ -180,11 +180,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 544c91e52980de541b86cdde5360fbed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomingMissile
-  speed: 1
+  speed: 2
   turnSpeed: 250
   killDistance: 0.2
-  maxRadarRange: 6
-  maxFlightTime: 8
+  maxRadarRange: 8
+  maxFlightTime: 12
   interceptionEffect: {fileID: 1465638273713955256, guid: 01eb8878b9ad0e44ebe25d57a03e7d1f, type: 3}
 --- !u!114 &-6772828313796541376
 MonoBehaviour:

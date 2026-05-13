@@ -26,21 +26,17 @@ public class ActiveHomingMissile : MonoBehaviour
 
     void Update()
     {
-        // --- ZOOM LOGIC START ---
         float zoomFactor = (RadarZoomSystem.Instance != null) ? RadarZoomSystem.Instance.GetSpeedMultiplier() : 1f;
-        // --- ZOOM LOGIC END ---
 
-        // 1. Move Forward (Scaled)
+        // Forward speed IS affected by visual map scale
         transform.Translate(Vector3.up * speed * zoomFactor * Time.deltaTime);
 
-        // 2. Range Safety Check
         if (transform.position.magnitude > maxRadarRange)
         {
             Destroy(gameObject);
             return;
         }
 
-        // 3. Guidance & Search Logic
         if (!_hasTarget)
         {
             ScanForTargets();
@@ -50,8 +46,9 @@ public class ActiveHomingMissile : MonoBehaviour
             Vector2 direction = (Vector2)_target.transform.position - (Vector2)transform.position;
             float rotateAmount = Vector3.Cross(direction, transform.up).z;
             
-            // Turn Speed Scaled
-            transform.Rotate(0, 0, -rotateAmount * turnSpeed * zoomFactor * Time.deltaTime);
+            // --- THE FIX ---
+            // Turn speed is NEVER affected by map scale!
+            transform.Rotate(0, 0, -rotateAmount * turnSpeed * Time.deltaTime);
 
             if (Vector2.Distance(transform.position, _target.transform.position) < killDistance)
             {
