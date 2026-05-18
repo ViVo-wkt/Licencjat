@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: cc0216d988242bc4eb3a0e4816febc56
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2411589233267147101
+    second: B E A R I N G_0
+  - first:
+      213: 1612340714428941800
+    second: B E A R I N G_1
+  - first:
+      213: -2272123375381180262
+    second: B E A R I N G_2
+  - first:
+      213: -2036673538738342124
+    second: B E A R I N G_3
+  - first:
+      213: 9151683496662287254
+    second: B E A R I N G_4
+  - first:
+      213: 2733070103216094179
+    second: B E A R I N G_5
+  - first:
+      213: -7922228446374109997
+    second: B E A R I N G_6
+  - first:
+      213: -5584337792269335605
+    second: B E A R I N G_7
+  - first:
+      213: 8726151715061355115
+    second: B E A R I N G_8
+  - first:
+      213: -4387735749309584937
+    second: B E A R I N G_9
+  - first:
+      213: -4745564401163070656
+    second: B E A R I N G_10
+  - first:
+      213: 7800065989263778687
+    second: B E A R I N G_11
+  - first:
+      213: -4614957012718845039
+    second: B E A R I N G_12
+  - first:
+      213: -241809527536976856
+    second: B E A R I N G_13
+  - first:
+      213: 415529195534888062
+    second: B E A R I N G_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: B E A R I N G_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 719
+        width: 23
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ae74f69e50588ed0800000000000000
+      internalID: -2411589233267147101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: B E A R I N G_1
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 719
+        width: 39
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e5cf64565f206610800000000000000
+      internalID: 1612340714428941800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: B E A R I N G_2
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 599
+        width: 43
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a901b8c04dbc770e0800000000000000
+      internalID: -2272123375381180262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: B E A R I N G_3
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 644
+        width: 35
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 417301015384cb3e0800000000000000
+      internalID: -2036673538738342124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: B E A R I N G_4
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 599
+        width: 35
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6934c5b07af410f70800000000000000
+      internalID: 9151683496662287254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: B E A R I N G_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 479
+        width: 33
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3eb7f6847c0dde520800000000000000
+      internalID: 2733070103216094179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: B E A R I N G_6
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 479
+        width: 47
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dc5068a3379e0290800000000000000
+      internalID: -7922228446374109997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: B E A R I N G_7
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 359
+        width: 24
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc34ff17d527082b0800000000000000
+      internalID: -5584337792269335605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: B E A R I N G_8
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 359
+        width: 41
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b62d56070c4891970800000000000000
+      internalID: 8726151715061355115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: B E A R I N G_9
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 239
+        width: 36
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d9ae1e4591ab13c0800000000000000
+      internalID: -4387735749309584937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: B E A R I N G_10
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 119
+        width: 21
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0439fe9f15e542eb0800000000000000
+      internalID: -4745564401163070656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: B E A R I N G_11
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 119
+        width: 62
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f736ca2d0b66f3c60800000000000000
+      internalID: 7800065989263778687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: B E A R I N G_12
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 0
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 193023b4c0164ffb0800000000000000
+      internalID: -4614957012718845039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: B E A R I N G_13
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 43
+        width: 39
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82c7adf048be4acf0800000000000000
+      internalID: -241809527536976856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: B E A R I N G_14
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 0
+        width: 32
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7c29ad0a9144c500800000000000000
+      internalID: 415529195534888062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      B E A R I N G_0: -2411589233267147101
+      B E A R I N G_1: 1612340714428941800
+      B E A R I N G_10: -4745564401163070656
+      B E A R I N G_11: 7800065989263778687
+      B E A R I N G_12: -4614957012718845039
+      B E A R I N G_13: -241809527536976856
+      B E A R I N G_14: 415529195534888062
+      B E A R I N G_2: -2272123375381180262
+      B E A R I N G_3: -2036673538738342124
+      B E A R I N G_4: 9151683496662287254
+      B E A R I N G_5: 2733070103216094179
+      B E A R I N G_6: -7922228446374109997
+      B E A R I N G_7: -5584337792269335605
+      B E A R I N G_8: 8726151715061355115
+      B E A R I N G_9: -4387735749309584937
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

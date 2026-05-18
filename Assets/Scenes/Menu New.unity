@@ -268,6 +268,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Radar_Blip (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6029896977994659510, guid: 8fe6d673d564d93458462b32655388cd, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7929136624664496255, guid: 8fe6d673d564d93458462b32655388cd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.9344425
@@ -1174,7 +1178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &207348377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1425,6 +1429,10 @@ PrefabInstance:
     - target: {fileID: 1465638273713955256, guid: 8fe6d673d564d93458462b32655388cd, type: 3}
       propertyPath: m_Name
       value: Radar_Blip
+      objectReference: {fileID: 0}
+    - target: {fileID: 6029896977994659510, guid: 8fe6d673d564d93458462b32655388cd, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7929136624664496255, guid: 8fe6d673d564d93458462b32655388cd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3654,7 +3662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &546544472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3662,7 +3670,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546544471}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c47ad005dc6e3744b389a16011a0dba, type: 3}
   m_Name: 
@@ -3704,7 +3712,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546544471}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2e1120a21abbe74a85c9e06351978bd, type: 3}
   m_Name: 
@@ -3736,14 +3744,6 @@ MonoBehaviour:
     rangeScale: 1
     sweepSpeed: 180
     blipLifetime: 1.5
-  - name: Medium (20km)
-    rangeScale: 2
-    sweepSpeed: 90
-    blipLifetime: 3
-  - name: Long (40km)
-    rangeScale: 4
-    sweepSpeed: 45
-    blipLifetime: 6
   currentLevelIndex: 0
 --- !u!114 &546544476
 MonoBehaviour:
@@ -3752,7 +3752,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546544471}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2094290bd708e7489947c4c92f4e5a6, type: 3}
   m_Name: 
@@ -9144,7 +9144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1594565585
 Transform:
   m_ObjectHideFlags: 0
