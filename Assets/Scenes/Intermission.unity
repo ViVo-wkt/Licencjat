@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21ad90033a00864da60a65cb40941d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntermissionScreen
-  displayTime: 5
+  displayTime: 4
   nextSceneName: 3D
 --- !u!4 &781564516
 Transform:

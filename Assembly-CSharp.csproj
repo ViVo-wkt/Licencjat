@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\IntermissionScreen.cs" />
     <Compile Include="Assets\Scripts\ImageOverlayController.cs" />
     <Compile Include="Assets\Scripts\Radar\RadarSweep.cs" />
+    <Compile Include="Assets\Scripts\DoubleTapExit.cs" />
     <Compile Include="Assets\Scripts\Extra\BaseAlarm.cs" />
     <Compile Include="Assets\Scripts\ZoomPanel.cs" />
     <Compile Include="Assets\Scripts\Radar\TargetSignature.cs" />
