@@ -1,32 +1,45 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class MenuManager : MonoBehaviour
 {
     [Header("Menu Groups")]
     public GameObject mainMenuGroup; // Holds Start, Options, Quit
     public GameObject optionsGroup;  // Holds Back, Volume Knob
+    
+    // --- NEW SECTION ---
+    public GameObject gamemodeGroup; // Holds your new Slider Switch and final Play button
+    // -------------------
 
     [Header("Settings")]
     public string gameSceneName = "3D"; // Type the EXACT name of your main game scene here
 
     void Start()
     {
-        // Ensure we start on the main menu
+        // Ensure we start cleanly on the main menu
         OpenMainMenu();
     }
 
     public void OpenMainMenu()
     {
-        mainMenuGroup.SetActive(true);
-        optionsGroup.SetActive(false);
+        if (mainMenuGroup != null) mainMenuGroup.SetActive(true);
+        if (optionsGroup != null) optionsGroup.SetActive(false);
+        if (gamemodeGroup != null) gamemodeGroup.SetActive(false);
     }
 
     public void OpenOptions()
     {
-        mainMenuGroup.SetActive(false);
-        optionsGroup.SetActive(true);
+        if (mainMenuGroup != null) mainMenuGroup.SetActive(false);
+        if (optionsGroup != null) optionsGroup.SetActive(true);
+        if (gamemodeGroup != null) gamemodeGroup.SetActive(false);
+    }
+
+    // --- NEW METHOD ---
+    public void OpenGamemodePanel()
+    {
+        if (mainMenuGroup != null) mainMenuGroup.SetActive(false);
+        if (optionsGroup != null) optionsGroup.SetActive(false);
+        if (gamemodeGroup != null) gamemodeGroup.SetActive(true);
     }
 
     public void StartGame()
@@ -39,7 +52,6 @@ public class MenuManager : MonoBehaviour
         Debug.Log("Quitting Game...");
         Application.Quit();
         
-        // This line makes the quit button work while testing inside the Unity Editor!
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #endif

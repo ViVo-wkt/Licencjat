@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: 231190d7f795d1746a8be94ba6a1bded
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5022875741240808476
+    second: STORY (WIP)_0
+  - first:
+      213: 4452288043241330385
+    second: STORY (WIP)_1
+  - first:
+      213: 6089201266684038065
+    second: STORY (WIP)_2
+  - first:
+      213: 5111996214038969413
+    second: STORY (WIP)_3
+  - first:
+      213: -7570588889359863555
+    second: STORY (WIP)_4
+  - first:
+      213: 5467755751557867130
+    second: STORY (WIP)_5
+  - first:
+      213: 5423787440476324320
+    second: STORY (WIP)_6
+  - first:
+      213: 3969194545878492618
+    second: STORY (WIP)_7
+  - first:
+      213: -3713805664149789088
+    second: STORY (WIP)_8
+  - first:
+      213: 6728946357041483960
+    second: STORY (WIP)_9
+  - first:
+      213: -2710255305069092222
+    second: STORY (WIP)_10
+  - first:
+      213: 894830973773289050
+    second: STORY (WIP)_11
+  - first:
+      213: -3336768169085444001
+    second: STORY (WIP)_12
+  - first:
+      213: 2959715854095301411
+    second: STORY (WIP)_13
+  - first:
+      213: 7567846747557419532
+    second: STORY (WIP)_14
+  - first:
+      213: -3422951670028567899
+    second: STORY (WIP)_15
+  - first:
+      213: -7965001200594519418
+    second: STORY (WIP)_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: STORY (WIP)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6
+        width: 62
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c14d593dfd6d4b540800000000000000
+      internalID: 5022875741240808476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: STORY (WIP)_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 54
+        width: 56
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d65e17d264b9cd30800000000000000
+      internalID: 4452288043241330385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: STORY (WIP)_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 6
+        width: 24
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bb8f824a40318450800000000000000
+      internalID: 6089201266684038065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: STORY (WIP)_3
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 6
+        width: 32
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54c3feed87571f640800000000000000
+      internalID: 5111996214038969413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: STORY (WIP)_4
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 6
+        width: 32
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df0bf2d048ddfe690800000000000000
+      internalID: -7570588889359863555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: STORY (WIP)_5
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 6
+        width: 24
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a76a43af2ee51eb40800000000000000
+      internalID: 5467755751557867130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: STORY (WIP)_6
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 6
+        width: 41
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e101dec0f9254b40800000000000000
+      internalID: 5423787440476324320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: STORY (WIP)_7
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 6
+        width: 45
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac56187e869651730800000000000000
+      internalID: 3969194545878492618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: STORY (WIP)_8
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 29
+        width: 33
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 066a48fcc69e57cc0800000000000000
+      internalID: -3713805664149789088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: STORY (WIP)_9
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 0
+        width: 31
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b0dd1c6f05026d50800000000000000
+      internalID: 6728946357041483960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: STORY (WIP)_10
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 6
+        width: 46
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2822dbad82d336ad0800000000000000
+      internalID: -2710255305069092222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: STORY (WIP)_11
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 6
+        width: 40
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5616c597041b6c00800000000000000
+      internalID: 894830973773289050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: STORY (WIP)_12
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 9
+        width: 28
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f50e4d7770b61b1d0800000000000000
+      internalID: -3336768169085444001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: STORY (WIP)_13
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 6
+        width: 36
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32b317753e5031920800000000000000
+      internalID: 2959715854095301411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: STORY (WIP)_14
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 6
+        width: 23
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0a51ce4584660960800000000000000
+      internalID: 7567846747557419532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: STORY (WIP)_15
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 22
+        width: 39
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5aafd98779b3f70d0800000000000000
+      internalID: -3422951670028567899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: STORY (WIP)_16
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 0
+        width: 30
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68af003cb91a67190800000000000000
+      internalID: -7965001200594519418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      STORY (WIP)_0: 5022875741240808476
+      STORY (WIP)_1: 4452288043241330385
+      STORY (WIP)_10: -2710255305069092222
+      STORY (WIP)_11: 894830973773289050
+      STORY (WIP)_12: -3336768169085444001
+      STORY (WIP)_13: 2959715854095301411
+      STORY (WIP)_14: 7567846747557419532
+      STORY (WIP)_15: -3422951670028567899
+      STORY (WIP)_16: -7965001200594519418
+      STORY (WIP)_2: 6089201266684038065
+      STORY (WIP)_3: 5111996214038969413
+      STORY (WIP)_4: -7570588889359863555
+      STORY (WIP)_5: 5467755751557867130
+      STORY (WIP)_6: 5423787440476324320
+      STORY (WIP)_7: 3969194545878492618
+      STORY (WIP)_8: -3713805664149789088
+      STORY (WIP)_9: 6728946357041483960
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

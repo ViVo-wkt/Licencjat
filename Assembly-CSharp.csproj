@@ -49,6 +49,7 @@
     <Analyzer Include="C:\Unity\6000.3.8f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BlinkingLight.cs" />
     <Compile Include="Assets\Scripts\BriefingManager.cs" />
     <Compile Include="Assets\Scripts\Weapon 1\PassiveMissile.cs" />
     <Compile Include="Assets\Scripts\Radar\ActiveRadarSensor.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Assets\Scripts\RadarZoomSystem.cs" />
     <Compile Include="Assets\Scripts\RadarUIManager.cs" />
     <Compile Include="Assets\Scripts\Extra\FanRotator.cs" />
+    <Compile Include="Assets\Scripts\IntermissionScreen.cs" />
     <Compile Include="Assets\Scripts\Radar\RadarSweep.cs" />
     <Compile Include="Assets\Scripts\Extra\BaseAlarm.cs" />
     <Compile Include="Assets\Scripts\ZoomPanel.cs" />
@@ -73,7 +75,9 @@
     <Compile Include="Assets\Scripts\EnemyNavigation.cs" />
     <Compile Include="Assets\Scripts\Weapon 3\ScrollWheelControl.cs" />
     <Compile Include="Assets\Scripts\LaunchButton.cs" />
+    <Compile Include="Assets\Scripts\SliderSwitch.cs" />
     <Compile Include="Assets\Scripts\BriefingAcknowledgeObject.cs" />
+    <Compile Include="Assets\Scripts\MenuLaunchSequencer.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuManager.cs" />
     <Compile Include="Assets\Scripts\ScenarioManager.cs" />
     <Compile Include="Assets\Scripts\RadarKnob.cs" />
