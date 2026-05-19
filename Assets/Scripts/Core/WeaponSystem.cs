@@ -113,9 +113,9 @@ public class WeaponSystem : MonoBehaviour
 
     void UpdateAmmoUI()
     {
-        if (sarhAmmoText != null) sarhAmmoText.text = "SARH: " + sarhAmmo.ToString("D2");
-        if (arhAmmoText != null) arhAmmoText.text = "ARH: " + arhAmmo.ToString("D2");
-        if (autoAmmoText != null) autoAmmoText.text = "AUTO: " + autoAmmo.ToString("D2");
+        if (sarhAmmoText != null) sarhAmmoText.text = "SARH Interceptors: " + sarhAmmo.ToString("D2");
+        if (arhAmmoText != null) arhAmmoText.text = "ARH Interceptors: " + arhAmmo.ToString("D2");
+        if (autoAmmoText != null) autoAmmoText.text = "AUTO Interceptors: " + autoAmmo.ToString("D2");
     }
 
     public void FireSelectedWeapon()
