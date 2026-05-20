@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b98a02efc8af66745931c4471d3913b6
+guid: ea98d37c4a2f95a439d12e079cc97b74
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 542516691037435741
-    second: M_RangeSelect_Inactive_01 (1)_0
+      213: 1332906403695104306
+    second: M_RangeSelect_Frame_01 (2)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: M_RangeSelect_Inactive_01 (1)_0
+      name: M_RangeSelect_Frame_01 (2)_0
       rect:
         serializedVersion: 2
-        x: 109
-        y: 304
-        width: 584
-        height: 507
+        x: 401
+        y: 0
+        width: 412
+        height: 810
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d57b10e5e08678700800000000000000
-      internalID: 542516691037435741
+      spriteID: 2311717ef4f6f7210800000000000000
+      internalID: 1332906403695104306
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      M_RangeSelect_Inactive_01 (1)_0: 542516691037435741
+      M_RangeSelect_Frame_01 (2)_0: 1332906403695104306
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

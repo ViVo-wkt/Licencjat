@@ -11,14 +11,19 @@ public class ZoomPanel : MonoBehaviour
     [Header("Connections")]
     public RadarZoomSystem radarZoomSystem; 
 
-    [Header("Button Setup")]
-    [Tooltip("The invisible colliders that detect mouse clicks.")]
-    public Collider2D[] buttonColliders; 
+    [Header("3D Hardware")]
+    [Tooltip("The physical 3D colliders of your 3 buttons here.")]
     public Collider[] buttonColliders3D; 
+    
+    [Tooltip("The Mesh Renderers of your 3 buttons here.")]
+    public Renderer[] buttonRenderers; 
 
-    [Header("3D Visual Objects")]
-    [Tooltip("Drag your 3 state models here in order (Near, Medium, Far).")]
-    public GameObject[] activeStateObjects; 
+    [Header("Materials")]
+    [Tooltip("The glowing material for the selected state.")]
+    public Material activeMaterial;
+    
+    [Tooltip("The dark material for the unselected state.")]
+    public Material inactiveMaterial;
 
     private Camera _cam;
 
@@ -30,35 +35,26 @@ public class ZoomPanel : MonoBehaviour
 
     void Update()
     {
+        // --- TIME GATEKEEPER ---
+        if (Time.timeScale == 0f) return;
+
         if (Mouse.current == null || _cam == null) return;
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
-            Vector2 mouseWorldPos2D = _cam.ScreenToWorldPoint(mouseScreenPos);
-            
-            Ray ray = _cam.ScreenPointToRay(mouseScreenPos);
-            bool hit3D = Physics.Raycast(ray, out RaycastHit hitInfo);
-
-            // Check 2D Colliders
-            for (int i = 0; i < buttonColliders.Length; i++)
+            Ray ray = _cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+            if (Physics.Raycast(ray, out RaycastHit hitInfo))
             {
-                if (buttonColliders[i] != null && buttonColliders[i].OverlapPoint(mouseWorldPos2D))
+                // Check 3D Colliders
+                if (buttonColliders3D != null)
                 {
-                    SetZoomLevel(i);
-                    return; 
-                }
-            }
-
-            // Check 3D Colliders (if applicable)
-            if (buttonColliders3D != null)
-            {
-                for (int i = 0; i < buttonColliders3D.Length; i++)
-                {
-                    if (hit3D && buttonColliders3D[i] != null && hitInfo.collider == buttonColliders3D[i])
+                    for (int i = 0; i < buttonColliders3D.Length; i++)
                     {
-                        SetZoomLevel(i);
-                        return;
+                        if (buttonColliders3D[i] != null && hitInfo.collider == buttonColliders3D[i])
+                        {
+                            SetZoomLevel(i);
+                            return;
+                        }
                     }
                 }
             }
@@ -69,10 +65,9 @@ public class ZoomPanel : MonoBehaviour
     {
         currentZoom = (ZoomLevel)index;
         
-        // --- THE FIX IS HERE ---
+        // Push the command to the actual radar using your exact method name!
         if (radarZoomSystem != null)
         {
-            // We use your exact method name: ApplyZoom!
             radarZoomSystem.ApplyZoom(index); 
         }
         
@@ -81,13 +76,14 @@ public class ZoomPanel : MonoBehaviour
 
     void UpdateVisuals()
     {
-        if (activeStateObjects != null)
+        if (buttonRenderers != null)
         {
-            for (int i = 0; i < activeStateObjects.Length; i++)
+            for (int i = 0; i < buttonRenderers.Length; i++)
             {
-                if (activeStateObjects[i] != null)
+                if (buttonRenderers[i] != null)
                 {
-                    activeStateObjects[i].SetActive(i == (int)currentZoom);
+                    // Swaps out the light element without touching the button's physical frame
+                    buttonRenderers[i].material = (i == (int)currentZoom) ? activeMaterial : inactiveMaterial;
                 }
             }
         }
