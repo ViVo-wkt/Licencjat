@@ -42,10 +42,10 @@ public class WeaponSystem : MonoBehaviour
         {
             _currentArhCooldown -= Time.deltaTime;
             if (arhCooldownText != null)
-                arhCooldownText.text = _currentArhCooldown > 0 ? _currentArhCooldown.ToString("F1") + "s" : "RDY";
+                arhCooldownText.text = _currentArhCooldown > 0 ? "Reloading: " + _currentArhCooldown.ToString("F1") + "s" : "Ready to fire";
         }
-        else if (arhCooldownText != null && arhCooldownText.text != "RDY")
-            arhCooldownText.text = "RDY";
+        else if (arhCooldownText != null && arhCooldownText.text != "Ready to fire")
+            arhCooldownText.text = "Ready to fire";
 
         if (_currentAutoCooldown > 0) _currentAutoCooldown -= Time.deltaTime;
     }
@@ -70,7 +70,6 @@ public class WeaponSystem : MonoBehaviour
         }
     }
 
-    // CHANGED: Now returns a bool, and passes 'null' to radar!
     public bool FireAutoMissile(GameObject target)
     {
         if (autoAmmo > 0 && _currentAutoCooldown <= 0f)
@@ -81,11 +80,10 @@ public class WeaponSystem : MonoBehaviour
 
             GameObject m = Instantiate(autoMissilePrefab, launchPoint.position, Quaternion.identity);
 
-            // PASSING NULL disconnects it from the SARH dependency!
             m.GetComponent<PassiveMissile>().Launch(target, null);
             return true;
         }
-        return false; // Failed to fire (cooldown or no ammo)
+        return false;
     }
 
     void SpawnSARH(GameObject target)
