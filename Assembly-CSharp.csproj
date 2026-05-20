@@ -58,6 +58,7 @@
     <Compile Include="Assets\Scripts\Menu\VolumeKnob.cs" />
     <Compile Include="Assets\Scripts\RadarTrackable.cs" />
     <Compile Include="Assets\Scripts\Weapon 3\TargetingBracket.cs" />
+    <Compile Include="Assets\Scripts\Menu\AmbientManager.cs" />
     <Compile Include="Assets\Scripts\BearingControl.cs" />
     <Compile Include="Assets\Scripts\Weapon 2\ActiveMissile.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuButton.cs" />

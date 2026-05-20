@@ -35,97 +35,130 @@ public class GameVolumeKnob : MonoBehaviour
     private Camera _cam;
     private bool _isDragging = false;
     private Vector2 _lastMousePos;
-
+    
     private Vector3 _tubeStartScale;
     private Vector3 _tubeStartPos;
 
-    void Awake()
-    {
-        _myCollider2D = GetComponent<Collider2D>();
-        _myCollider3D = GetComponent<Collider>();
-        _cam = Camera.main;
-    }
-
     void Start()
     {
-        // Save exactly where the tube starts so we can calculate the drain accurately
+        _cam = Camera.main;
+        _myCollider2D = GetComponent<Collider2D>();
+        _myCollider3D = GetComponent<Collider>();
+
         if (volumeTubeFill != null)
         {
             _tubeStartScale = volumeTubeFill.localScale;
             _tubeStartPos = volumeTubeFill.localPosition;
         }
 
-        UpdateVisuals();
+        // Initialize physical knob position and yellow tube level on startup
+        ApplyRotation();
+        ApplyTubeVisuals();
+        
+        // --- AUDIO HOOK: INITIAL STARTUP ---
+        if (AmbientHumManager.Instance != null)
+        {
+            AmbientHumManager.Instance.SetHumVolume(currentVolume);
+        }
     }
 
     void Update()
     {
+        // Cancel interaction if time is frozen (e.g. Briefing Screen)
+        if (Time.timeScale == 0f) 
+        {
+            _isDragging = false;
+            return;
+        }
+
         if (Mouse.current == null || _cam == null) return;
 
-        Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
-        bool clickDown = Mouse.current.leftButton.wasPressedThisFrame;
-        bool clickUp = Mouse.current.leftButton.wasReleasedThisFrame;
-
         bool isHovering = false;
-        if (_myCollider2D != null) 
-        {
-            isHovering = _myCollider2D.OverlapPoint(_cam.ScreenToWorldPoint(mouseScreenPos));
-        }
-        else if (_myCollider3D != null) 
+        Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
+
+        // 3D & 2D Raycasting to detect hover
+        if (_myCollider3D != null)
         {
             Ray ray = _cam.ScreenPointToRay(mouseScreenPos);
-            if (Physics.Raycast(ray, out RaycastHit hitInfo) && hitInfo.collider == _myCollider3D) isHovering = true;
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                if (hit.collider == _myCollider3D) isHovering = true;
+            }
+        }
+        else if (_myCollider2D != null)
+        {
+            Vector2 mouseWorldPos = _cam.ScreenToWorldPoint(mouseScreenPos);
+            if (_myCollider2D.OverlapPoint(mouseWorldPos)) isHovering = true;
         }
 
-        if (isHovering && clickDown)
+        // Input Detection
+        if (isHovering && Mouse.current.leftButton.wasPressedThisFrame)
         {
             _isDragging = true;
             _lastMousePos = mouseScreenPos;
         }
-        
-        if (clickUp) _isDragging = false;
 
-        float volumeChange = 0f;
-
-        if (_isDragging)
+        if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
-            float deltaX = mouseScreenPos.x - _lastMousePos.x;
-            volumeChange = deltaX * dragSensitivity * 0.005f; 
-            _lastMousePos = mouseScreenPos;
+            _isDragging = false;
         }
-        else if (isHovering)
+
+        // Volume Change Logic
+        float volumeDelta = 0f;
+
+        // Scroll Wheel Interaction
+        if (isHovering)
         {
             float scrollValue = Mouse.current.scroll.ReadValue().y;
-            if (Mathf.Abs(scrollValue) > 0.01f)
+            if (scrollValue != 0f)
             {
-                volumeChange = Mathf.Sign(scrollValue) * scrollSensitivity * 0.01f;
+                volumeDelta = (scrollValue > 0 ? 1f : -1f) * scrollSensitivity * Time.deltaTime;
             }
         }
 
-        if (Mathf.Abs(volumeChange) > 0.0001f)
+        // Mouse Drag Interaction
+        if (_isDragging)
         {
-            currentVolume = Mathf.Clamp01(currentVolume + volumeChange);
-            UpdateVisuals();
+            float deltaX = mouseScreenPos.x - _lastMousePos.x;
+            volumeDelta = deltaX * dragSensitivity * Time.deltaTime;
+            _lastMousePos = mouseScreenPos;
+        }
+
+        // Apply the changes if the user moved the mouse/scrollwheel
+        if (volumeDelta != 0f)
+        {
+            currentVolume += volumeDelta;
+            currentVolume = Mathf.Clamp01(currentVolume); // Locks it exactly between 0.0 and 1.0
+
+            ApplyRotation();
+            ApplyTubeVisuals();
+
+            // --- AUDIO HOOK: LIVE UPDATE ---
+            if (AmbientHumManager.Instance != null)
+            {
+                AmbientHumManager.Instance.SetHumVolume(currentVolume);
+            }
         }
     }
 
-    void UpdateVisuals()
+    // Rotates the physical 3D knob base
+    void ApplyRotation()
     {
-        // 1. Rotate the 3D Knob Model
         float targetAngle = Mathf.Lerp(minAngle, maxAngle, currentVolume);
-        Vector3 currentEuler = transform.localEulerAngles;
+        Vector3 rot = transform.localEulerAngles;
+        
+        if (knobAxis == RotationAxis.X) rot.x = targetAngle;
+        else if (knobAxis == RotationAxis.Y) rot.y = targetAngle;
+        else if (knobAxis == RotationAxis.Z) rot.z = targetAngle;
+        
+        transform.localEulerAngles = rot;
+    }
 
-        if (knobAxis == RotationAxis.X) 
-            transform.localRotation = Quaternion.Euler(targetAngle, currentEuler.y, currentEuler.z);
-        else if (knobAxis == RotationAxis.Y) 
-            transform.localRotation = Quaternion.Euler(currentEuler.x, targetAngle, currentEuler.z);
-        else 
-            transform.localRotation = Quaternion.Euler(currentEuler.x, currentEuler.y, targetAngle);
-
-        // 2. Scale the 3D Glass Tube
+    // Shrinks the yellow inner cylinder and moves it to simulate "draining"
+    void ApplyTubeVisuals()
+    {
         if (volumeTubeFill != null)
         {
-            // currentVolume is exactly what we need (a 0.0 to 1.0 ratio)
             Vector3 newScale = _tubeStartScale;
             float shrinkAmount = 0f;
 
