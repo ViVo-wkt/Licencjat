@@ -20,6 +20,10 @@ public class LaunchButton : MonoBehaviour
     [Header("Connections")]
     public WeaponSystem weaponSystem;
 
+    // --- NEW: AUDIO SLOT ---
+    [Header("Audio")]
+    [Tooltip("Leave blank to use the default click, or drag a custom SFX here!")]
+    public AudioClip customButtonSound;
     private SpriteRenderer _renderer;
     private Collider2D _myCollider;
     
@@ -27,6 +31,7 @@ public class LaunchButton : MonoBehaviour
     private bool _isPressed = false;
     private float _resetTimer = 0f;
     private float _pressedDuration = 0.2f;
+
 
     void Awake()
     {
@@ -78,6 +83,10 @@ public class LaunchButton : MonoBehaviour
         _isPressed = true;
         _resetTimer = _pressedDuration;
 
+        // --- NEW: PLAY THE CLICK SOUND ---
+        if (AudioManager.Instance != null) AudioManager.Instance.PlayClickSound(customButtonSound);
+        // ---------------------------------
+
         // Swap 2D Sprite
         if (_renderer != null) _renderer.sprite = pressedSprite;
 
@@ -90,8 +99,6 @@ public class LaunchButton : MonoBehaviour
         // Fire the weapon! 
         if (weaponSystem != null)
         {
-            // IMPORTANT: If your original script used a slightly different method name 
-            // (like LaunchMissile() or FireSelectedWeapon()), just update this single line to match!
             weaponSystem.FireSelectedWeapon();
         }
     }

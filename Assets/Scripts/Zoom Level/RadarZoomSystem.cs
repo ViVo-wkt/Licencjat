@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.InputSystem; 
 
 public class RadarZoomSystem : MonoBehaviour
 {
@@ -10,9 +9,9 @@ public class RadarZoomSystem : MonoBehaviour
     public struct ZoomLevel
     {
         public string name;
-        public float rangeScale; // 1 = Normal, 2 = 2x Range (objects 1/2 size/speed)
-        public float sweepSpeed; // Degrees per second
-        public float blipLifetime; // How long blips last
+        public float rangeScale; 
+        public float sweepSpeed; 
+        public float blipLifetime; 
     }
 
     [Header("Configuration")]
@@ -28,7 +27,6 @@ public class RadarZoomSystem : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    // THIS METHOD RUNS IN EDITOR WHEN YOU RESET THE COMPONENT
     private void Reset()
     {
         zoomLevels = new List<ZoomLevel>
@@ -41,42 +39,19 @@ public class RadarZoomSystem : MonoBehaviour
 
     void Start()
     {
-        // Safety: If list is still empty at runtime, fill it.
-        if (zoomLevels == null || zoomLevels.Count == 0) Reset();
-
-        // Safety: Prevent "divide by zero" bugs if rangeScale is 0
-        for (int i = 0; i < zoomLevels.Count; i++)
-        {
-            var level = zoomLevels[i];
-            if (level.rangeScale <= 0.1f) level.rangeScale = 1f; 
-            zoomLevels[i] = level;
-        }
-        
         ApplyZoom(0);
-    }
-
-    void Update()
-    {
-        if (Keyboard.current == null) return;
-
-        if (Keyboard.current.digit1Key.wasPressedThisFrame) ApplyZoom(0);
-        if (Keyboard.current.digit2Key.wasPressedThisFrame) ApplyZoom(1);
-        if (Keyboard.current.digit3Key.wasPressedThisFrame) ApplyZoom(2);
     }
 
     public void ApplyZoom(int index)
     {
-        if (index < 0 || index >= zoomLevels.Count) return;
+        if (zoomLevels == null || index < 0 || index >= zoomLevels.Count) return;
         
-        // Allow re-applying the same zoom on startup to force position updates
         float oldScale = (zoomLevels.Count > currentLevelIndex) ? zoomLevels[currentLevelIndex].rangeScale : 1f;
-        
         currentLevelIndex = index;
         float newScale = zoomLevels[currentLevelIndex].rangeScale;
 
-        if (OnZoomChanged != null) OnZoomChanged(oldScale, newScale);
-        
-        Debug.Log($"Zoom Set: {zoomLevels[index].name}");
+        // The '?' cleanly checks if anyone is listening before invoking the event
+        OnZoomChanged?.Invoke(oldScale, newScale); 
     }
 
     public float GetSpeedMultiplier()

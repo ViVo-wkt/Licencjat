@@ -10,7 +10,6 @@ public class MenuButton : MonoBehaviour
     public Sprite pressedSprite;
     private SpriteRenderer _spriteRenderer;
 
-    // --- NEW SECTION ---
     [Header("3D Visuals (Optional)")]
     [Tooltip("Drag your 3D button model here")]
     public Renderer buttonMeshRenderer; 
@@ -18,7 +17,12 @@ public class MenuButton : MonoBehaviour
     [Tooltip("Drag your raw .jpg / .png textures here")]
     public Texture2D unpressedTexture;
     public Texture2D pressedTexture;
-    // -------------------
+
+    // --- NEW: AUDIO SLOT ---
+    [Header("Audio")]
+    [Tooltip("Leave blank to use the default click, or drag a custom SFX here!")]
+    public AudioClip customButtonSound;
+    // -----------------------
 
     [Header("Settings")]
     public float actionDelay = 0.2f;
@@ -72,6 +76,10 @@ public class MenuButton : MonoBehaviour
     IEnumerator PressRoutine()
     {
         _isPressed = true;
+
+        // --- NEW: PLAY THE CLICK SOUND INSTANTLY ---
+        if (AudioManager.Instance != null) AudioManager.Instance.PlayClickSound(customButtonSound);
+        // -------------------------------------------
         
         // 1. Swap to pressed visual (2D & 3D)
         if (_spriteRenderer != null && pressedSprite != null)

@@ -618,6 +618,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MenuButton
   unpressedSprite: {fileID: 21300000, guid: 8f883d76eb1e788498af7a26ce4671cf, type: 3}
   pressedSprite: {fileID: 21300000, guid: 0adc142fc1e0cd24496b70fae09262f6, type: 3}
+  buttonMeshRenderer: {fileID: 0}
+  unpressedTexture: {fileID: 0}
+  pressedTexture: {fileID: 0}
   actionDelay: 0.2
   onClickAction:
     m_PersistentCalls:
@@ -1178,6 +1181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MenuManager
   mainMenuGroup: {fileID: 1628891056}
   optionsGroup: {fileID: 699481154}
+  gamemodeGroup: {fileID: 0}
   gameSceneName: 3D
 --- !u!4 &330519081
 Transform:
@@ -1348,6 +1352,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MenuButton
   unpressedSprite: {fileID: 21300000, guid: 8f883d76eb1e788498af7a26ce4671cf, type: 3}
   pressedSprite: {fileID: 21300000, guid: 0adc142fc1e0cd24496b70fae09262f6, type: 3}
+  buttonMeshRenderer: {fileID: 0}
+  unpressedTexture: {fileID: 0}
+  pressedTexture: {fileID: 0}
   actionDelay: 0.2
   onClickAction:
     m_PersistentCalls:
@@ -1991,6 +1998,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MenuButton
   unpressedSprite: {fileID: 21300000, guid: 8f883d76eb1e788498af7a26ce4671cf, type: 3}
   pressedSprite: {fileID: 21300000, guid: 0adc142fc1e0cd24496b70fae09262f6, type: 3}
+  buttonMeshRenderer: {fileID: 0}
+  unpressedTexture: {fileID: 0}
+  pressedTexture: {fileID: 0}
   actionDelay: 0.2
   onClickAction:
     m_PersistentCalls:
@@ -2497,11 +2507,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RadarKnob
   isControllable: 1
-  rotationSpeed: 10
+  scrollSensitivity: 10
   dragSensitivity: 0.5
   knobAxis: 2
   rotationOffset: 135
   radarBeam: {fileID: 106015124}
+  limitKnobSpeed: 1
+  maxKnobSpeed: 270
+  limitBeamSpeed: 0
+  maxBeamSpeed: 45
 --- !u!1 &958673960
 GameObject:
   m_ObjectHideFlags: 0
@@ -3334,6 +3348,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MenuButton
   unpressedSprite: {fileID: 21300000, guid: 8f883d76eb1e788498af7a26ce4671cf, type: 3}
   pressedSprite: {fileID: 21300000, guid: 0adc142fc1e0cd24496b70fae09262f6, type: 3}
+  buttonMeshRenderer: {fileID: 0}
+  unpressedTexture: {fileID: 0}
+  pressedTexture: {fileID: 0}
   actionDelay: 0.2
   onClickAction:
     m_PersistentCalls:
@@ -3455,15 +3472,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 002e4a6a49350eb418734a5ca4f52cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZoomPanel
-  panelRenderer: {fileID: 1149751490}
-  stateSprites:
-  - {fileID: 21300000, guid: a11e5ade881394246bc321d98cac3b33, type: 3}
-  - {fileID: 21300000, guid: 3b85499fad864914a86062c5e3122cff, type: 3}
-  - {fileID: 21300000, guid: 4c3794e263c5ad641b304dbf9f690c6c, type: 3}
-  triggerZones:
-  - {fileID: 1194234589}
-  - {fileID: 1907308745}
-  - {fileID: 2108338261}
+  currentZoom: 0
+  radarZoomSystem: {fileID: 0}
+  buttonColliders3D: []
+  buttonRenderers: []
+  activeMaterial: {fileID: 0}
+  inactiveMaterial: {fileID: 0}
+  customButtonSound: {fileID: 0}
 --- !u!212 &1149751490
 SpriteRenderer:
   serializedVersion: 2
@@ -3949,6 +3964,7 @@ MonoBehaviour:
   dragSensitivity: 0.005
   scrollSensitivity: 0.05
   useHorizontalMouseDrag: 0
+  maxMoveSpeed: 1.5
   currentValue: 0
   rotationAxis: {x: 1, y: 0, z: 0}
   maxRotationAngle: 360
@@ -4460,6 +4476,7 @@ MonoBehaviour:
   dragSensitivity: 0.005
   scrollSensitivity: 0.05
   useHorizontalMouseDrag: 1
+  maxMoveSpeed: 1.5
   currentValue: 0
   rotationAxis: {x: 1, y: 0, z: 0}
   maxRotationAngle: 360
@@ -4564,6 +4581,33 @@ MonoBehaviour:
   arhCooldownTime: 5
   arhCooldownText: {fileID: 1759101168}
   autoCooldownTime: 1
+  screenTitleText: {fileID: 0}
+  screenDetailsText: {fileID: 0}
+  weaponTitles:
+  - SARH - AIM-7
+  - ARH - AIM-120
+  - AUTO - AIM-9
+  weaponDetails:
+  - 'GUIDANCE: SEMI-ACTIVE
+
+    RANGE: 40 NMI
+
+    REQUIRES CONTINUOUS LOCK'
+  - 'GUIDANCE: ACTIVE
+
+    RANGE: 60 NMI
+
+    FIRE AND FORGET CAPABLE'
+  - 'GUIDANCE: INFRARED
+
+    RANGE: 10 NMI
+
+    SHORT RANGE DOGFIGHTING'
+  launchAudioSource: {fileID: 0}
+  sarhLaunchClip: {fileID: 0}
+  arhLaunchClip: {fileID: 0}
+  autoLaunchClip: {fileID: 0}
+  launchSoundCooldown: 2
 --- !u!4 &1456269394
 Transform:
   m_ObjectHideFlags: 0
@@ -5486,7 +5530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b227e953308b38a4b98b2618107e6065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RadarSweep
-  rotationSpeed: -180
   detectionRadius: 140
   sweepAngleWidth: 15
   flipDetectionDirection: 0
@@ -5809,6 +5852,7 @@ MonoBehaviour:
   knobAngleOffset: 45
   lineAngleOffset: 180
   radarIndicatorLine: {fileID: 244092912}
+  maxTurnSpeed: 45
   currentBearing: 0
 --- !u!58 &1839795326
 CircleCollider2D:

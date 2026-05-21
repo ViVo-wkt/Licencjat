@@ -30,6 +30,10 @@ public class WeaponSelector : MonoBehaviour
     public GameObject arhIndicator;
     public GameObject sarhIndicatorVisual; 
 
+    [Header("Audio")]
+    [Tooltip("Leave blank to use the default click, or drag a custom SFX here!")]
+    public AudioClip customButtonSound;
+
     void Start() { UpdateVisuals(); }
 
     void Update()
@@ -53,6 +57,8 @@ public class WeaponSelector : MonoBehaviour
     {
         currentWeapon = (WeaponType)index;
         UpdateVisuals();
+
+        if (AudioManager.Instance != null) AudioManager.Instance.PlayClickSound(customButtonSound);
     }
 
     void UpdateVisuals()
