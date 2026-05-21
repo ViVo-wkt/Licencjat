@@ -32,9 +32,31 @@ public class WeaponSystem : MonoBehaviour
     public float autoCooldownTime = 1.0f;
     private float _currentAutoCooldown = 0f;
 
+    [Header("Screen UI (TextMeshPro)")]
+    public TMP_Text screenTitleText;
+    public TMP_Text screenDetailsText;
+    public string[] weaponTitles = new string[3] { "SARH - AIM-7", "ARH - AIM-120", "AUTO - AIM-9" };
+    [TextArea(3, 6)]
+    public string[] weaponDetails = new string[3] { 
+        "GUIDANCE: SEMI-ACTIVE\nRANGE: 40 NMI\nREQUIRES CONTINUOUS LOCK", 
+        "GUIDANCE: ACTIVE\nRANGE: 60 NMI\nFIRE AND FORGET CAPABLE", 
+        "GUIDANCE: INFRARED\nRANGE: 10 NMI\nSHORT RANGE DOGFIGHTING" 
+    };
+
+    [Header("Launch Audio")]
+    public AudioSource launchAudioSource;
+    public AudioClip sarhLaunchClip;
+    public AudioClip arhLaunchClip;
+    public AudioClip autoLaunchClip;
+    public float launchSoundCooldown = 2.0f;
+    private float _lastLaunchTime = -999f;
+
     private PassiveMissile _activeSARHMissile;
 
-    void Start() { UpdateAmmoUI(); }
+    void Start() 
+    { 
+        UpdateAmmoUI(); 
+    }
 
     void Update()
     {
@@ -45,9 +67,13 @@ public class WeaponSystem : MonoBehaviour
                 arhCooldownText.text = _currentArhCooldown > 0 ? "Reloading: " + _currentArhCooldown.ToString("F1") + "s" : "Ready to fire";
         }
         else if (arhCooldownText != null && arhCooldownText.text != "Ready to fire")
+        {
             arhCooldownText.text = "Ready to fire";
+        }
 
         if (_currentAutoCooldown > 0) _currentAutoCooldown -= Time.deltaTime;
+
+        UpdateDataScreens();
     }
 
     public void FireSequence()
@@ -57,7 +83,11 @@ public class WeaponSystem : MonoBehaviour
             if (sarhAmmo > 0)
             {
                 GameObject target = fireControlRadar.GetCurrentTarget();
-                if (target != null) SpawnSARH(target);
+                if (target != null)
+                {
+                    SpawnSARH(target);
+                    PlayLaunchSound(WeaponSelector.WeaponType.SemiActive);
+                }
             }
         }
         else if ((int)selector.currentWeapon == 1)
@@ -66,6 +96,7 @@ public class WeaponSystem : MonoBehaviour
             {
                 SpawnARH();
                 _currentArhCooldown = arhCooldownTime;
+                PlayLaunchSound(WeaponSelector.WeaponType.Active);
             }
         }
     }
@@ -79,8 +110,9 @@ public class WeaponSystem : MonoBehaviour
             _currentAutoCooldown = autoCooldownTime;
 
             GameObject m = Instantiate(autoMissilePrefab, launchPoint.position, Quaternion.identity);
-
             m.GetComponent<PassiveMissile>().Launch(target, null);
+            
+            PlayLaunchSound(WeaponSelector.WeaponType.AutoTarget);
             return true;
         }
         return false;
@@ -120,16 +152,15 @@ public class WeaponSystem : MonoBehaviour
     {
         if (selector == null) return;
 
-        // Fire ARH
         if (selector.currentWeapon == WeaponSelector.WeaponType.Active)
         {
             if (_currentArhCooldown <= 0 && arhAmmo > 0)
             {
                 SpawnARH();
                 _currentArhCooldown = arhCooldownTime;
+                PlayLaunchSound(WeaponSelector.WeaponType.Active);
             }
         }
-        // Fire SARH
         else if (selector.currentWeapon == WeaponSelector.WeaponType.SemiActive)
         {
             if (sarhAmmo > 0 && fireControlRadar != null)
@@ -138,17 +169,61 @@ public class WeaponSystem : MonoBehaviour
                 if (target != null)
                 {
                     SpawnSARH(target);
+                    PlayLaunchSound(WeaponSelector.WeaponType.SemiActive);
                 }
             }
         }
-        // Fire AUTO
-        else if (selector.currentWeapon == WeaponSelector.WeaponType.AutoTarget)
+    }
+
+    public void PlayLaunchSound(WeaponSelector.WeaponType weaponType)
+    {
+    // Point this to the AudioManager's source instead of a local variable
+    if (AudioManager.Instance == null || AudioManager.Instance.launchSfxSource == null) return;
+
+    if (Time.time - _lastLaunchTime >= launchSoundCooldown)
+    {
+        AudioClip clipToPlay = null;
+        if (weaponType == WeaponSelector.WeaponType.SemiActive) clipToPlay = sarhLaunchClip;
+        else if (weaponType == WeaponSelector.WeaponType.Active) clipToPlay = arhLaunchClip;
+        else if (weaponType == WeaponSelector.WeaponType.AutoTarget) clipToPlay = autoLaunchClip;
+
+        if (clipToPlay != null)
         {
-             // For AUTO, the TargetingBracket handles the actual firing, 
-             // but if you want the button to trigger a general sweep or just click, 
-             // you might need to link the TargetBracket here. 
-             // For now, we will leave this blank because your Targeting Bracket handles AUTO firing on its own!
-             Debug.Log("Auto Missiles are fired automatically via the Targeting Bracket!");
+            // Play through the AudioManager's source so it's already capped and scaled!
+            AudioManager.Instance.launchSfxSource.PlayOneShot(clipToPlay);
+            _lastLaunchTime = Time.time; 
+        }
+    }
+    }   
+
+    void UpdateDataScreens()
+    {
+        if (selector == null) return;
+        int index = (int)selector.currentWeapon;
+
+        if (screenTitleText != null) screenTitleText.text = weaponTitles[index];
+
+        if (screenDetailsText != null)
+        {
+            string baseText = weaponDetails[index];
+            string liveData = "\n\n";
+
+            if (selector.currentWeapon == WeaponSelector.WeaponType.SemiActive)
+            {
+                liveData += "AMMO: " + sarhAmmo + "\nSTATUS: <color=#00FF00>READY</color>";
+            }
+            else if (selector.currentWeapon == WeaponSelector.WeaponType.Active)
+            {
+                liveData += "AMMO: " + arhAmmo + "\nSTATUS: ";
+                liveData += (_currentArhCooldown > 0) ? "<color=#FF0000>RELOADING</color>" : "<color=#00FF00>READY</color>";
+            }
+            else if (selector.currentWeapon == WeaponSelector.WeaponType.AutoTarget)
+            {
+                liveData += "AMMO: " + autoAmmo + "\nSTATUS: ";
+                liveData += (_currentAutoCooldown > 0) ? "<color=#FF0000>RELOADING</color>" : "<color=#00FF00>READY</color>";
+            }
+
+            screenDetailsText.text = baseText + liveData;
         }
     }
 }

@@ -12523,6 +12523,33 @@ MonoBehaviour:
   arhCooldownTime: 5
   arhCooldownText: {fileID: 2054798201}
   autoCooldownTime: 1
+  screenTitleText: {fileID: 0}
+  screenDetailsText: {fileID: 0}
+  weaponTitles:
+  - SARH - AIM-7
+  - ARH - AIM-120
+  - AUTO - AIM-9
+  weaponDetails:
+  - 'GUIDANCE: SEMI-ACTIVE
+
+    RANGE: 40 NMI
+
+    REQUIRES CONTINUOUS LOCK'
+  - 'GUIDANCE: ACTIVE
+
+    RANGE: 60 NMI
+
+    FIRE AND FORGET CAPABLE'
+  - 'GUIDANCE: INFRARED
+
+    RANGE: 10 NMI
+
+    SHORT RANGE DOGFIGHTING'
+  launchAudioSource: {fileID: 0}
+  sarhLaunchClip: {fileID: 0}
+  arhLaunchClip: {fileID: 0}
+  autoLaunchClip: {fileID: 0}
+  launchSoundCooldown: 2
 --- !u!4 &1870372412
 Transform:
   m_ObjectHideFlags: 0
@@ -14604,6 +14631,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AmbientHumManager
   maxVolumeCap: 0.1
+  ambientHumSource: {fileID: 2025256874}
+  launchSfxSource: {fileID: 0}
 --- !u!1 &2027830789
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,11 +10,12 @@ public class BriefingManager : MonoBehaviour
     [Header("Indicators")]
     public GameObject messageDiodeLight;
 
-    // --- NEW: THE CENTRAL POWER SWITCH ---
+    [Header("Audio")]
+    public AudioSource notificationSound;
+    private bool _hasPlayedIntroSound = false;
+
     [Header("Cockpit Controls")]
-    [Tooltip("Drag the specific scripts (Knobs, Buttons, Wheels) you want disabled while reading!")]
     public MonoBehaviour[] cockpitControls;
-    // -------------------------------------
 
     [Header("Mission Details")]
     [TextArea(5, 10)] 
@@ -35,10 +36,17 @@ public class BriefingManager : MonoBehaviour
         if (briefingTextDisplay != null) briefingTextDisplay.text = messageText;
         if (messageDiodeLight != null) messageDiodeLight.SetActive(true);
 
+        // One-time sound latch
+        if (notificationSound != null && !_hasPlayedIntroSound)
+        {
+            notificationSound.Play();       
+            _hasPlayedIntroSound = true;    
+        }
+
         if (freezeTime) 
         {
             Time.timeScale = 0f;
-            SetControlsActive(false); // Turn the cockpit OFF
+            SetControlsActive(false); 
         }
     }
 
@@ -48,7 +56,7 @@ public class BriefingManager : MonoBehaviour
         if (messageDiodeLight != null) messageDiodeLight.SetActive(false);
 
         Time.timeScale = 1f;
-        SetControlsActive(true); // Turn the cockpit ON
+        SetControlsActive(true); 
     }
 
     public void ToggleMessage()
@@ -63,15 +71,13 @@ public class BriefingManager : MonoBehaviour
         }
     }
 
-    // --- NEW: Helper method to loop through the list ---
     private void SetControlsActive(bool isActive)
     {
-        foreach (MonoBehaviour controlScript in cockpitControls)
+        if (cockpitControls == null) return;
+        
+        foreach (var control in cockpitControls)
         {
-            if (controlScript != null)
-            {
-                controlScript.enabled = isActive;
-            }
+            if (control != null) control.enabled = isActive;
         }
     }
 }

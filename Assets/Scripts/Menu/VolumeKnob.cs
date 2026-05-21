@@ -56,9 +56,9 @@ public class GameVolumeKnob : MonoBehaviour
         ApplyTubeVisuals();
         
         // --- AUDIO HOOK: INITIAL STARTUP ---
-        if (AmbientHumManager.Instance != null)
+        if (AudioManager.Instance != null)
         {
-            AmbientHumManager.Instance.SetHumVolume(currentVolume);
+            AudioManager.Instance.SetMasterVolume(currentVolume);
         }
     }
 
@@ -134,9 +134,9 @@ public class GameVolumeKnob : MonoBehaviour
             ApplyTubeVisuals();
 
             // --- AUDIO HOOK: LIVE UPDATE ---
-            if (AmbientHumManager.Instance != null)
+            if (AudioManager.Instance != null)
             {
-                AmbientHumManager.Instance.SetHumVolume(currentVolume);
+                AudioManager.Instance.SetMasterVolume(currentVolume);
             }
         }
     }

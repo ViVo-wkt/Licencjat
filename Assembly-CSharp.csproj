@@ -58,11 +58,11 @@
     <Compile Include="Assets\Scripts\Menu\VolumeKnob.cs" />
     <Compile Include="Assets\Scripts\RadarTrackable.cs" />
     <Compile Include="Assets\Scripts\Weapon 3\TargetingBracket.cs" />
-    <Compile Include="Assets\Scripts\Menu\AmbientManager.cs" />
     <Compile Include="Assets\Scripts\BearingControl.cs" />
     <Compile Include="Assets\Scripts\Weapon 2\ActiveMissile.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuButton.cs" />
     <Compile Include="Assets\Scripts\RadarContactInteraction.cs" />
+    <Compile Include="Assets\Scripts\Menu\AudioManager.cs" />
     <Compile Include="Assets\Scripts\ExplosionEffect.cs" />
     <Compile Include="Assets\Scripts\RadarZoomSystem.cs" />
     <Compile Include="Assets\Scripts\RadarUIManager.cs" />
