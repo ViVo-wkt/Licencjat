@@ -10,7 +10,6 @@ public class ScrollWheelControl : MonoBehaviour
     [Tooltip("If true, dragging the mouse Left/Right will rotate this wheel instead of Up/Down.")]
     public bool useHorizontalMouseDrag = false;
 
-    // --- NEW: Mechanical Limits ---
     [Header("Mechanical Limits")]
     [Tooltip("How fast the targeting bracket catches up to the wheel (-1 to 1 scale)")]
     public float maxMoveSpeed = 1.5f; 
@@ -23,6 +22,17 @@ public class ScrollWheelControl : MonoBehaviour
     [Header("Visual Rotation")]
     public Vector3 rotationAxis = Vector3.right;
     public float maxRotationAngle = 360f;
+
+    // --- NEW: AUDIO SECTION ---
+    [Header("Audio")]
+    [Tooltip("Drag a satisfying tick/click SFX here.")]
+    public AudioClip turnSound;
+    
+    [Tooltip("How many degrees the wheel must turn to play a tick sound.")]
+    public float degreesPerTick = 15f; 
+    
+    private float _accumulatedRotation = 0f;
+    // --------------------------
 
     private bool _isDragging = false;
     private Collider _myCollider;
@@ -40,6 +50,13 @@ public class ScrollWheelControl : MonoBehaviour
 
     void Update()
     {
+        // --- TIME GATEKEEPER ---
+        if (Time.timeScale == 0f)
+        {
+            _isDragging = false;
+            return;
+        }
+
         if (Mouse.current == null || _myCollider == null || _mainCam == null) return;
 
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
@@ -78,23 +95,40 @@ public class ScrollWheelControl : MonoBehaviour
 
         if (valueChange != 0f)
         {
-            // 1. Apply Input to the Target instantly
+            // Calculate how much we actually CAN move before hitting the clamp
+            float oldTarget = _targetValue;
             _targetValue += valueChange;
             _targetValue = Mathf.Clamp(_targetValue, -1f, 1f);
 
-            // 2. Instantly rotate the physical wheel so input feels highly responsive
-            UpdateVisualRotation();
+            float actualChange = Mathf.Abs(_targetValue - oldTarget);
+
+            if (actualChange > 0f)
+            {
+                // --- AUDIO RATCHET LOGIC ---
+                // Convert the -1 to 1 value change into physical degrees
+                float rotationDelta = actualChange * maxRotationAngle;
+                _accumulatedRotation += rotationDelta;
+
+                if (_accumulatedRotation >= degreesPerTick)
+                {
+                    if (AudioManager.Instance != null) 
+                        AudioManager.Instance.PlayClickSound(turnSound);
+                    
+                    _accumulatedRotation %= degreesPerTick;
+                }
+                // ---------------------------
+
+                // Instantly rotate the physical wheel so input feels highly responsive
+                UpdateVisualRotation();
+            }
         }
 
-        // --- THE MECHANICAL DELAY ---
         // Smoothly move the heavy targeting bracket towards the target
         currentValue = Mathf.MoveTowards(currentValue, _targetValue, maxMoveSpeed * Time.deltaTime);
     }
 
     public void ForceValue(float val)
     {
-        // This is called by the TargetingBracket when it hits the edge of the radar.
-        // We must update BOTH values instantly so the bracket doesn't "rubber-band" back!
         currentValue = Mathf.Clamp(val, -1f, 1f);
         _targetValue = currentValue; 
         UpdateVisualRotation();
@@ -102,7 +136,6 @@ public class ScrollWheelControl : MonoBehaviour
 
     private void UpdateVisualRotation()
     {
-        // We use the TARGET value so the wheel spins instantly when the player scrolls
         transform.localRotation = Quaternion.Euler(rotationAxis * (_targetValue * maxRotationAngle));
     }
 }

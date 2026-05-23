@@ -28,6 +28,17 @@ public class RadarKnob : MonoBehaviour
     [Tooltip("How fast the heavy radar beam physically catches up (Degrees per second)")]
     public float maxBeamSpeed = 45f; 
 
+    // --- NEW: AUDIO SECTION ---
+    [Header("Audio")]
+    [Tooltip("Drag a satisfying tick/click SFX here.")]
+    public AudioClip turnSound;
+    
+    [Tooltip("How many degrees the knob must turn to play a tick sound.")]
+    public float degreesPerTick = 4f; 
+    
+    private float _accumulatedRotation = 0f;
+    // --------------------------
+
     private Collider2D _myCollider;
     private bool _isDragging = false;
     private Vector2 _lastMousePos;
@@ -59,8 +70,14 @@ public class RadarKnob : MonoBehaviour
 
     void Update()
     {
-        if (!isControllable) return;
-        if (Mouse.current == null) return;
+        // --- TIME GATEKEEPER ---
+        if (Time.timeScale == 0f)
+        {
+            _isDragging = false;
+            return;
+        }
+
+        if (!isControllable || Mouse.current == null) return;
 
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
@@ -96,7 +113,6 @@ public class RadarKnob : MonoBehaviour
 
         if (Mathf.Abs(rotationAmount) > 0.001f)
         {
-            // --- THE KNOB SPEED CAP ---
             if (limitKnobSpeed)
             {
                 float maxStepThisFrame = maxKnobSpeed * Time.deltaTime;
@@ -105,6 +121,22 @@ public class RadarKnob : MonoBehaviour
 
             _currentKnobAngle += rotationAmount;
 
+            // --- AUDIO RATCHET LOGIC ---
+            // Add the absolute movement to our tracker
+            _accumulatedRotation += Mathf.Abs(rotationAmount);
+
+            // If we've turned further than our threshold, play a sound!
+            if (_accumulatedRotation >= degreesPerTick)
+            {
+                if (AudioManager.Instance != null) 
+                    AudioManager.Instance.PlayClickSound(turnSound);
+                
+                // Using modulo (%) ensures if the player spins it incredibly fast, 
+                // it calculates the leftover correctly instead of skipping ticks!
+                _accumulatedRotation %= degreesPerTick; 
+            }
+            // ---------------------------
+
             if (knobAxis == RotationAxis.X) transform.localRotation = Quaternion.Euler(_currentKnobAngle, 0, 0);
             else if (knobAxis == RotationAxis.Y) transform.localRotation = Quaternion.Euler(0, _currentKnobAngle, 0);
             else transform.localRotation = Quaternion.Euler(0, 0, _currentKnobAngle);
@@ -112,7 +144,6 @@ public class RadarKnob : MonoBehaviour
             _targetBeamAngle = _currentKnobAngle + rotationOffset;
         }
 
-        // --- THE BEAM SPEED CAP ---
         if (radarBeam != null)
         {
             if (limitBeamSpeed)
@@ -121,7 +152,6 @@ public class RadarKnob : MonoBehaviour
             }
             else
             {
-                // If the limit is off, the beam instantly matches the target!
                 _currentBeamAngle = _targetBeamAngle;
             }
             
