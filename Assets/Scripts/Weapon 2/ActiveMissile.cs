@@ -101,7 +101,16 @@ public class ActiveHomingMissile : MonoBehaviour
             Instantiate(interceptionEffect, transform.position, Quaternion.identity);
         }
 
-        if (_target != null) Destroy(_target);
+        if (_target != null)
+        {
+            
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.AddKill();
+            }
+
+            Destroy(_target);
+        }
         Destroy(gameObject);
     }
 }

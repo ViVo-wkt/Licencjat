@@ -86,7 +86,19 @@ public class PassiveMissile : MonoBehaviour
             Instantiate(interceptionEffect, transform.position, Quaternion.identity);
         }
 
-        if (_target != null) Destroy(_target);
+        if (_target != null) 
+        {
+            // --- ADD THIS LINE HERE ---
+            // Tally a kill in the GameManager before the enemy is obliterated!
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.AddKill();
+            }
+            // ---------------------------
+
+            Destroy(_target);
+        }
+        
         Destroy(gameObject);
     }
 }
