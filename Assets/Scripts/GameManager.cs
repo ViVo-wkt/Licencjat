@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -107,4 +108,5 @@ public class GameManager : MonoBehaviour
             statsText.text = $"TIME SURVIVED: {timeString}\nHOSTILES DESTROYED: {_enemiesDestroyed}";
         }
     }
+
 }
