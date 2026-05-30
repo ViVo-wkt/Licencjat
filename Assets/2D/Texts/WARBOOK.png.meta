@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: d430f6bb6664bf6439a5ae51ef03d823
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5801569619442563600
+    second: WARBOOK_0
+  - first:
+      213: 6652002090590095511
+    second: WARBOOK_1
+  - first:
+      213: 6281432042928246781
+    second: WARBOOK_2
+  - first:
+      213: 4965930921846164295
+    second: WARBOOK_3
+  - first:
+      213: 2262078640818955571
+    second: WARBOOK_4
+  - first:
+      213: -6408392250097759159
+    second: WARBOOK_5
+  - first:
+      213: -7312389489744390556
+    second: WARBOOK_6
+  - first:
+      213: 6406331562701516379
+    second: WARBOOK_7
+  - first:
+      213: -8009564790706850513
+    second: WARBOOK_8
+  - first:
+      213: -1289926728809111728
+    second: WARBOOK_9
+  - first:
+      213: 4324206125045721618
+    second: WARBOOK_10
+  - first:
+      213: -3882833130822160199
+    second: WARBOOK_11
+  - first:
+      213: 7191653471158883687
+    second: WARBOOK_12
+  - first:
+      213: -1716335458231567498
+    second: WARBOOK_13
+  - first:
+      213: 5257779662354730218
+    second: WARBOOK_14
+  - first:
+      213: -4257255581449237404
+    second: WARBOOK_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: WARBOOK_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 45
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01a7292b4d0538050800000000000000
+      internalID: 5801569619442563600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 39
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79847c658a8a05c50800000000000000
+      internalID: 6652002090590095511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK_2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 3
+        width: 28
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dff8e7f99212c2750800000000000000
+      internalID: 6281432042928246781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK_3
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 0
+        width: 34
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74bc4cfdcd78ae440800000000000000
+      internalID: 4965930921846164295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK_4
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 0
+        width: 47
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3352300f984846f10800000000000000
+      internalID: 2262078640818955571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 24
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94c8e8f9331d017a0800000000000000
+      internalID: -6408392250097759159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK_6
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 0
+        width: 41
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4665c74708c258a90800000000000000
+      internalID: -7312389489744390556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK_7
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 0
+        width: 24
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5e62343d9cd7e850800000000000000
+      internalID: 6406331562701516379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK_8
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 0
+        width: 40
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f253174624f48d090800000000000000
+      internalID: -8009564790706850513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK_9
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 31
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05f1d077972491ee0800000000000000
+      internalID: -1289926728809111728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK_10
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 0
+        width: 31
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21a2be26f8aa20c30800000000000000
+      internalID: 4324206125045721618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK_11
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 0
+        width: 32
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b03a33f6d76d1ac0800000000000000
+      internalID: -3882833130822160199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK_12
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 0
+        width: 32
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7655120aab2edc360800000000000000
+      internalID: 7191653471158883687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK_13
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 0
+        width: 24
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67b33b88ef95e28e0800000000000000
+      internalID: -1716335458231567498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK_14
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 8
+        width: 39
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aec4de9feb267f840800000000000000
+      internalID: 5257779662354730218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK_15
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 0
+        width: 31
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46c4ba5ca903be4c0800000000000000
+      internalID: -4257255581449237404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      WARBOOK_0: 5801569619442563600
+      WARBOOK_1: 6652002090590095511
+      WARBOOK_10: 4324206125045721618
+      WARBOOK_11: -3882833130822160199
+      WARBOOK_12: 7191653471158883687
+      WARBOOK_13: -1716335458231567498
+      WARBOOK_14: 5257779662354730218
+      WARBOOK_15: -4257255581449237404
+      WARBOOK_2: 6281432042928246781
+      WARBOOK_3: 4965930921846164295
+      WARBOOK_4: 2262078640818955571
+      WARBOOK_5: -6408392250097759159
+      WARBOOK_6: -7312389489744390556
+      WARBOOK_7: 6406331562701516379
+      WARBOOK_8: -8009564790706850513
+      WARBOOK_9: -1289926728809111728
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

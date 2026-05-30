@@ -560,6 +560,7 @@ MonoBehaviour:
   buttonMeshRenderer: {fileID: 1978772734}
   unpressedTexture: {fileID: 2800000, guid: 2bbad3cf74cb32141a59292cf83b030f, type: 3}
   pressedTexture: {fileID: 2800000, guid: 1627a7d66485f2a4a969ef8e86aac0c7, type: 3}
+  customButtonSound: {fileID: 0}
   actionDelay: 0.2
   onClickAction:
     m_PersistentCalls:
@@ -2037,6 +2038,7 @@ MonoBehaviour:
   buttonMeshRenderer: {fileID: 1527717310}
   unpressedTexture: {fileID: 2800000, guid: 2bbad3cf74cb32141a59292cf83b030f, type: 3}
   pressedTexture: {fileID: 2800000, guid: 1627a7d66485f2a4a969ef8e86aac0c7, type: 3}
+  customButtonSound: {fileID: 0}
   actionDelay: 0.2
   onClickAction:
     m_PersistentCalls:
@@ -5415,16 +5417,20 @@ PrefabInstance:
       value: 0.90680474
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4508a23b301c0342a9683fe45c74c0e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a4508a23b301c0342a9683fe45c74c0e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4508a23b301c0342a9683fe45c74c0e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4508a23b301c0342a9683fe45c74c0e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.225
+      value: -1.154
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4508a23b301c0342a9683fe45c74c0e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6006,6 +6012,9 @@ MonoBehaviour:
   lineAngleOffset: 180
   radarIndicatorLine: {fileID: 0}
   maxTurnSpeed: 45
+  turnSound: {fileID: 0}
+  degreesPerTick: 4
+  settleTime: 0.15
   currentBearing: 0
 --- !u!212 &803538938
 SpriteRenderer:
@@ -6367,6 +6376,7 @@ MonoBehaviour:
   buttonMeshRenderer: {fileID: 2029143308}
   unpressedTexture: {fileID: 2800000, guid: 2bbad3cf74cb32141a59292cf83b030f, type: 3}
   pressedTexture: {fileID: 2800000, guid: 1627a7d66485f2a4a969ef8e86aac0c7, type: 3}
+  customButtonSound: {fileID: 0}
   actionDelay: 0.2
   onClickAction:
     m_PersistentCalls:
@@ -8231,6 +8241,8 @@ MonoBehaviour:
   currentValue: 0
   rotationAxis: {x: 1, y: 0, z: 0}
   maxRotationAngle: 360
+  turnSound: {fileID: 0}
+  degreesPerTick: 15
 --- !u!65 &1067240366
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8959,7 +8971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameVolumeKnob
   knobAxis: 2
-  dragSensitivity: 0.5
+  dragSensitivity: 0.4
   scrollSensitivity: 5
   currentVolume: 0.5
   minAngle: 140
@@ -10387,6 +10399,7 @@ MonoBehaviour:
   buttonMeshRenderer: {fileID: 1882017322}
   unpressedTexture: {fileID: 2800000, guid: 2bbad3cf74cb32141a59292cf83b030f, type: 3}
   pressedTexture: {fileID: 2800000, guid: 1627a7d66485f2a4a969ef8e86aac0c7, type: 3}
+  customButtonSound: {fileID: 0}
   actionDelay: 0.2
   onClickAction:
     m_PersistentCalls:
@@ -10421,7 +10434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a3f268e95e4037442b902c41f3cf511b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5193676
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a3f268e95e4037442b902c41f3cf511b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10465,7 +10478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a3f268e95e4037442b902c41f3cf511b, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a3f268e95e4037442b902c41f3cf511b, type: 3}
       propertyPath: m_Name
@@ -10713,6 +10726,7 @@ MonoBehaviour:
   buttonMeshRenderer: {fileID: 1506956014}
   unpressedTexture: {fileID: 2800000, guid: 2bbad3cf74cb32141a59292cf83b030f, type: 3}
   pressedTexture: {fileID: 2800000, guid: 1627a7d66485f2a4a969ef8e86aac0c7, type: 3}
+  customButtonSound: {fileID: 0}
   actionDelay: 0.2
   onClickAction:
     m_PersistentCalls:
@@ -10962,6 +10976,7 @@ MonoBehaviour:
   buttonMeshRenderer: {fileID: 1325475972}
   unpressedTexture: {fileID: 2800000, guid: 2bbad3cf74cb32141a59292cf83b030f, type: 3}
   pressedTexture: {fileID: 2800000, guid: 1627a7d66485f2a4a969ef8e86aac0c7, type: 3}
+  customButtonSound: {fileID: 0}
   actionDelay: 0.2
   onClickAction:
     m_PersistentCalls:
@@ -11110,6 +11125,7 @@ MonoBehaviour:
   buttonMeshRenderer: {fileID: 758983784}
   unpressedTexture: {fileID: 2800000, guid: 2bbad3cf74cb32141a59292cf83b030f, type: 3}
   pressedTexture: {fileID: 2800000, guid: 1627a7d66485f2a4a969ef8e86aac0c7, type: 3}
+  customButtonSound: {fileID: 0}
   actionDelay: 0.2
   onClickAction:
     m_PersistentCalls:
@@ -11542,6 +11558,8 @@ MonoBehaviour:
   currentValue: 0
   rotationAxis: {x: 1, y: 0, z: 0}
   maxRotationAngle: 360
+  turnSound: {fileID: 0}
+  degreesPerTick: 15
 --- !u!65 &1657668558
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12382,6 +12400,7 @@ MonoBehaviour:
   buttonMeshRenderer: {fileID: 1959954635}
   unpressedTexture: {fileID: 2800000, guid: 2bbad3cf74cb32141a59292cf83b030f, type: 3}
   pressedTexture: {fileID: 2800000, guid: 1627a7d66485f2a4a969ef8e86aac0c7, type: 3}
+  customButtonSound: {fileID: 0}
   actionDelay: 0.2
   onClickAction:
     m_PersistentCalls:
@@ -12597,6 +12616,7 @@ MonoBehaviour:
   pressedTexture: {fileID: 2800000, guid: 1627a7d66485f2a4a969ef8e86aac0c7, type: 3}
   arhIndicator: {fileID: 0}
   sarhIndicatorVisual: {fileID: 0}
+  customButtonSound: {fileID: 0}
 --- !u!1001 &1875887658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13230,6 +13250,7 @@ MonoBehaviour:
   unpressedTexture: {fileID: 2800000, guid: c62080891c176364985398e1d7cbc769, type: 3}
   pressedTexture: {fileID: 2800000, guid: a51902f0cebbf9a43898b50b58723969, type: 3}
   weaponSystem: {fileID: 1870372411}
+  customButtonSound: {fileID: 0}
 --- !u!58 &1932829131
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -14516,11 +14537,11 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025256873}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 519078111fab5bb44b9bb1e1d065cc32, type: 3}
+  m_Resource: {fileID: 8300000, guid: 1304b752ac8b4f046a19a566e16b1594, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.25
   m_Pitch: 1
@@ -14633,7 +14654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3083577a66f0ec84d8b092d25fb8e63c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AmbientHumManager
-  maxVolumeCap: 0.1
+  maxVolumeCap: 0.2
   ambientHumSource: {fileID: 2025256874}
   launchSfxSource: {fileID: 2025256877}
   uiSfxSource: {fileID: 2025256878}
