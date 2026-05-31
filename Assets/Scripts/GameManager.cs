@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
             int seconds = Mathf.FloorToInt(timeSurvived - minutes * 60);
             string timeString = string.Format("{0:00}:{1:00}", minutes, seconds);
 
-            statsText.text = $"TIME SURVIVED: {timeString}\nHOSTILES DESTROYED: {_enemiesDestroyed}";
+            statsText.text = $"TIME SURVIVED: {timeString}\n \nHOSTILES DESTROYED: {_enemiesDestroyed}";
         }
     }
 

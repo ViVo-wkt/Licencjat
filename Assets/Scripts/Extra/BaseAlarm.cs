@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Rendering.Universal; // Required for Light2D
+using UnityEngine.Rendering.Universal;
 
 public class BaseAlarm : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class BaseAlarm : MonoBehaviour
     public Color alarmColor = Color.red;
     
     [Header("Timing")]
-    public float alarmDuration = 0.5f; // How long it stays red
+    public float alarmDuration = 0.5f;
     
     private float _alarmTimer = 0f;
 
@@ -27,16 +27,14 @@ public class BaseAlarm : MonoBehaviour
 
         if (_alarmTimer > 0)
         {
-            // Flash is active
-            _alarmTimer -= Time.deltaTime;
+            // --- FIXED: Uses unscaledDeltaTime to ignore Time.timeScale = 0f ---
+            _alarmTimer -= Time.unscaledDeltaTime;
             
-            // Lerp back to normal as timer runs out
-            float t = 1 - (_alarmTimer / alarmDuration); // 0 to 1
+            float t = 1 - (_alarmTimer / alarmDuration);
             globalLight.color = Color.Lerp(alarmColor, normalColor, t);
         }
     }
 
-    // Call this when something bad happens
     public void TriggerAlarm()
     {
         _alarmTimer = alarmDuration;
