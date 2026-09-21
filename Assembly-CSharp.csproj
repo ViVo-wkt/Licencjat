@@ -53,6 +53,7 @@
     <Compile Include="Assets\Scripts\BriefingManager.cs" />
     <Compile Include="Assets\Scripts\Weapon 1\PassiveMissile.cs" />
     <Compile Include="Assets\Scripts\Radar\ActiveRadarSensor.cs" />
+    <Compile Include="Assets\Scripts\RadarWarningRing.cs" />
     <Compile Include="Assets\Scripts\Core\WeaponSystem.cs" />
     <Compile Include="Assets\Scripts\Core\WeaponSelector.cs" />
     <Compile Include="Assets\Scripts\Menu\VolumeKnob.cs" />

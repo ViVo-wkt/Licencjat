@@ -66,6 +66,11 @@ public class ScenarioManager : MonoBehaviour
             ) * spawnRadius;
 
             Instantiate(selectedPrefab, spawnPos, Quaternion.identity);
+            
+            if (RadarWarningRing.Instance != null)
+            {
+                RadarWarningRing.Instance.NotifyThreatSpawn(spawnPos);
+            }
         }
     }
 }

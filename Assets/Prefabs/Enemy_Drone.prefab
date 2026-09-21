@@ -169,7 +169,7 @@ MonoBehaviour:
   impactDistance: 0.1
   maneuverFrequency: 1
   maneuverMagnitude: 20
-  altitude: 30000
+  altitude: 10000
 --- !u!114 &-5578663532867252291
 MonoBehaviour:
   m_ObjectHideFlags: 0

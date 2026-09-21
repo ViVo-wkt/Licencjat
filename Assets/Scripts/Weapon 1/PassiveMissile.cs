@@ -95,13 +95,23 @@ public class PassiveMissile : MonoBehaviour
 
         if (_target != null) 
         {
-            // --- ADD THIS LINE HERE ---
-            // Tally a kill in the GameManager before the enemy is obliterated!
+            // Check if target is civilian or hostile
+            EnemyNavigation nav = _target.GetComponent<EnemyNavigation>();
+            if (nav == null) nav = _target.GetComponentInParent<EnemyNavigation>();
+
             if (GameManager.Instance != null)
             {
-                GameManager.Instance.AddKill();
+                if (nav != null && !nav.isHostile)
+                {
+                    // Civilian shot down: deduct 1 HP!
+                    GameManager.Instance.TakeDamage();
+                }
+                else
+                {
+                    // Hostile destroyed: reward a kill
+                    GameManager.Instance.AddKill();
+                }
             }
-            // ---------------------------
 
             Destroy(_target);
         }

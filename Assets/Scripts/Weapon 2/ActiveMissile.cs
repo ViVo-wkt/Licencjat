@@ -101,16 +101,26 @@ public class ActiveHomingMissile : MonoBehaviour
             Instantiate(interceptionEffect, transform.position, Quaternion.identity);
         }
 
-        if (_target != null)
+        if (_target != null) 
         {
-            
+            EnemyNavigation nav = _target.GetComponent<EnemyNavigation>();
+            if (nav == null) nav = _target.GetComponentInParent<EnemyNavigation>();
+
             if (GameManager.Instance != null)
             {
-                GameManager.Instance.AddKill();
+                if (nav != null && !nav.isHostile)
+                {
+                    GameManager.Instance.TakeDamage();
+                }
+                else
+                {
+                    GameManager.Instance.AddKill();
+                }
             }
 
             Destroy(_target);
         }
+
         Destroy(gameObject);
     }
 }

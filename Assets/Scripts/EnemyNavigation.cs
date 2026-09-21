@@ -61,7 +61,7 @@ public class EnemyNavigation : MonoBehaviour
             baseDirection = _fixedFlybyDirection;
 
             // Cleanup: If a neutral flies too far away (off screen), delete it
-            if (transform.position.magnitude > 7.0f) 
+            if (transform.position.magnitude > 15.0f) 
             {
                 Destroy(gameObject);
                 return;
