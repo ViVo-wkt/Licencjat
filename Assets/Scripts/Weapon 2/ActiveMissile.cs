@@ -110,7 +110,7 @@ public class ActiveHomingMissile : MonoBehaviour
             {
                 if (nav != null && !nav.isHostile)
                 {
-                    GameManager.Instance.TakeDamage();
+                    GameManager.Instance.PenalizeCivilianCasualty();
                 }
                 else
                 {

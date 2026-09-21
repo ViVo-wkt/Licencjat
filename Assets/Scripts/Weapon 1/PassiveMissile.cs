@@ -95,7 +95,6 @@ public class PassiveMissile : MonoBehaviour
 
         if (_target != null) 
         {
-            // Check if target is civilian or hostile
             EnemyNavigation nav = _target.GetComponent<EnemyNavigation>();
             if (nav == null) nav = _target.GetComponentInParent<EnemyNavigation>();
 
@@ -103,12 +102,11 @@ public class PassiveMissile : MonoBehaviour
             {
                 if (nav != null && !nav.isHostile)
                 {
-                    // Civilian shot down: deduct 1 HP!
-                    GameManager.Instance.TakeDamage();
+                    // Penalize civilian kill with dedicated sound effect and -1 HP
+                    GameManager.Instance.PenalizeCivilianCasualty();
                 }
                 else
                 {
-                    // Hostile destroyed: reward a kill
                     GameManager.Instance.AddKill();
                 }
             }

@@ -17,7 +17,10 @@ public class GameManager : MonoBehaviour
 
     [Header("Audio")]
     [Tooltip("Drag multiple damage sound variations here (e.g., WeHit, WeHit2).")]
-    public AudioClip[] damageSounds; // <-- CHANGED: Turned into an array!
+    public AudioClip[] damageSounds;
+
+    [Tooltip("Voiceline or alarm played when player shoots down a civilian.")]
+    public AudioClip[] civilianPenaltySounds;
 
     [Header("Game Over Screen")]
     public GameObject gameOverPanel;
@@ -50,31 +53,49 @@ public class GameManager : MonoBehaviour
         _enemiesDestroyed++;
     }
 
+    // Called when an enemy strikes the base
     public void TakeDamage()
     {
         if (_isGameOver) return;
 
         _currentHealth--;
         
-        // --- NEW: RANDOM AUDIO SELECTION ---
-        if (AudioManager.Instance != null && damageSounds != null && damageSounds.Length > 0)
-        {
-            // Pick a completely random index from the array
-            int randomIndex = Random.Range(0, damageSounds.Length);
-            AudioClip selectedClip = damageSounds[randomIndex];
-
-            if (selectedClip != null)
-            {
-                AudioManager.Instance.PlayClickSound(selectedClip);
-            }
-        }
-        // ------------------------------------
-
+        PlayRandomClip(damageSounds);
         UpdateHealthUI();
 
         if (_currentHealth <= 0)
         {
             TriggerGameOver();
+        }
+    }
+
+    // Called when the player shoots down a civilian airliner
+    public void PenalizeCivilianCasualty()
+    {
+        if (_isGameOver) return;
+
+        _currentHealth--;
+
+        PlayRandomClip(civilianPenaltySounds);
+        UpdateHealthUI();
+
+        if (_currentHealth <= 0)
+        {
+            TriggerGameOver();
+        }
+    }
+
+    private void PlayRandomClip(AudioClip[] clips)
+    {
+        if (AudioManager.Instance != null && clips != null && clips.Length > 0)
+        {
+            int randomIndex = Random.Range(0, clips.Length);
+            AudioClip selectedClip = clips[randomIndex];
+
+            if (selectedClip != null)
+            {
+                AudioManager.Instance.PlayClickSound(selectedClip);
+            }
         }
     }
 
@@ -108,5 +129,4 @@ public class GameManager : MonoBehaviour
             statsText.text = $"TIME SURVIVED: {timeString}\n \nHOSTILES DESTROYED: {_enemiesDestroyed}";
         }
     }
-
 }

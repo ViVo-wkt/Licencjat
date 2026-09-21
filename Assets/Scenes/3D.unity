@@ -1302,6 +1302,8 @@ MonoBehaviour:
   damageSounds:
   - {fileID: 8300000, guid: 594c0f3946a2d2148b5dbda4e3f4daba, type: 3}
   - {fileID: 8300000, guid: e89025a98abbb2d46bb6eddc4ebd39fc, type: 3}
+  civilianPenaltySounds:
+  - {fileID: 8300000, guid: b6aa624ce9b89b4478b085a3f52e2e61, type: 3}
   gameOverPanel: {fileID: 1118625420}
   statsText: {fileID: 1659072997}
 --- !u!4 &143720830
