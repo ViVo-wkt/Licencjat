@@ -20,6 +20,13 @@ public class PassiveMissile : MonoBehaviour
 
     private bool _isFireAndForget = false;
 
+    public bool IsTrackingTarget()
+    {
+        if (_target == null) return false;
+        if (_isFireAndForget) return true;
+        return _guidanceRadar != null && _guidanceRadar.IsTracking(_target);
+    }
+
     public void Launch(GameObject target, ActiveRadarSensor radar)
     {
         _target = target;

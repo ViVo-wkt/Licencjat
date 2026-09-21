@@ -18,15 +18,12 @@ public class TargetingBracket : MonoBehaviour
     public WeaponSystem weaponSystem;
     public WeaponSelector weaponSelector;
 
-    // CHANGED: Using base Renderer class so it supports BOTH 2D Sprites and 3D Meshes!
     private Renderer _myRenderer;
     private HashSet<GameObject> _engagedTargets = new HashSet<GameObject>();
 
     void Awake()
     {
         _myRenderer = GetComponent<Renderer>();
-        
-        // Only apply the color tint if it is still a 2D Sprite!
         if (_myRenderer is SpriteRenderer sr) sr.color = glowColor;
     }
 
@@ -49,7 +46,20 @@ public class TargetingBracket : MonoBehaviour
     void HandleZoomChange(float oldScale, float newScale)
     {
         float ratio = oldScale / newScale;
+
+        // 1. Scale visual size
         transform.localScale = transform.localScale * ratio;
+
+        // 2. Scale the wheel input values so the bracket's position translates with the targets
+        if (xWheel != null)
+        {
+            xWheel.ForceValue(xWheel.currentValue * ratio);
+        }
+
+        if (yWheel != null)
+        {
+            yWheel.ForceValue(yWheel.currentValue * ratio);
+        }
     }
 
     void Update()
@@ -73,14 +83,12 @@ public class TargetingBracket : MonoBehaviour
 
         if (weaponSelector != null && _myRenderer != null)
         {
-            // CHANGED: Safely compares the exact state instead of using a hardcoded '2'
             _myRenderer.enabled = (weaponSelector.currentWeapon == WeaponSelector.WeaponType.AutoTarget); 
         }
     }
 
     void ProcessTarget(Collider2D other)
     {
-        // Safely checks enum here as well!
         if (weaponSelector == null || weaponSelector.currentWeapon != WeaponSelector.WeaponType.AutoTarget) return;
 
         TargetSignature target = other.GetComponent<TargetSignature>();

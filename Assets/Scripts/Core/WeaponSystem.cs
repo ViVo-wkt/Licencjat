@@ -22,6 +22,24 @@ public class WeaponSystem : MonoBehaviour
     public TMP_Text sarhAmmoText;
     public TMP_Text arhAmmoText;
     public TMP_Text autoAmmoText;
+    public TMP_Text sarhStatusText;
+
+    [Header("Ammo Resupply (1 per 60s after first shot, max 99)")]
+    public float resupplyInterval = 60.0f;
+    public int maxAmmoCap = 99;
+    public float flashDuration = 0.5f;
+
+    private bool _sarhStartedResupply = false;
+    private bool _arhStartedResupply = false;
+    private bool _autoStartedResupply = false;
+
+    private float _sarhResupplyTimer = 0f;
+    private float _arhResupplyTimer = 0f;
+    private float _autoResupplyTimer = 0f;
+
+    private float _sarhFlashTimer = 0f;
+    private float _arhFlashTimer = 0f;
+    private float _autoFlashTimer = 0f;
 
     [Header("ARH Settings")]
     public float arhCooldownTime = 5.0f;
@@ -29,7 +47,8 @@ public class WeaponSystem : MonoBehaviour
     private float _currentArhCooldown = 0f;
 
     [Header("Auto Missile Settings")]
-    public float autoCooldownTime = 1.0f;
+    public float autoCooldownTime = 4.0f;
+    public TMP_Text autoCooldownText;
     private float _currentAutoCooldown = 0f;
 
     [Header("Screen UI (TextMeshPro)")]
@@ -60,6 +79,7 @@ public class WeaponSystem : MonoBehaviour
 
     void Update()
     {
+        // 1. ARH Cooldown
         if (_currentArhCooldown > 0)
         {
             _currentArhCooldown -= Time.deltaTime;
@@ -71,9 +91,66 @@ public class WeaponSystem : MonoBehaviour
             arhCooldownText.text = "Ready to fire";
         }
 
-        if (_currentAutoCooldown > 0) _currentAutoCooldown -= Time.deltaTime;
+        // 2. AUTO Cooldown
+        if (_currentAutoCooldown > 0)
+        {
+            _currentAutoCooldown -= Time.deltaTime;
+            if (autoCooldownText != null)
+                autoCooldownText.text = _currentAutoCooldown > 0 ? "Reloading: " + _currentAutoCooldown.ToString("F1") + "s" : "Ready to fire";
+        }
+        else if (autoCooldownText != null && autoCooldownText.text != "Ready to fire")
+        {
+            autoCooldownText.text = "Ready to fire";
+        }
 
+        // 3. Flash Timers
+        if (_sarhFlashTimer > 0) _sarhFlashTimer -= Time.deltaTime;
+        if (_arhFlashTimer > 0) _arhFlashTimer -= Time.deltaTime;
+        if (_autoFlashTimer > 0) _autoFlashTimer -= Time.deltaTime;
+
+        // 4. Resupply Tick
+        UpdateResupply();
+
+        // 5. Screen & UI Updates
+        UpdateAmmoUI();
         UpdateDataScreens();
+        UpdateSarhStatusUI();
+    }
+
+    void UpdateResupply()
+    {
+        if (_sarhStartedResupply && sarhAmmo < maxAmmoCap)
+        {
+            _sarhResupplyTimer += Time.deltaTime;
+            if (_sarhResupplyTimer >= resupplyInterval)
+            {
+                sarhAmmo = Mathf.Min(sarhAmmo + 1, maxAmmoCap);
+                _sarhResupplyTimer = 0f;
+                _sarhFlashTimer = flashDuration;
+            }
+        }
+
+        if (_arhStartedResupply && arhAmmo < maxAmmoCap)
+        {
+            _arhResupplyTimer += Time.deltaTime;
+            if (_arhResupplyTimer >= resupplyInterval)
+            {
+                arhAmmo = Mathf.Min(arhAmmo + 1, maxAmmoCap);
+                _arhResupplyTimer = 0f;
+                _arhFlashTimer = flashDuration;
+            }
+        }
+
+        if (_autoStartedResupply && autoAmmo < maxAmmoCap)
+        {
+            _autoResupplyTimer += Time.deltaTime;
+            if (_autoResupplyTimer >= resupplyInterval)
+            {
+                autoAmmo = Mathf.Min(autoAmmo + 1, maxAmmoCap);
+                _autoResupplyTimer = 0f;
+                _autoFlashTimer = flashDuration;
+            }
+        }
     }
 
     public void FireSequence()
@@ -106,7 +183,7 @@ public class WeaponSystem : MonoBehaviour
         if (autoAmmo > 0 && _currentAutoCooldown <= 0f)
         {
             autoAmmo--;
-            UpdateAmmoUI();
+            _autoStartedResupply = true;
             _currentAutoCooldown = autoCooldownTime;
 
             GameObject m = Instantiate(autoMissilePrefab, launchPoint.position, Quaternion.identity);
@@ -122,7 +199,7 @@ public class WeaponSystem : MonoBehaviour
     {
         if (_activeSARHMissile != null) _activeSARHMissile.LoseLock();
         sarhAmmo--;
-        UpdateAmmoUI();
+        _sarhStartedResupply = true;
 
         GameObject m = Instantiate(sarhMissilePrefab, launchPoint.position, Quaternion.identity);
         _activeSARHMissile = m.GetComponent<PassiveMissile>();
@@ -132,20 +209,13 @@ public class WeaponSystem : MonoBehaviour
     void SpawnARH()
     {
         arhAmmo--;
-        UpdateAmmoUI();
+        _arhStartedResupply = true;
 
         float finalAngle = bearingComputer.currentBearing + firingAngleOffset;
         Quaternion launchRotation = Quaternion.Euler(0, 0, finalAngle);
 
         GameObject m = Instantiate(arhMissilePrefab, launchPoint.position, Quaternion.identity);
         m.GetComponent<ActiveHomingMissile>().Launch(launchRotation);
-    }
-
-    void UpdateAmmoUI()
-    {
-        if (sarhAmmoText != null) sarhAmmoText.text = "Interceptors: " + sarhAmmo.ToString("D2");
-        if (arhAmmoText != null) arhAmmoText.text = "Interceptors: " + arhAmmo.ToString("D2");
-        if (autoAmmoText != null) autoAmmoText.text = "Interceptors: " + autoAmmo.ToString("D2");
     }
 
     public void FireSelectedWeapon()
@@ -175,25 +245,70 @@ public class WeaponSystem : MonoBehaviour
         }
     }
 
-    public void PlayLaunchSound(WeaponSelector.WeaponType weaponType)
+    void UpdateAmmoUI()
     {
-    // Point this to the AudioManager's source instead of a local variable
-    if (AudioManager.Instance == null || AudioManager.Instance.launchSfxSource == null) return;
-
-    if (Time.time - _lastLaunchTime >= launchSoundCooldown)
-    {
-        AudioClip clipToPlay = null;
-        if (weaponType == WeaponSelector.WeaponType.SemiActive) clipToPlay = sarhLaunchClip;
-        else if (weaponType == WeaponSelector.WeaponType.Active) clipToPlay = arhLaunchClip;
-        else if (weaponType == WeaponSelector.WeaponType.AutoTarget) clipToPlay = autoLaunchClip;
-
-        if (clipToPlay != null)
+        if (sarhAmmoText != null)
         {
-            // Play through the AudioManager's source so it's already capped and scaled!
-            AudioManager.Instance.launchSfxSource.PlayOneShot(clipToPlay);
-            _lastLaunchTime = Time.time; 
+            string colorCode = GetAmmoColor(sarhAmmo, _sarhFlashTimer > 0, false);
+            sarhAmmoText.text = $"<color={colorCode}>Interceptors: {sarhAmmo:D2}</color>";
+        }
+
+        if (arhAmmoText != null)
+        {
+            string colorCode = GetAmmoColor(arhAmmo, _arhFlashTimer > 0, _currentArhCooldown > 0);
+            arhAmmoText.text = $"<color={colorCode}>Interceptors: {arhAmmo:D2}</color>";
+        }
+
+        if (autoAmmoText != null)
+        {
+            string colorCode = GetAmmoColor(autoAmmo, _autoFlashTimer > 0, _currentAutoCooldown > 0);
+            autoAmmoText.text = $"<color={colorCode}>Interceptors: {autoAmmo:D2}</color>";
         }
     }
+
+    string GetAmmoColor(int ammoCount, bool isFlashing, bool isReloading)
+    {
+        if (isFlashing) return "#00FF00";      
+        if (ammoCount <= 0) return "#FF0000";   
+        if (isReloading) return "#888888";      
+        return "#FFFFFF";                       
+    }
+
+    void UpdateSarhStatusUI()
+    {
+        if (sarhStatusText == null) return;
+
+        if (_activeSARHMissile == null)
+        {
+            sarhStatusText.text = "<color=#AAAAAA>WAITING</color>";
+        }
+        else if (_activeSARHMissile.IsTrackingTarget())
+        {
+            sarhStatusText.text = "<color=#00FF00>TRACKING</color>";
+        }
+        else
+        {
+            sarhStatusText.text = "<color=#FF0000>LOST TRACK</color>";
+        }
+    }
+
+    public void PlayLaunchSound(WeaponSelector.WeaponType weaponType)
+    {
+        if (AudioManager.Instance == null || AudioManager.Instance.launchSfxSource == null) return;
+
+        if (Time.time - _lastLaunchTime >= launchSoundCooldown)
+        {
+            AudioClip clipToPlay = null;
+            if (weaponType == WeaponSelector.WeaponType.SemiActive) clipToPlay = sarhLaunchClip;
+            else if (weaponType == WeaponSelector.WeaponType.Active) clipToPlay = arhLaunchClip;
+            else if (weaponType == WeaponSelector.WeaponType.AutoTarget) clipToPlay = autoLaunchClip;
+
+            if (clipToPlay != null)
+            {
+                AudioManager.Instance.launchSfxSource.PlayOneShot(clipToPlay);
+                _lastLaunchTime = Time.time; 
+            }
+        }
     }   
 
     void UpdateDataScreens()
