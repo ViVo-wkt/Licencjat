@@ -31,6 +31,9 @@ public class RadarContactInteraction : MonoBehaviour
 
     void Update()
     {
+        // Block target selection while paused (e.g. Warbook mode or Game Over)
+        if (Time.timeScale == 0f) return;
+
         if (Mouse.current == null) return;
         if (!Mouse.current.leftButton.wasPressedThisFrame) return;
 

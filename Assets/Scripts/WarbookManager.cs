@@ -39,39 +39,39 @@ public class WarbookManager : MonoBehaviour
     {
         new WarbookEntry { 
             title = "SARH MISSILE", 
-            description = "SEMI-ACTIVE RADAR HOMING\n\nRelies on continuous radar illumination from the station. Highly effective against medium-range targets but requires continuous beam tracking." 
+            description = "SEMI-ACTIVE RADAR HOMING\n\nRelies on continuous radar illumination from the station. Highly effective against medium-range targets but requires continuous beam tracking, else it loses focus. Only one missile can be guided at a time." 
         },
         new WarbookEntry { 
             title = "ARH MISSILE", 
-            description = "ACTIVE RADAR HOMING\n\nCarries an onboard seeker head for terminal guidance. Once launched toward the designated target bearing, it operates autonomously." 
+            description = "ACTIVE RADAR HOMING\n\nCarries an onboard seeker head for terminal guidance. Once launched toward the designated target bearing, it operates autonomously. The seeker cone is narrow, so the target must be within the optical reticle for successful acquisition." 
         },
         new WarbookEntry { 
             title = "AUTO MISSILE", 
-            description = "INFRARED SHORT-RANGE\n\nPassive thermal detection intended for close-in interception. Rapidly tracks targets acquired within the optical targeting reticle." 
+            description = "INFRARED SHORT-RANGE\n\nPassive thermal detection intended for close-in interception. Rapidly tracks targets acquired within the optical targeting reticle. Not modeled realistically in-game, the X/Y aiming axis mechanic aims to bring more variety to the gameplay." 
         },
         new WarbookEntry { 
             title = "BEAM RADAR", 
-            description = "DIRECTIONAL ILLUMINATOR\n\nHigh-power, narrow-cone antenna manually steered to designate hostiles and guide semi-active munitions." 
+            description = "DIRECTIONAL ILLUMINATOR\n\nHigh-power, narrow-cone antenna manually steered to designate hostiles and guide semi-active munitions. Provides precise range and bearing data but only in a narrow field of view. Requires operator input to maintain target lock." 
         },
         new WarbookEntry { 
             title = "SWEEP RADAR", 
-            description = "SURVEILLANCE RADAR\n\nContinuously rotating search beam providing early warning and periodic positional updates of airspace contacts." 
+            description = "SURVEILLANCE RADAR\n\nContinuously rotating search beam providing early warning and periodic positional updates of airspace contacts. Doesn't require operator input, but lacks the precision of a directional illuminator. Only updates data periodically, so fast-moving targets may be missed between sweeps."
         },
         new WarbookEntry { 
             title = "DRONE", 
-            description = "LOW-ALTITUDE RECON / LOITERING MUNITION\n\nSlow-moving, small radar cross-section. Low radar reflectivity makes early detection challenging." 
+            description = "LOW-ALTITUDE LOITERING MUNITION\n\nSlow-moving, small radar cross-section. Not a particularly dangerous threat on its own, but can be used to distract or overwhelm defenses, when used in large numbers. Multiple impacts are required to destroy the base." 
         },
         new WarbookEntry { 
             title = "CRUISE MISSILE", 
-            description = "STAND-OFF STRIKE WEAPON\n\nHigh-speed, low-altitude ingress designed to evade detection. Requires rapid interception upon identification." 
+            description = "STAND-OFF STRIKE WEAPON\n\nHigh-speed, low-altitude ingress designed to evade detection. Requires rapid interception upon identification, as it can reach the base in seconds. Can be launched from a variety of platforms, including aircraft and ships." 
         },
         new WarbookEntry { 
             title = "AIRLINER", 
-            description = "CIVILIAN FLIGHT TRAFFIC\n\nNon-combatant air traffic maintaining steady speed and altitude along predetermined corridors. Destruction results in severe command penalties." 
+            description = "CIVILIAN FLIGHT TRAFFIC\n\nNon-combatant air traffic maintaining steady speed and altitude along predetermined corridors. Destruction results in penalties, represented in-game by a hitpoint reduction to the base." 
         },
         new WarbookEntry { 
             title = "FIGHTER-BOMBER", 
-            description = "FAST ATTACK CRAFT\n\nHeavily armed hostile platform navigating directly toward base infrastructure. Employs speed and altitude variations." 
+            description = "FAST ATTACK CRAFT\n\nHeavily armed hostile platform navigating directly toward base infrastructure. Employs speed and altitude variations, as well as maneuvering techniques, aimed to evade incoming fire. A single bomb load is sufficient to destroy the base, so interception is critical." 
         }
     };
 
