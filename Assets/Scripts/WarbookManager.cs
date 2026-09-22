@@ -31,6 +31,9 @@ public class WarbookManager : MonoBehaviour
     public TMP_Text detailBodyText;
     public Button backButton;
 
+    [Header("Radar UI Link")]
+    public RadarUIManager radarUIManager;
+
     [Header("Database")]
     public List<WarbookEntry> database = new List<WarbookEntry>()
     {
@@ -124,7 +127,16 @@ public class WarbookManager : MonoBehaviour
     {
         Time.timeScale = 0f; // Pause gameplay
 
-        if (targetInfoScreen != null) targetInfoScreen.SetActive(false);
+        // Hide radar info panel & reticle while in Warbook
+        if (radarUIManager != null)
+        {
+            radarUIManager.HideForWarbook();
+        }
+        else if (targetInfoScreen != null)
+        {
+            targetInfoScreen.SetActive(false);
+        }
+
         if (warbookMasterPanel != null) warbookMasterPanel.SetActive(true);
 
         ShowListView();
@@ -135,6 +147,12 @@ public class WarbookManager : MonoBehaviour
         Time.timeScale = 1f; // Resume gameplay
 
         if (warbookMasterPanel != null) warbookMasterPanel.SetActive(false);
+
+        // Restore target info and selection indicator if a target was tracked
+        if (radarUIManager != null)
+        {
+            radarUIManager.RestoreFromWarbook();
+        }
     }
 
     public void ShowListView()

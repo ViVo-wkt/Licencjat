@@ -59,7 +59,8 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        if (PlayerPrefs.HasKey("AmbientVolume"))
-            SetMasterVolume(PlayerPrefs.GetFloat("AmbientVolume"));
+        // Default to 0.5f (50%) if no saved volume preference exists yet
+        float initialVolume = PlayerPrefs.GetFloat("AmbientVolume", 0.5f);
+        SetMasterVolume(initialVolume);
     }
 }

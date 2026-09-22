@@ -12537,6 +12537,7 @@ MonoBehaviour:
   detailTitleText: {fileID: 811415889}
   detailBodyText: {fileID: 738124891}
   backButton: {fileID: 806954879}
+  radarUIManager: {fileID: 546544476}
   database:
   - title: SARH MISSILE
     description: 'SEMI-ACTIVE RADAR HOMING

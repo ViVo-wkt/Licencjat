@@ -45,17 +45,19 @@ public class GameVolumeKnob : MonoBehaviour
         _myCollider2D = GetComponent<Collider2D>();
         _myCollider3D = GetComponent<Collider>();
 
+        // Match current volume to saved preference (or 50% default)
+        currentVolume = PlayerPrefs.GetFloat("AmbientVolume", 0.5f);
+
         if (volumeTubeFill != null)
         {
             _tubeStartScale = volumeTubeFill.localScale;
             _tubeStartPos = volumeTubeFill.localPosition;
         }
 
-        // Initialize physical knob position and yellow tube level on startup
+        // Initialize physical knob position and tube level
         ApplyRotation();
         ApplyTubeVisuals();
         
-        // --- AUDIO HOOK: INITIAL STARTUP ---
         if (AudioManager.Instance != null)
         {
             AudioManager.Instance.SetMasterVolume(currentVolume);

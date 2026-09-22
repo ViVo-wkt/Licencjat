@@ -93,6 +93,24 @@ public class RadarUIManager : MonoBehaviour
         }
     }
 
+    // Called when entering Warbook mode
+    public void HideForWarbook()
+    {
+        if (targetInfoPanel != null) targetInfoPanel.SetActive(false);
+        if (selectedTrackIndicator != null) selectedTrackIndicator.SetActive(false);
+    }
+
+    // Called when exiting Warbook mode
+    public void RestoreFromWarbook()
+    {
+        if (currentTarget != null)
+        {
+            if (targetInfoPanel != null) targetInfoPanel.SetActive(true);
+            if (selectedTrackIndicator != null) selectedTrackIndicator.SetActive(true);
+            UpdateDynamicData();
+            UpdateSelectionIndicatorPosition();
+        }
+    }
     private void UpdateSelectionIndicatorPosition()
     {
         if (selectedTrackIndicator == null || currentTarget == null) return;
