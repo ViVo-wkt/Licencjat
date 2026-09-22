@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\Zoom Level\ZoomPanel.cs" />
     <Compile Include="Assets\Scripts\Weapon 3\TargetingBracket.cs" />
     <Compile Include="Assets\Scripts\BearingControl.cs" />
+    <Compile Include="Assets\Scripts\WarbookManager.cs" />
     <Compile Include="Assets\Scripts\Weapon 2\ActiveMissile.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuButton.cs" />
     <Compile Include="Assets\Scripts\Radar\RadarUIManager.cs" />
