@@ -88,7 +88,6 @@ public class RadarKnob : MonoBehaviour
             rotationAmount = -deltaX * dragSensitivity;
             _lastMousePos = mouseScreenPos;
 
-            // --- CURSOR WARPING (Active during drag only) ---
             float screenWidth = Screen.width;
             float screenHeight = Screen.height;
             bool didWarp = false;
@@ -140,7 +139,6 @@ public class RadarKnob : MonoBehaviour
 
             _currentKnobAngle += rotationAmount;
 
-            // --- AUDIO RATCHET ---
             _accumulatedRotation += Mathf.Abs(rotationAmount);
             if (_accumulatedRotation >= degreesPerTick)
             {

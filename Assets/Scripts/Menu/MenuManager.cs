@@ -4,19 +4,16 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     [Header("Menu Groups")]
-    public GameObject mainMenuGroup; // Holds Start, Options, Quit
-    public GameObject optionsGroup;  // Holds Back, Volume Knob
+    public GameObject mainMenuGroup;
+    public GameObject optionsGroup;
     
-    // --- NEW SECTION ---
-    public GameObject gamemodeGroup; // Holds your new Slider Switch and final Play button
-    // -------------------
+    public GameObject gamemodeGroup;
 
     [Header("Settings")]
-    public string gameSceneName = "3D"; // Type the EXACT name of your main game scene here
+    public string gameSceneName = "3D";
 
     void Start()
     {
-        // Ensure we start cleanly on the main menu
         OpenMainMenu();
     }
 
@@ -34,7 +31,6 @@ public class MenuManager : MonoBehaviour
         if (gamemodeGroup != null) gamemodeGroup.SetActive(false);
     }
 
-    // --- NEW METHOD ---
     public void OpenGamemodePanel()
     {
         if (mainMenuGroup != null) mainMenuGroup.SetActive(false);

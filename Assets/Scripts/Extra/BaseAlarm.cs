@@ -27,7 +27,6 @@ public class BaseAlarm : MonoBehaviour
 
         if (_alarmTimer > 0)
         {
-            // --- FIXED: Uses unscaledDeltaTime to ignore Time.timeScale = 0f ---
             _alarmTimer -= Time.unscaledDeltaTime;
             
             float t = 1 - (_alarmTimer / alarmDuration);

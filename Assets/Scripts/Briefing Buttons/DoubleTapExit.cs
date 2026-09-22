@@ -26,10 +26,8 @@ public class DoubleTapExit : MonoBehaviour
     {
         _mainCam = Camera.main;
         
-        // Auto-grab the collider if it's on the same object
         if (buttonCollider == null) buttonCollider = GetComponent<Collider>();
 
-        // Ensure the warning light starts OFF
         if (warningLight != null) warningLight.SetActive(false);
     }
 
@@ -37,20 +35,16 @@ public class DoubleTapExit : MonoBehaviour
     {
         if (Mouse.current == null || _mainCam == null || buttonCollider == null) return;
 
-        // --- TIMER LOGIC ---
         if (_isArmed)
         {
-            // We specifically use unscaledDeltaTime here! 
-            // This ensures the timer ticks down even if the game is currently paused.
             _timer -= Time.unscaledDeltaTime; 
             
             if (_timer <= 0f)
             {
-                DisarmButton(); // Time ran out, reset the button
+                DisarmButton();
             }
         }
 
-        // --- CLICK DETECTION ---
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             Ray ray = _mainCam.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -60,12 +54,10 @@ public class DoubleTapExit : MonoBehaviour
                 {
                     if (!_isArmed)
                     {
-                        // First Click: Arm the button and turn on the light
                         ArmButton();
                     }
                     else
                     {
-                        // Second Click: Execute the exit!
                         ExecuteExit();
                     }
                 }
@@ -89,8 +81,6 @@ public class DoubleTapExit : MonoBehaviour
 
     private void ExecuteExit()
     {
-        // CRITICAL FIX: Reset time scale to normal before leaving the scene!
-        // If we don't do this, the Main Menu will load entirely frozen in time.
         Time.timeScale = 1f; 
         SceneManager.LoadScene(menuSceneName);
     }

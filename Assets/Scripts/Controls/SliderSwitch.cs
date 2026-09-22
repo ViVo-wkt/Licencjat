@@ -20,7 +20,6 @@ public class SliderSwitch : MonoBehaviour
     [Header("Output State")]
     public bool isOnRightSide = false;
 
-    // Fired whenever the switch state changes
     public event Action<bool> OnSwitchToggled;
 
     private Camera _cam;

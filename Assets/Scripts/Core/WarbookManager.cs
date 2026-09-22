@@ -17,14 +17,14 @@ public class WarbookManager : MonoBehaviour
     public SliderSwitch sliderSwitch;
 
     [Header("Screen Panels")]
-    public GameObject targetInfoScreen;   // Default radar target info HUD
-    public GameObject warbookMasterPanel; // Root parent of Warbook UI
-    public GameObject listSubPanel;       // Panel displaying list of entries
-    public GameObject detailSubPanel;     // Panel displaying title & description
+    public GameObject targetInfoScreen;
+    public GameObject warbookMasterPanel;
+    public GameObject listSubPanel;
+    public GameObject detailSubPanel;
 
     [Header("List View Elements")]
-    public Button[] listRowButtons;       // Fixed buttons on screen
-    public TMP_Text[] listRowTexts;       // Text labels on those buttons
+    public Button[] listRowButtons;
+    public TMP_Text[] listRowTexts;
 
     [Header("Detail View Elements")]
     public TMP_Text detailTitleText;
@@ -77,7 +77,6 @@ public class WarbookManager : MonoBehaviour
 
     void Start()
     {
-        // Wire up list button clicks
         for (int i = 0; i < listRowButtons.Length; i++)
         {
             int slotIndex = i;
@@ -107,7 +106,6 @@ public class WarbookManager : MonoBehaviour
             sliderSwitch.OnSwitchToggled -= HandleSwitchToggled;
         }
 
-        // Failsafe: restore time if destroyed while open
         Time.timeScale = 1f;
     }
 
@@ -125,9 +123,8 @@ public class WarbookManager : MonoBehaviour
 
     public void OpenWarbook()
     {
-        Time.timeScale = 0f; // Pause gameplay
+        Time.timeScale = 0f;
 
-        // Hide radar info panel & reticle while in Warbook
         if (radarUIManager != null)
         {
             radarUIManager.HideForWarbook();
@@ -144,11 +141,10 @@ public class WarbookManager : MonoBehaviour
 
     public void CloseWarbook()
     {
-        Time.timeScale = 1f; // Resume gameplay
+        Time.timeScale = 1f;
 
         if (warbookMasterPanel != null) warbookMasterPanel.SetActive(false);
 
-        // Restore target info and selection indicator if a target was tracked
         if (radarUIManager != null)
         {
             radarUIManager.RestoreFromWarbook();

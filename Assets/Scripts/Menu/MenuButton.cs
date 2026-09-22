@@ -18,11 +18,9 @@ public class MenuButton : MonoBehaviour
     public Texture2D unpressedTexture;
     public Texture2D pressedTexture;
 
-    // --- NEW: AUDIO SLOT ---
     [Header("Audio")]
     [Tooltip("Leave blank to use the default click, or drag a custom SFX here!")]
     public AudioClip customButtonSound;
-    // -----------------------
 
     [Header("Settings")]
     public float actionDelay = 0.2f;
@@ -42,7 +40,6 @@ public class MenuButton : MonoBehaviour
         _col3D = GetComponent<Collider>();
         _cam = Camera.main;
         
-        // Setup initial state
         if (_spriteRenderer != null && unpressedSprite != null)
             _spriteRenderer.sprite = unpressedSprite;
 
@@ -77,24 +74,18 @@ public class MenuButton : MonoBehaviour
     {
         _isPressed = true;
 
-        // --- NEW: PLAY THE CLICK SOUND INSTANTLY ---
         if (AudioManager.Instance != null) AudioManager.Instance.PlayClickSound(customButtonSound);
-        // -------------------------------------------
         
-        // 1. Swap to pressed visual (2D & 3D)
         if (_spriteRenderer != null && pressedSprite != null)
             _spriteRenderer.sprite = pressedSprite;
 
         if (buttonMeshRenderer != null && pressedTexture != null)
             buttonMeshRenderer.material.mainTexture = pressedTexture;
 
-        // 2. Wait for the delay
         yield return new WaitForSeconds(actionDelay);
 
-        // 3. Execute the assigned action!
         onClickAction.Invoke();
 
-        // 4. Swap back to normal visual (in case this is the Options/Back button)
         if (_spriteRenderer != null && unpressedSprite != null)
             _spriteRenderer.sprite = unpressedSprite;
 

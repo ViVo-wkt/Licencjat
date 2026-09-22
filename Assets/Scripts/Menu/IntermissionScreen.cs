@@ -13,16 +13,13 @@ public class IntermissionScreen : MonoBehaviour
 
     void Start()
     {
-        // Start the countdown the moment the scene loads
         StartCoroutine(WaitAndLoad());
     }
 
     IEnumerator WaitAndLoad()
     {
-        // Wait for real-world seconds
         yield return new WaitForSeconds(displayTime);
         
-        // Load the actual game!
         SceneManager.LoadScene(nextSceneName);
     }
 }

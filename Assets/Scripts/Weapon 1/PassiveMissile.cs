@@ -49,7 +49,6 @@ public class PassiveMissile : MonoBehaviour
     {
         float zoomFactor = (RadarZoomSystem.Instance != null) ? RadarZoomSystem.Instance.GetSpeedMultiplier() : 1f;
 
-        // Forward speed IS affected by visual map scale
         transform.Translate(Vector3.up * speed * zoomFactor * Time.deltaTime);
 
         if (transform.position.magnitude > maxRadarRange)
@@ -70,8 +69,6 @@ public class PassiveMissile : MonoBehaviour
                 Vector2 direction = (Vector2)_target.transform.position - (Vector2)transform.position;
                 float rotateAmount = Vector3.Cross(direction, transform.up).z;
 
-                // --- THE FIX ---
-                // Turn speed is NEVER affected by map scale!
                 transform.Rotate(0, 0, -rotateAmount * turnSpeed * Time.deltaTime);
 
                 if (Vector2.Distance(transform.position, _target.transform.position) < killDistance)
@@ -102,7 +99,6 @@ public class PassiveMissile : MonoBehaviour
             {
                 if (nav != null && !nav.isHostile)
                 {
-                    // Penalize civilian kill with dedicated sound effect and -1 HP
                     GameManager.Instance.PenalizeCivilianCasualty();
                 }
                 else

@@ -79,7 +79,6 @@ public class WeaponSystem : MonoBehaviour
 
     void Update()
     {
-        // 1. ARH Cooldown
         if (_currentArhCooldown > 0)
         {
             _currentArhCooldown -= Time.deltaTime;
@@ -91,7 +90,6 @@ public class WeaponSystem : MonoBehaviour
             arhCooldownText.text = "Ready to fire";
         }
 
-        // 2. AUTO Cooldown
         if (_currentAutoCooldown > 0)
         {
             _currentAutoCooldown -= Time.deltaTime;
@@ -103,15 +101,12 @@ public class WeaponSystem : MonoBehaviour
             autoCooldownText.text = "Ready to fire";
         }
 
-        // 3. Flash Timers
         if (_sarhFlashTimer > 0) _sarhFlashTimer -= Time.deltaTime;
         if (_arhFlashTimer > 0) _arhFlashTimer -= Time.deltaTime;
         if (_autoFlashTimer > 0) _autoFlashTimer -= Time.deltaTime;
 
-        // 4. Resupply Tick
         UpdateResupply();
 
-        // 5. Screen & UI Updates
         UpdateAmmoUI();
         UpdateDataScreens();
         UpdateSarhStatusUI();

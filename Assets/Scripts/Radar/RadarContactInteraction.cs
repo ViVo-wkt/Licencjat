@@ -31,13 +31,11 @@ public class RadarContactInteraction : MonoBehaviour
 
     void Update()
     {
-        // Block target selection while paused (e.g. Warbook mode or Game Over)
         if (Time.timeScale == 0f) return;
 
         if (Mouse.current == null) return;
         if (!Mouse.current.leftButton.wasPressedThisFrame) return;
 
-        // Prevent clicking through UI buttons
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
         {
             return; 
@@ -48,7 +46,6 @@ public class RadarContactInteraction : MonoBehaviour
         
         TargetSignature validTarget = null;
 
-        // --- METHOD 1: Direct Collider Raycast ---
         RaycastHit2D[] hits = Physics2D.RaycastAll(clickWorldPos, Vector2.zero, Mathf.Infinity, contactLayer);
 
         foreach (var hit in hits)
@@ -66,9 +63,6 @@ public class RadarContactInteraction : MonoBehaviour
             }
         }
 
-        // --- METHOD 2: Check Visible Radar Blips ---
-        // If the raycast missed the physical enemy body (because it flew ahead of its last blip ping),
-        // find the visible blip closest to the click point!
         if (validTarget == null)
         {
             TargetSignature[] allTargets = FindObjectsByType<TargetSignature>(FindObjectsSortMode.None);
@@ -76,10 +70,8 @@ public class RadarContactInteraction : MonoBehaviour
 
             foreach (var target in allTargets)
             {
-                // Only allow selecting contacts that are currently rendered/visible on radar
                 if (target != null && target.IsVisibleOnRadar())
                 {
-                    // Check distance to the visible blip's coordinates
                     float dist = Vector2.Distance(clickWorldPos, (Vector2)target.lastKnownPosition);
                     if (dist < closestDist)
                     {
@@ -90,7 +82,6 @@ public class RadarContactInteraction : MonoBehaviour
             }
         }
 
-        // --- APPLY SELECTION ---
         if (validTarget != null)
         {
             Debug.Log($"<color=cyan>[Radar]</color> Selected track: {validTarget.gameObject.name}");

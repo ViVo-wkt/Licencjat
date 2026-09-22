@@ -45,7 +45,6 @@ public class GameVolumeKnob : MonoBehaviour
         _myCollider2D = GetComponent<Collider2D>();
         _myCollider3D = GetComponent<Collider>();
 
-        // Match current volume to saved preference (or 50% default)
         currentVolume = PlayerPrefs.GetFloat("AmbientVolume", 0.5f);
 
         if (volumeTubeFill != null)
@@ -54,7 +53,6 @@ public class GameVolumeKnob : MonoBehaviour
             _tubeStartPos = volumeTubeFill.localPosition;
         }
 
-        // Initialize physical knob position and tube level
         ApplyRotation();
         ApplyTubeVisuals();
         
@@ -66,7 +64,6 @@ public class GameVolumeKnob : MonoBehaviour
 
     void Update()
     {
-        // Cancel interaction if time is frozen (e.g. Briefing Screen)
         if (Time.timeScale == 0f) 
         {
             _isDragging = false;
@@ -78,7 +75,6 @@ public class GameVolumeKnob : MonoBehaviour
         bool isHovering = false;
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
 
-        // 3D & 2D Raycasting to detect hover
         if (_myCollider3D != null)
         {
             Ray ray = _cam.ScreenPointToRay(mouseScreenPos);
@@ -93,7 +89,6 @@ public class GameVolumeKnob : MonoBehaviour
             if (_myCollider2D.OverlapPoint(mouseWorldPos)) isHovering = true;
         }
 
-        // Input Detection
         if (isHovering && Mouse.current.leftButton.wasPressedThisFrame)
         {
             _isDragging = true;
@@ -105,10 +100,8 @@ public class GameVolumeKnob : MonoBehaviour
             _isDragging = false;
         }
 
-        // Volume Change Logic
         float volumeDelta = 0f;
 
-        // Scroll Wheel Interaction
         if (isHovering)
         {
             float scrollValue = Mouse.current.scroll.ReadValue().y;
@@ -118,7 +111,6 @@ public class GameVolumeKnob : MonoBehaviour
             }
         }
 
-        // Mouse Drag Interaction
         if (_isDragging)
         {
             float deltaX = mouseScreenPos.x - _lastMousePos.x;
@@ -126,16 +118,14 @@ public class GameVolumeKnob : MonoBehaviour
             _lastMousePos = mouseScreenPos;
         }
 
-        // Apply the changes if the user moved the mouse/scrollwheel
         if (volumeDelta != 0f)
         {
             currentVolume += volumeDelta;
-            currentVolume = Mathf.Clamp01(currentVolume); // Locks it exactly between 0.0 and 1.0
+            currentVolume = Mathf.Clamp01(currentVolume);
 
             ApplyRotation();
             ApplyTubeVisuals();
 
-            // --- AUDIO HOOK: LIVE UPDATE ---
             if (AudioManager.Instance != null)
             {
                 AudioManager.Instance.SetMasterVolume(currentVolume);
@@ -143,7 +133,6 @@ public class GameVolumeKnob : MonoBehaviour
         }
     }
 
-    // Rotates the physical 3D knob base
     void ApplyRotation()
     {
         float targetAngle = Mathf.Lerp(minAngle, maxAngle, currentVolume);
@@ -156,7 +145,6 @@ public class GameVolumeKnob : MonoBehaviour
         transform.localEulerAngles = rot;
     }
 
-    // Shrinks the yellow inner cylinder and moves it to simulate "draining"
     void ApplyTubeVisuals()
     {
         if (volumeTubeFill != null)
@@ -182,7 +170,6 @@ public class GameVolumeKnob : MonoBehaviour
 
             volumeTubeFill.localScale = newScale;
 
-            // Slide the base to keep it planted
             if (hasCenterPivot)
             {
                 float directionMultiplier = invertDrainDirection ? 1f : -1f;

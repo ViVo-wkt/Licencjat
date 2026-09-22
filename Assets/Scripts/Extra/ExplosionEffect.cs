@@ -3,8 +3,8 @@ using UnityEngine;
 public class ExplosionEffect : MonoBehaviour
 {
     [Header("Settings")]
-    public float lifetime = 0.5f; // How long the flash lasts
-    public float expandSpeed = 5f; // How fast it grows
+    public float lifetime = 0.5f;
+    public float expandSpeed = 5f;
 
     void Start()
     {

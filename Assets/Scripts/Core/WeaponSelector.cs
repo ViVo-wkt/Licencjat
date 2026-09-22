@@ -16,7 +16,6 @@ public class WeaponSelector : MonoBehaviour
     public Sprite unpressedSprite;
     public Sprite pressedSprite;
 
-    // --- UPDATED SECTION ---
     [Header("3D Visuals (Optional)")]
     [Tooltip("Drag your new 3D button models here in the exact same order as the 2D renderers!")]
     public Renderer[] buttonMeshRenderers; 
@@ -24,7 +23,6 @@ public class WeaponSelector : MonoBehaviour
     [Tooltip("Drag your raw .jpg / .png textures here!")]
     public Texture2D unpressedTexture;
     public Texture2D pressedTexture;
-    // -----------------------
 
     [Header("Indicators")]
     public GameObject arhIndicator;
@@ -65,14 +63,11 @@ public class WeaponSelector : MonoBehaviour
     {
         for (int i = 0; i < buttonRenderers.Length; i++)
         {
-            // 1. Update old 2D Sprites
             if (buttonRenderers[i] != null)
                 buttonRenderers[i].sprite = (i == (int)currentWeapon) ? pressedSprite : unpressedSprite;
                 
-            // 2. Update new 3D Meshes with raw Textures!
             if (buttonMeshRenderers != null && i < buttonMeshRenderers.Length && buttonMeshRenderers[i] != null)
             {
-                // We access the mainTexture property of the model's underlying material directly
                 Texture2D targetTex = (i == (int)currentWeapon) ? pressedTexture : unpressedTexture;
                 buttonMeshRenderers[i].material.mainTexture = targetTex;
             }

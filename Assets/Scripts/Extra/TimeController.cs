@@ -22,10 +22,8 @@ public class TimeController : MonoBehaviour
     [Tooltip("Keep checked if the cylinder shrinks towards its middle.")]
     public bool hasCenterPivot = true; 
     
-    // --- THE FIX ---
     [Tooltip("If the tube shrinks from both sides, tweak this number! (Standard Unity cylinders are 2)")]
     public float modelLengthMultiplier = 2f; 
-    // ---------------
 
     [Tooltip("Check this if the tube drains from the wrong side!")]
     public bool invertDrainDirection = false;
@@ -138,7 +136,6 @@ public class TimeController : MonoBehaviour
                 float directionMultiplier = invertDrainDirection ? 1f : -1f;
                 Vector3 newPos = _tubeStartPos;
 
-                // We multiply the math by the length of your specific 3D model!
                 if (tubeShrinkAxis == ShrinkAxis.X) newPos.x += (shrinkAmount / 2f) * modelLengthMultiplier * directionMultiplier;
                 else if (tubeShrinkAxis == ShrinkAxis.Y) newPos.y += (shrinkAmount / 2f) * modelLengthMultiplier * directionMultiplier;
                 else if (tubeShrinkAxis == ShrinkAxis.Z) newPos.z += (shrinkAmount / 2f) * modelLengthMultiplier * directionMultiplier;

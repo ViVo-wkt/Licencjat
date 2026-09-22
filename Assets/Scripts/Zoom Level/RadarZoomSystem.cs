@@ -50,7 +50,6 @@ public class RadarZoomSystem : MonoBehaviour
         currentLevelIndex = index;
         float newScale = zoomLevels[currentLevelIndex].rangeScale;
 
-        // The '?' cleanly checks if anyone is listening before invoking the event
         OnZoomChanged?.Invoke(oldScale, newScale); 
     }
 

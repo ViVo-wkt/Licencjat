@@ -47,10 +47,8 @@ public class TargetingBracket : MonoBehaviour
     {
         float ratio = oldScale / newScale;
 
-        // 1. Scale visual size
         transform.localScale = transform.localScale * ratio;
 
-        // 2. Scale the wheel input values so the bracket's position translates with the targets
         if (xWheel != null)
         {
             xWheel.ForceValue(xWheel.currentValue * ratio);

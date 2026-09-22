@@ -3,11 +3,11 @@ using UnityEngine;
 public class ActiveRadarSensor : MonoBehaviour
 {
     [Header("Settings")]
-    public float detectionRadius = 150.0f; // Cranked up to catch off-screen enemies!
+    public float detectionRadius = 150.0f;
     public float coneAngle = 30f; 
     
     [Tooltip("Check this box if the beam locks onto targets behind it!")]
-    public bool flipDetectionDirection = false; // NEW TOGGLE
+    public bool flipDetectionDirection = false;
 
     private GameObject _currentTarget;
 
@@ -25,7 +25,6 @@ public class ActiveRadarSensor : MonoBehaviour
 
             if (targetSig != null)
             {
-                // --- THE FIX: Vector Math ---
                 Vector2 dirToTarget = targetSig.transform.position - transform.position;
                 Vector2 beamForward = flipDetectionDirection ? -transform.up : (Vector2)transform.up;
 
@@ -60,7 +59,6 @@ public class ActiveRadarSensor : MonoBehaviour
         Vector2 dirToTarget = enemy.transform.position - transform.position;
         if (dirToTarget.magnitude > detectionRadius) return false;
 
-        // Ensure the tracking check ALSO uses the flipped math!
         Vector2 beamForward = flipDetectionDirection ? -transform.up : (Vector2)transform.up;
         float angleToTarget = Vector2.Angle(beamForward, dirToTarget);
         

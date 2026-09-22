@@ -36,7 +36,6 @@ public class BriefingManager : MonoBehaviour
         if (briefingTextDisplay != null) briefingTextDisplay.text = messageText;
         if (messageDiodeLight != null) messageDiodeLight.SetActive(true);
 
-        // One-time sound latch
         if (notificationSound != null && !_hasPlayedIntroSound)
         {
             notificationSound.Play();       

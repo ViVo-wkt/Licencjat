@@ -44,7 +44,6 @@ public class BriefingAcknowledgeObject : MonoBehaviour
 
             if (clickedMe)
             {
-                // --- THIS IS THE ONLY CHANGED LINE ---
                 briefingManager.ToggleMessage();
             }
         }

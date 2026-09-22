@@ -24,7 +24,6 @@ public class BearingControl : MonoBehaviour
     [Tooltip("How fast the heavy dish physically turns (Degrees per second)")]
     public float maxTurnSpeed = 45f; 
 
-    // --- NEW: AUDIO SECTION ---
     [Header("Audio: General")]
     [Tooltip("Drag a satisfying clack or heavy switch sound here.")]
     public AudioClip turnSound;
@@ -39,7 +38,6 @@ public class BearingControl : MonoBehaviour
     public float settleTime = 0.15f;
     private bool _hasPlayedFlickSound = true;
     private float _lastMoveTime = 0f;
-    // --------------------------
 
     [Header("Output")]
     public float currentBearing = 0f;
@@ -61,7 +59,6 @@ public class BearingControl : MonoBehaviour
 
     void Update()
     {
-        // --- TIME GATEKEEPER ---
         if (Time.timeScale == 0f)
         {
             _isDragging = false;
@@ -77,7 +74,6 @@ public class BearingControl : MonoBehaviour
 
         bool isHovering = (_myCollider != null && _myCollider.OverlapPoint(mouseWorldPos));
 
-        // Keep track of where we were before this frame calculated any movement
         float previousTarget = _targetBearing;
 
         if (inputType == ControlScheme.ScrollAndDrag)
@@ -112,7 +108,6 @@ public class BearingControl : MonoBehaviour
                 transform.rotation = Quaternion.Euler(currentEuler.x, currentEuler.y, currentEuler.z + deltaAngle);
                 UpdateTargetBearingFromKnob();
 
-                // AUDIO: RATCHET LOGIC (For Scroll & Drag)
                 _accumulatedRotation += Mathf.Abs(deltaAngle);
                 if (_accumulatedRotation >= degreesPerTick)
                 {
@@ -122,7 +117,7 @@ public class BearingControl : MonoBehaviour
                 }
             }
         }
-        else // PointAndPull Mode
+        else
         {
             if (clickDown && isHovering) _isDragging = true;
             if (clickUp) _isDragging = false;
@@ -138,25 +133,21 @@ public class BearingControl : MonoBehaviour
                 _targetBearing = angle - 90f + lineAngleOffset;
             }
 
-            // AUDIO: FLICK & SETTLE LOGIC (For Point & Pull)
-            // 1. If the target bearing changed by even a fraction of a degree, the player is actively moving it
             if (Mathf.Abs(Mathf.DeltaAngle(previousTarget, _targetBearing)) > 0.05f)
             {
                 _lastMoveTime = Time.time;
-                _hasPlayedFlickSound = false; // Arm the sound!
+                _hasPlayedFlickSound = false;
             }
 
-            // 2. If the sound is armed, AND the player either let go OR held perfectly still for the Settle Time...
             if (!_hasPlayedFlickSound && (!_isDragging || Time.time - _lastMoveTime >= settleTime))
             {
                 if (AudioManager.Instance != null)
                     AudioManager.Instance.PlayClickSound(turnSound);
                 
-                _hasPlayedFlickSound = true; // Lock the sound so it doesn't double-play
+                _hasPlayedFlickSound = true;
             }
         }
 
-        // Smoothly move the heavy machinery toward the target bearing
         currentBearing = Mathf.MoveTowardsAngle(currentBearing, _targetBearing, maxTurnSpeed * Time.deltaTime);
 
         if (radarIndicatorLine != null)

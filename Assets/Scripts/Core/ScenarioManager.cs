@@ -8,7 +8,7 @@ public class ScenarioManager : MonoBehaviour
     {
         public string name;
         public GameObject prefab;
-        [Range(1, 100)] public int spawnWeight; // Higher number = more frequent
+        [Range(1, 100)] public int spawnWeight;
     }
 
     [Header("Threat Definition")]
@@ -35,14 +35,11 @@ public class ScenarioManager : MonoBehaviour
     {
         if (possibleThreats.Length == 0) return;
 
-        // 1. Calculate Total Weight
         int totalWeight = 0;
         foreach (var threat in possibleThreats) totalWeight += threat.spawnWeight;
 
-        // 2. Pick Random Value
         int randomValue = Random.Range(0, totalWeight);
 
-        // 3. Find which enemy corresponds to that value
         GameObject selectedPrefab = null;
         int currentWeightSum = 0;
 
@@ -56,7 +53,6 @@ public class ScenarioManager : MonoBehaviour
             }
         }
 
-        // 4. Spawn logic
         if (selectedPrefab != null)
         {
             float angle = Random.Range(0f, 360f);

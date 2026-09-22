@@ -26,9 +26,6 @@ public class ImageOverlayController : MonoBehaviour
     {
         if (Mouse.current == null || Keyboard.current == null || _mainCam == null || buttonCollider == null || overlayPanel == null) return;
 
-        // --- SAFETY GATEKEEPER ---
-        // If the game is already paused by something ELSE (like the Briefing Screen), 
-        // we completely ignore clicks so the player doesn't accidentally overlap screens!
         if (Time.timeScale == 0f && !_isShowing) return;
 
         bool clickDown = Mouse.current.leftButton.wasPressedThisFrame;
@@ -37,7 +34,6 @@ public class ImageOverlayController : MonoBehaviour
 
         bool isHovering = false;
         
-        // We only cast a ray to find the button if the player clicks AND the image isn't currently blocking the screen
         if (clickDown && !_isShowing) 
         {
             Ray ray = _mainCam.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -47,7 +43,6 @@ public class ImageOverlayController : MonoBehaviour
             }
         }
 
-        // --- MODE 1: HOLD TO VIEW ---
         if (mode == InteractionMode.HoldToView)
         {
             if (isHovering && clickDown)
@@ -56,19 +51,16 @@ public class ImageOverlayController : MonoBehaviour
             }
             else if (clickUp && _isShowing) 
             {
-                // If they let go of the mouse anywhere, hide it and unpause
                 SetOverlay(false);
             }
         }
         
-        // --- MODE 2: CLICK TO TOGGLE ---
         else if (mode == InteractionMode.ClickToToggle)
         {
             if (isHovering && clickDown && !_isShowing)
             {
                 SetOverlay(true);
             }
-            // If it's already showing, clicking ANYWHERE or pressing ESC will close it!
             else if ((clickDown || escPressed) && _isShowing)
             {
                 SetOverlay(false);
@@ -81,8 +73,6 @@ public class ImageOverlayController : MonoBehaviour
         _isShowing = state;
         overlayPanel.SetActive(state);
         
-        // --- THE TIME CONTROLLER ---
-        // If the state is true (showing), time is 0 (paused). Otherwise, time is 1 (normal speed).
         Time.timeScale = state ? 0f : 1f;
     }
 }

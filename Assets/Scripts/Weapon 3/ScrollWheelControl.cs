@@ -23,7 +23,6 @@ public class ScrollWheelControl : MonoBehaviour
     public Vector3 rotationAxis = Vector3.right;
     public float maxRotationAngle = 360f;
 
-    // --- NEW: AUDIO SECTION ---
     [Header("Audio")]
     [Tooltip("Drag a satisfying tick/click SFX here.")]
     public AudioClip turnSound;
@@ -32,7 +31,6 @@ public class ScrollWheelControl : MonoBehaviour
     public float degreesPerTick = 15f; 
     
     private float _accumulatedRotation = 0f;
-    // --------------------------
 
     private bool _isDragging = false;
     private Collider _myCollider;
@@ -43,14 +41,12 @@ public class ScrollWheelControl : MonoBehaviour
         _myCollider = GetComponent<Collider>();
         _mainCam = Camera.main;
         
-        // Sync starting position
         _targetValue = currentValue;
         UpdateVisualRotation();
     }
 
     void Update()
     {
-        // --- TIME GATEKEEPER ---
         if (Time.timeScale == 0f)
         {
             _isDragging = false;
@@ -95,7 +91,6 @@ public class ScrollWheelControl : MonoBehaviour
 
         if (valueChange != 0f)
         {
-            // Calculate how much we actually CAN move before hitting the clamp
             float oldTarget = _targetValue;
             _targetValue += valueChange;
             _targetValue = Mathf.Clamp(_targetValue, -1f, 1f);
@@ -104,8 +99,6 @@ public class ScrollWheelControl : MonoBehaviour
 
             if (actualChange > 0f)
             {
-                // --- AUDIO RATCHET LOGIC ---
-                // Convert the -1 to 1 value change into physical degrees
                 float rotationDelta = actualChange * maxRotationAngle;
                 _accumulatedRotation += rotationDelta;
 
@@ -116,14 +109,9 @@ public class ScrollWheelControl : MonoBehaviour
                     
                     _accumulatedRotation %= degreesPerTick;
                 }
-                // ---------------------------
-
-                // Instantly rotate the physical wheel so input feels highly responsive
                 UpdateVisualRotation();
             }
         }
-
-        // Smoothly move the heavy targeting bracket towards the target
         currentValue = Mathf.MoveTowards(currentValue, _targetValue, maxMoveSpeed * Time.deltaTime);
     }
 

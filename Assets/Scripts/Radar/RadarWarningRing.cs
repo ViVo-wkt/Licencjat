@@ -43,18 +43,11 @@ public class RadarWarningRing : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Flashes the diode closest to the provided world position relative to center (0,0).
-    /// </summary>
     public void NotifyThreatSpawn(Vector2 spawnPosition)
     {
-        // Bearing in degrees: 0° is North (+Y), 90° is East (+X)
         float bearing = Mathf.Atan2(spawnPosition.x, spawnPosition.y) * Mathf.Rad2Deg;
         if (bearing < 0f) bearing += 360f;
 
-        // Since Diode 0 centers at 15° (covering 0° to 30°),
-        // Diode 1 centers at 45° (covering 30° to 60°), etc.,
-        // dividing directly by 30 gives the exact diode index:
         int sectorIndex = Mathf.FloorToInt(bearing / 30f) % 12;
 
         FlashDiode(sectorIndex);

@@ -7,7 +7,7 @@ public class RadarUIManager : MonoBehaviour
     public GameObject targetInfoPanel; 
 
     [Header("Text Fields")]
-    public TMP_Text trackNameText; // <-- Displays "TRACK 01", "TRACK 02", etc.
+    public TMP_Text trackNameText;
     public TMP_Text distanceText;
     public TMP_Text speedText;
     public TMP_Text altitudeText;
@@ -93,14 +93,12 @@ public class RadarUIManager : MonoBehaviour
         }
     }
 
-    // Called when entering Warbook mode
     public void HideForWarbook()
     {
         if (targetInfoPanel != null) targetInfoPanel.SetActive(false);
         if (selectedTrackIndicator != null) selectedTrackIndicator.SetActive(false);
     }
 
-    // Called when exiting Warbook mode
     public void RestoreFromWarbook()
     {
         if (currentTarget != null)
@@ -117,9 +115,8 @@ public class RadarUIManager : MonoBehaviour
 
         bool isLive = currentTarget.IsContinuouslyIlluminated();
 
-        // If continuously illuminated, follow real position; otherwise lock to the frozen blip dot
         Vector3 targetPos = isLive ? currentTarget.transform.position : currentTarget.lastKnownPosition;
-        targetPos.z = -0.15f; // Renders slightly in front of radar contacts
+        targetPos.z = -0.15f;
 
         selectedTrackIndicator.transform.position = targetPos;
     }
@@ -130,7 +127,6 @@ public class RadarUIManager : MonoBehaviour
 
         bool isLive = currentTarget.IsContinuouslyIlluminated();
 
-        // 1. Distance Calculation
         if (distanceText != null)
         {
             float visualDistance = isLive 
@@ -148,21 +144,18 @@ public class RadarUIManager : MonoBehaviour
                 if (currentZoomScale <= 0f) currentZoomScale = 1f; 
             }
 
-            // MULTIPLY by currentZoomScale to cancel out the visual compression:
             float trueWorldDistance = visualDistance * currentZoomScale;
             float calculatedDistance = trueWorldDistance * distanceMultiplier;
 
             distanceText.text = "DIST:\n" + calculatedDistance.ToString("F1") + " " + distanceUnit;
         }
 
-        // 2. Speed Readout
         if (speedText != null)
         {
             int displaySpeed = isLive ? currentTarget.GetCurrentSpeed() : currentTarget.lastKnownSpeed;
             speedText.text = "SPD:\n" + displaySpeed + " " + speedUnit;
         }
 
-        // 3. Altitude Readout
         if (altitudeText != null)
         {
             int displayAlt = isLive ? currentTarget.GetCurrentAltitude() : currentTarget.lastKnownAltitude;

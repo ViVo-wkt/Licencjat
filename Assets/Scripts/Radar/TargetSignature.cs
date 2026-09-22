@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class TargetSignature : MonoBehaviour
 {
-    // Global counter so tracks are numbered chronologically
     private static int _globalTrackCounter = 1;
 
     [Header("Flight Data")]
@@ -40,7 +39,6 @@ public class TargetSignature : MonoBehaviour
 
     void Awake()
     {
-        // 1. Assign sequential Track designation
         trackDesignation = $"TRACK {_globalTrackCounter:D2}";
         _globalTrackCounter++;
 
@@ -118,7 +116,6 @@ public class TargetSignature : MonoBehaviour
 
     public int GetCurrentSpeed()
     {
-        // Civilians do not fluctuate in speed
         if (IsCivilian()) return speed;
 
         float wave = Mathf.Sin((Time.time * 0.8f) + _noiseSeed) * speedFluctuation;
@@ -127,7 +124,6 @@ public class TargetSignature : MonoBehaviour
 
     public int GetCurrentAltitude()
     {
-        // Civilians do not fluctuate in altitude
         if (IsCivilian()) return altitude;
 
         float wave = Mathf.Cos((Time.time * 0.4f) + _noiseSeed) * altitudeFluctuation;

@@ -26,24 +26,18 @@ public class MenuLaunchSequencer : MonoBehaviour
     {
         if (modeSwitch == null || finalPlayButton == null) return;
 
-        // Check if the player has pulled the switch to the right
         bool isArmed = modeSwitch.isOnRightSide;
 
-        // Turn the button's ability to be clicked ON or OFF
         finalPlayButton.enabled = isArmed;
 
-        // --- 3D MATERIAL SWAPPING ---
-        // Setting '.material' automatically targets Element 0 of the Mesh Renderer!
         
         if (armedLightRenderer != null)
         {
-            // If armed is true, use active material. Otherwise, use inactive.
             armedLightRenderer.material = isArmed ? activeMaterial : inactiveMaterial;
         }
 
         if (lockedLightRenderer != null)
         {
-            // If armed is true, the locked light should be OFF. Otherwise, it should be ON.
             lockedLightRenderer.material = isArmed ? inactiveMaterial : activeMaterial;
         }
     }
