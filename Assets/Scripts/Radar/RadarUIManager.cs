@@ -7,9 +7,14 @@ public class RadarUIManager : MonoBehaviour
     public GameObject targetInfoPanel; 
 
     [Header("Text Fields")]
+    public TMP_Text trackNameText; // <-- Displays "TRACK 01", "TRACK 02", etc.
     public TMP_Text distanceText;
     public TMP_Text speedText;
     public TMP_Text altitudeText;
+
+    [Header("Selection Reticle (2D Circle Object)")]
+    [Tooltip("Drag the 2D selection circle/bracket object that sits over the selected blip.")]
+    public GameObject selectedTrackIndicator;
 
     [Header("Formatting Settings")]
     public float distanceMultiplier = 10f; 
@@ -25,6 +30,11 @@ public class RadarUIManager : MonoBehaviour
         {
             targetInfoPanel.SetActive(false);
         }
+
+        if (selectedTrackIndicator != null)
+        {
+            selectedTrackIndicator.SetActive(false);
+        }
     }
 
     void Update()
@@ -38,6 +48,7 @@ public class RadarUIManager : MonoBehaviour
             else
             {
                 UpdateDynamicData();
+                UpdateSelectionIndicatorPosition();
             }
         }
     }
@@ -47,21 +58,52 @@ public class RadarUIManager : MonoBehaviour
         if (target == null || targetInfoPanel == null) return;
 
         currentTarget = target;
+
+        if (trackNameText != null)
+        {
+            trackNameText.text = currentTarget.trackDesignation;
+        }
+
         UpdateDynamicData();
+        UpdateSelectionIndicatorPosition();
         
         if (!targetInfoPanel.activeSelf) 
         {
             targetInfoPanel.SetActive(true);
+        }
+
+        if (selectedTrackIndicator != null)
+        {
+            selectedTrackIndicator.SetActive(true);
         }
     }
 
     public void DeselectTarget()
     {
         currentTarget = null;
+
         if (targetInfoPanel != null)
         {
             targetInfoPanel.SetActive(false);
         }
+
+        if (selectedTrackIndicator != null)
+        {
+            selectedTrackIndicator.SetActive(false);
+        }
+    }
+
+    private void UpdateSelectionIndicatorPosition()
+    {
+        if (selectedTrackIndicator == null || currentTarget == null) return;
+
+        bool isLive = currentTarget.IsContinuouslyIlluminated();
+
+        // If continuously illuminated, follow real position; otherwise lock to the frozen blip dot
+        Vector3 targetPos = isLive ? currentTarget.transform.position : currentTarget.lastKnownPosition;
+        targetPos.z = -0.15f; // Renders slightly in front of radar contacts
+
+        selectedTrackIndicator.transform.position = targetPos;
     }
 
     private void UpdateDynamicData()
@@ -73,8 +115,7 @@ public class RadarUIManager : MonoBehaviour
         // 1. Distance Calculation
         if (distanceText != null)
         {
-            // Use real-time position if illuminated; otherwise use the frozen position from the last sweep
-            float rawDistance = isLive 
+            float visualDistance = isLive 
                 ? currentTarget.transform.position.magnitude 
                 : currentTarget.lastKnownPosition.magnitude;
 
@@ -89,8 +130,9 @@ public class RadarUIManager : MonoBehaviour
                 if (currentZoomScale <= 0f) currentZoomScale = 1f; 
             }
 
-            float normalizedDistance = rawDistance / currentZoomScale;
-            float calculatedDistance = normalizedDistance * distanceMultiplier;
+            // MULTIPLY by currentZoomScale to cancel out the visual compression:
+            float trueWorldDistance = visualDistance * currentZoomScale;
+            float calculatedDistance = trueWorldDistance * distanceMultiplier;
 
             distanceText.text = "DIST:\n" + calculatedDistance.ToString("F1") + " " + distanceUnit;
         }

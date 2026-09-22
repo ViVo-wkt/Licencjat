@@ -2,12 +2,17 @@ using UnityEngine;
 
 public class TargetSignature : MonoBehaviour
 {
+    // Global counter so tracks are numbered chronologically
+    private static int _globalTrackCounter = 1;
+
     [Header("Flight Data")]
     public int speed = 400; 
     public int altitude = 15000; 
 
     [Header("Fluctuation Settings")]
+    [Tooltip("Maximum knots the speed can drift above/below base value.")]
     public float speedFluctuation = 12f;
+    [Tooltip("Maximum feet the altitude can drift above/below base value.")]
     public float altitudeFluctuation = 250f;
 
     [Header("Optimization")]
@@ -25,17 +30,24 @@ public class TargetSignature : MonoBehaviour
     private float _lockTimer = 0f; 
     private float _noiseSeed;
 
-    // Track whether target is under active continuous beam
     private bool _isContinuouslyIlluminated = false;
+    private EnemyNavigation _nav;
 
-    // Cached telemetry from the latest sweep ping
+    [HideInInspector] public string trackDesignation;
     [HideInInspector] public Vector3 lastKnownPosition;
     [HideInInspector] public int lastKnownSpeed;
     [HideInInspector] public int lastKnownAltitude;
 
     void Awake()
     {
+        // 1. Assign sequential Track designation
+        trackDesignation = $"TRACK {_globalTrackCounter:D2}";
+        _globalTrackCounter++;
+
         _noiseSeed = Random.Range(0f, 1000f);
+        _nav = GetComponent<EnemyNavigation>();
+        if (_nav == null) _nav = GetComponentInParent<EnemyNavigation>();
+
         lastKnownPosition = transform.position;
         lastKnownSpeed = speed;
         lastKnownAltitude = altitude;
@@ -79,7 +91,7 @@ public class TargetSignature : MonoBehaviour
             if (_lockTimer <= 0)
             {
                 _myLockIndicator.SetActive(false);
-                _isContinuouslyIlluminated = false; // Illumination expired
+                _isContinuouslyIlluminated = false;
             }
         }
 
@@ -87,6 +99,11 @@ public class TargetSignature : MonoBehaviour
         {
             Destroy(gameObject); 
         }
+    }
+
+    public bool IsCivilian()
+    {
+        return _nav != null && !_nav.isHostile;
     }
 
     public bool IsVisibleOnRadar()
@@ -101,17 +118,22 @@ public class TargetSignature : MonoBehaviour
 
     public int GetCurrentSpeed()
     {
+        // Civilians do not fluctuate in speed
+        if (IsCivilian()) return speed;
+
         float wave = Mathf.Sin((Time.time * 0.8f) + _noiseSeed) * speedFluctuation;
         return Mathf.RoundToInt(speed + wave);
     }
 
     public int GetCurrentAltitude()
     {
+        // Civilians do not fluctuate in altitude
+        if (IsCivilian()) return altitude;
+
         float wave = Mathf.Cos((Time.time * 0.4f) + _noiseSeed) * altitudeFluctuation;
         return Mathf.RoundToInt(altitude + wave);
     }
 
-    // Called periodically by the rotating sweep line
     public void PingLocation()
     {
         if (_myBlip != null)
@@ -129,7 +151,6 @@ public class TargetSignature : MonoBehaviour
         }
     }
 
-    // Called continuously by the steerable radar beam
     public void RealTimeIllumination()
     {
         if (_myBlip != null)
@@ -153,7 +174,21 @@ public class TargetSignature : MonoBehaviour
             }
         }
     }
+    void OnEnable()
+    {
+        RadarZoomSystem.OnZoomChanged += HandleZoomChange;
+    }
 
+    void OnDisable()
+    {
+        RadarZoomSystem.OnZoomChanged -= HandleZoomChange;
+    }
+
+    void HandleZoomChange(float oldScale, float newScale)
+    {
+        float ratio = oldScale / newScale;
+        lastKnownPosition *= ratio;
+    }   
     void OnDestroy()
     {
         if (_myBlip != null)
