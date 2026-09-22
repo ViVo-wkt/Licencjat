@@ -63,12 +63,12 @@
     <Compile Include="Assets\Scripts\BearingControl.cs" />
     <Compile Include="Assets\Scripts\Weapon 2\ActiveMissile.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuButton.cs" />
-    <Compile Include="Assets\Scripts\RadarContactInteraction.cs" />
+    <Compile Include="Assets\Scripts\Radar\RadarUIManager.cs" />
     <Compile Include="Assets\Scripts\ExplosionEffect.cs" />
-    <Compile Include="Assets\Scripts\RadarUIManager.cs" />
     <Compile Include="Assets\Scripts\Extra\FanRotator.cs" />
     <Compile Include="Assets\Scripts\IntermissionScreen.cs" />
     <Compile Include="Assets\Scripts\ImageOverlayController.cs" />
+    <Compile Include="Assets\Scripts\Radar\RadarContactInteraction.cs" />
     <Compile Include="Assets\Scripts\Radar\RadarSweep.cs" />
     <Compile Include="Assets\Scripts\DoubleTapExit.cs" />
     <Compile Include="Assets\Scripts\Extra\BaseAlarm.cs" />

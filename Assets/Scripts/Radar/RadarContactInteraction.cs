@@ -8,6 +8,10 @@ public class RadarContactInteraction : MonoBehaviour
     public RadarUIManager uiManager;
     public LayerMask contactLayer = ~0; 
 
+    [Header("Selection Tolerance")]
+    [Tooltip("Maximum distance on screen (world units) from the visible blip to register a click.")]
+    public float clickSelectionRadius = 0.5f;
+
     void Awake()
     {
         if (GetComponent<TargetSignature>() != null || GetComponent<Collider2D>() != null)
@@ -33,16 +37,16 @@ public class RadarContactInteraction : MonoBehaviour
         // Prevent clicking through UI buttons
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
         {
-            // If the UI panel is too big, it will block your clicks and trigger this!
             return; 
         }
 
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
-        Vector2 worldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+        Vector2 clickWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
         
-        RaycastHit2D[] hits = Physics2D.RaycastAll(worldPos, Vector2.zero, Mathf.Infinity, contactLayer);
-
         TargetSignature validTarget = null;
+
+        // --- METHOD 1: Direct Collider Raycast ---
+        RaycastHit2D[] hits = Physics2D.RaycastAll(clickWorldPos, Vector2.zero, Mathf.Infinity, contactLayer);
 
         foreach (var hit in hits)
         {
@@ -59,10 +63,34 @@ public class RadarContactInteraction : MonoBehaviour
             }
         }
 
+        // --- METHOD 2: Check Visible Radar Blips ---
+        // If the raycast missed the physical enemy body (because it flew ahead of its last blip ping),
+        // find the visible blip closest to the click point!
+        if (validTarget == null)
+        {
+            TargetSignature[] allTargets = FindObjectsByType<TargetSignature>(FindObjectsSortMode.None);
+            float closestDist = clickSelectionRadius;
+
+            foreach (var target in allTargets)
+            {
+                // Only allow selecting contacts that are currently rendered/visible on radar
+                if (target != null && target.IsVisibleOnRadar())
+                {
+                    // Check distance to the visible blip's coordinates
+                    float dist = Vector2.Distance(clickWorldPos, (Vector2)target.lastKnownPosition);
+                    if (dist < closestDist)
+                    {
+                        closestDist = dist;
+                        validTarget = target;
+                    }
+                }
+            }
+        }
+
+        // --- APPLY SELECTION ---
         if (validTarget != null)
         {
-            // THIS TELLS US IF THE CLICK WORKED
-            Debug.Log($"<color=cyan>[Radar]</color> Switched lock to new target: {validTarget.gameObject.name}");
+            Debug.Log($"<color=cyan>[Radar]</color> Selected track: {validTarget.gameObject.name}");
             
             if (uiManager != null)
             {
