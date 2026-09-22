@@ -17,16 +17,14 @@ public class WarbookManager : MonoBehaviour
     public SliderSwitch sliderSwitch;
 
     [Header("Screen Panels")]
-    public GameObject targetInfoScreen;   // Default target info HUD
-    public GameObject warbookMasterPanel; // Root parent of all Warbook UI
-    public GameObject listSubPanel;       // Panel displaying index list & scroll arrows
+    public GameObject targetInfoScreen;   // Default radar target info HUD
+    public GameObject warbookMasterPanel; // Root parent of Warbook UI
+    public GameObject listSubPanel;       // Panel displaying list of entries
     public GameObject detailSubPanel;     // Panel displaying title & description
 
     [Header("List View Elements")]
-    public Button[] listRowButtons;       // The visible rows on screen (e.g. 9 buttons)
-    public TMP_Text[] listRowTexts;       // The text components on those buttons
-    public Button scrollUpButton;
-    public Button scrollDownButton;
+    public Button[] listRowButtons;       // Fixed buttons on screen
+    public TMP_Text[] listRowTexts;       // Text labels on those buttons
 
     [Header("Detail View Elements")]
     public TMP_Text detailTitleText;
@@ -38,7 +36,7 @@ public class WarbookManager : MonoBehaviour
     {
         new WarbookEntry { 
             title = "SARH MISSILE", 
-            description = "SEMI-ACTIVE RADAR HOMING\n\nRelies on continuous radar illumination from the ground station. Highly effective against medium-range targets but requires uninterrupted beam tracking." 
+            description = "SEMI-ACTIVE RADAR HOMING\n\nRelies on continuous radar illumination from the station. Highly effective against medium-range targets but requires continuous beam tracking." 
         },
         new WarbookEntry { 
             title = "ARH MISSILE", 
@@ -74,26 +72,23 @@ public class WarbookManager : MonoBehaviour
         }
     };
 
-    private int _topVisibleIndex = 0;
-    private bool _isWarbookActive = false;
-
     void Start()
     {
         // Wire up list button clicks
         for (int i = 0; i < listRowButtons.Length; i++)
         {
             int slotIndex = i;
-            listRowButtons[i].onClick.AddListener(() => OnRowClicked(slotIndex));
+            if (listRowButtons[i] != null)
+            {
+                listRowButtons[i].onClick.AddListener(() => OnRowClicked(slotIndex));
+            }
         }
 
-        if (scrollUpButton != null) scrollUpButton.onClick.AddListener(ScrollUp);
-        if (scrollDownButton != null) scrollDownButton.onClick.AddListener(ScrollDown);
         if (backButton != null) backButton.onClick.AddListener(ShowListView);
 
         if (sliderSwitch != null)
         {
             sliderSwitch.OnSwitchToggled += HandleSwitchToggled;
-            // Align initial layout
             HandleSwitchToggled(sliderSwitch.isOnRightSide);
         }
         else
@@ -108,11 +103,13 @@ public class WarbookManager : MonoBehaviour
         {
             sliderSwitch.OnSwitchToggled -= HandleSwitchToggled;
         }
+
+        // Failsafe: restore time if destroyed while open
+        Time.timeScale = 1f;
     }
 
     void HandleSwitchToggled(bool isOnRight)
     {
-        // Assuming sliding to the right activates the Warbook
         if (isOnRight)
         {
             OpenWarbook();
@@ -125,8 +122,7 @@ public class WarbookManager : MonoBehaviour
 
     public void OpenWarbook()
     {
-        _isWarbookActive = true;
-        Time.timeScale = 0f; // Pauses gameplay simulation
+        Time.timeScale = 0f; // Pause gameplay
 
         if (targetInfoScreen != null) targetInfoScreen.SetActive(false);
         if (warbookMasterPanel != null) warbookMasterPanel.SetActive(true);
@@ -136,11 +132,9 @@ public class WarbookManager : MonoBehaviour
 
     public void CloseWarbook()
     {
-        _isWarbookActive = false;
-        Time.timeScale = 1f; // Resumes gameplay simulation
+        Time.timeScale = 1f; // Resume gameplay
 
         if (warbookMasterPanel != null) warbookMasterPanel.SetActive(false);
-        // Note: targetInfoScreen visibility returns to normal radar selection behavior
     }
 
     public void ShowListView()
@@ -162,18 +156,14 @@ public class WarbookManager : MonoBehaviour
 
     void RefreshListUI()
     {
-        int totalRows = listRowButtons.Length;
-
-        for (int i = 0; i < totalRows; i++)
+        for (int i = 0; i < listRowButtons.Length; i++)
         {
-            int entryIndex = _topVisibleIndex + i;
-
-            if (entryIndex < database.Count)
+            if (i < database.Count)
             {
                 listRowButtons[i].gameObject.SetActive(true);
                 if (listRowTexts[i] != null)
                 {
-                    listRowTexts[i].text = database[entryIndex].title;
+                    listRowTexts[i].text = database[i].title;
                 }
             }
             else
@@ -181,39 +171,13 @@ public class WarbookManager : MonoBehaviour
                 listRowButtons[i].gameObject.SetActive(false);
             }
         }
-
-        // Enable or disable scroll arrows based on list bounds
-        if (scrollUpButton != null)
-            scrollUpButton.interactable = _topVisibleIndex > 0;
-
-        if (scrollDownButton != null)
-            scrollDownButton.interactable = (_topVisibleIndex + totalRows) < database.Count;
     }
 
-    public void ScrollUp()
+    void OnRowClicked(int index)
     {
-        if (_topVisibleIndex > 0)
+        if (index >= 0 && index < database.Count)
         {
-            _topVisibleIndex--;
-            RefreshListUI();
-        }
-    }
-
-    public void ScrollDown()
-    {
-        if (_topVisibleIndex + listRowButtons.Length < database.Count)
-        {
-            _topVisibleIndex++;
-            RefreshListUI();
-        }
-    }
-
-    void OnRowClicked(int slotIndex)
-    {
-        int actualIndex = _topVisibleIndex + slotIndex;
-        if (actualIndex >= 0 && actualIndex < database.Count)
-        {
-            ShowDetailView(database[actualIndex]);
+            ShowDetailView(database[index]);
         }
     }
 }

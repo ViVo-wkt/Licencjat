@@ -20,10 +20,10 @@ public class SliderSwitch : MonoBehaviour
     [Header("Output State")]
     public bool isOnRightSide = false;
 
-    // Fired whenever the state toggles
+    // Fired whenever the switch state changes
     public event Action<bool> OnSwitchToggled;
 
-    private Camera _mainCam;
+    private Camera _cam;
     private bool _isDragging = false;
     private float _currentLocalZ;
     private float _targetLocalZ;
@@ -31,7 +31,7 @@ public class SliderSwitch : MonoBehaviour
 
     void Start()
     {
-        _mainCam = Camera.main;
+        _cam = Camera.main != null ? Camera.main : FindAnyObjectByType<Camera>();
 
         if (handleCollider == null && slidingPart != null)
         {
@@ -46,13 +46,14 @@ public class SliderSwitch : MonoBehaviour
 
     void Update()
     {
-        // Notice: Time.timeScale check REMOVED so you can drag it out of the paused Warbook!
-        if (Mouse.current == null || handleCollider == null || _mainCam == null || slidingPart == null) return;
+        if (Mouse.current == null || handleCollider == null || slidingPart == null) return;
+        if (_cam == null) _cam = Camera.main != null ? Camera.main : FindAnyObjectByType<Camera>();
+        if (_cam == null) return;
 
         bool isHovering = false;
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
 
-        Ray ray = _mainCam.ScreenPointToRay(mouseScreenPos);
+        Ray ray = _cam.ScreenPointToRay(mouseScreenPos);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             if (hit.collider == handleCollider) isHovering = true;
@@ -94,7 +95,6 @@ public class SliderSwitch : MonoBehaviour
         }
         else
         {
-            // Uses unscaledDeltaTime to animate smoothly during pause
             _currentLocalZ = Mathf.MoveTowards(_currentLocalZ, _targetLocalZ, snapSpeed * Time.unscaledDeltaTime);
         }
 
