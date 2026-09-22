@@ -1,0 +1,949 @@
+fileFormatVersion: 2
+guid: 5352c9e9f394f134993758e9d49156a9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6949870022485782332
+    second: WARBOOK DATABASE_0
+  - first:
+      213: -287566378989731615
+    second: WARBOOK DATABASE_1
+  - first:
+      213: 4933868840522484801
+    second: WARBOOK DATABASE_2
+  - first:
+      213: 5759092101572656294
+    second: WARBOOK DATABASE_3
+  - first:
+      213: -3030495710522742714
+    second: WARBOOK DATABASE_4
+  - first:
+      213: -692068197048327631
+    second: WARBOOK DATABASE_5
+  - first:
+      213: -5911569763022195538
+    second: WARBOOK DATABASE_6
+  - first:
+      213: 4633693587651725702
+    second: WARBOOK DATABASE_7
+  - first:
+      213: -8046982776175497834
+    second: WARBOOK DATABASE_8
+  - first:
+      213: 4675291264590114387
+    second: WARBOOK DATABASE_9
+  - first:
+      213: -6667594435342691988
+    second: WARBOOK DATABASE_10
+  - first:
+      213: -7257824728101746769
+    second: WARBOOK DATABASE_11
+  - first:
+      213: -4849186606307896853
+    second: WARBOOK DATABASE_12
+  - first:
+      213: -7882575143339124639
+    second: WARBOOK DATABASE_13
+  - first:
+      213: 4410227688542473074
+    second: WARBOOK DATABASE_14
+  - first:
+      213: -8301756986938107022
+    second: WARBOOK DATABASE_15
+  - first:
+      213: 2618430876081309165
+    second: WARBOOK DATABASE_16
+  - first:
+      213: 6082036007545028000
+    second: WARBOOK DATABASE_17
+  - first:
+      213: 3433126581607772008
+    second: WARBOOK DATABASE_18
+  - first:
+      213: -300605697660381731
+    second: WARBOOK DATABASE_19
+  - first:
+      213: 803506046767938201
+    second: WARBOOK DATABASE_20
+  - first:
+      213: 145106102994342157
+    second: WARBOOK DATABASE_21
+  - first:
+      213: -1597415430362095616
+    second: WARBOOK DATABASE_22
+  - first:
+      213: -1929511452397805846
+    second: WARBOOK DATABASE_23
+  - first:
+      213: 8864487896967080438
+    second: WARBOOK DATABASE_24
+  - first:
+      213: 5288724313090645228
+    second: WARBOOK DATABASE_25
+  - first:
+      213: -7853990819361417848
+    second: WARBOOK DATABASE_26
+  - first:
+      213: -5854618450599772049
+    second: WARBOOK DATABASE_27
+  - first:
+      213: 4958874211869566924
+    second: WARBOOK DATABASE_28
+  - first:
+      213: 2850068673650811194
+    second: WARBOOK DATABASE_29
+  - first:
+      213: 6426208030087576083
+    second: WARBOOK DATABASE_30
+  - first:
+      213: -4122063096416666481
+    second: WARBOOK DATABASE_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 119
+        width: 47
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3fa665a6f5e27060800000000000000
+      internalID: 6949870022485782332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_1
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 119
+        width: 39
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e0c8f2e6eb520cf0800000000000000
+      internalID: -287566378989731615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_2
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 123
+        width: 28
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14c06b7d19f987440800000000000000
+      internalID: 4933868840522484801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_3
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 119
+        width: 34
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6acfefed0c76cef40800000000000000
+      internalID: 5759092101572656294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_4
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 119
+        width: 47
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64862f0253481f5d0800000000000000
+      internalID: -3030495710522742714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_5
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 119
+        width: 24
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 132e69a34a74566f0800000000000000
+      internalID: -692068197048327631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_6
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 119
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea43f121f92e5fda0800000000000000
+      internalID: -5911569763022195538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_7
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 119
+        width: 24
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6898cf184cf2e4040800000000000000
+      internalID: 4633693587651725702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_8
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 119
+        width: 40
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69d6f50cccf535090800000000000000
+      internalID: -8046982776175497834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_9
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 119
+        width: 31
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35e616762a8f1e040800000000000000
+      internalID: 4675291264590114387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_10
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 119
+        width: 31
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c61170fff22f773a0800000000000000
+      internalID: -6667594435342691988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_11
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 119
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa703770dd6074b90800000000000000
+      internalID: -7257824728101746769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_12
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 119
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be19f61497a34bcb0800000000000000
+      internalID: -4849186606307896853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_13
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 119
+        width: 24
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16892f9bba77b9290800000000000000
+      internalID: -7882575143339124639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_14
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 128
+        width: 39
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27b8a2267b6443d30800000000000000
+      internalID: 4410227688542473074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_15
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 119
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27bdfe5410c3acc80800000000000000
+      internalID: -8301756986938107022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 22
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de5cdbd3209865420800000000000000
+      internalID: 2618430876081309165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_17
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 0
+        width: 39
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ad3bdc568bb76450800000000000000
+      internalID: 6082036007545028000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_18
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 0
+        width: 34
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86faeadbf6ae4af20800000000000000
+      internalID: 3433126581607772008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_19
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 0
+        width: 47
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd59e7de5b804dbf0800000000000000
+      internalID: -300605697660381731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_20
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 48
+        width: 57
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99a3b7c0e70a62b00800000000000000
+      internalID: 803506046767938201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_21
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 0
+        width: 25
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0118bb5b35830200800000000000000
+      internalID: 145106102994342157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_22
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 0
+        width: 34
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0002a8a2127d4d9e0800000000000000
+      internalID: -1597415430362095616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_23
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 0
+        width: 48
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeed7c99e8ff835e0800000000000000
+      internalID: -1929511452397805846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_24
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 0
+        width: 23
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f9e876b6ccf40b70800000000000000
+      internalID: 8864487896967080438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_25
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 0
+        width: 39
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cec5dbcedb2556940800000000000000
+      internalID: 5288724313090645228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_26
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 0
+        width: 34
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88598c646f4010390800000000000000
+      internalID: -7853990819361417848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_27
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 0
+        width: 48
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f608d8cc98730cea0800000000000000
+      internalID: -5854618450599772049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_28
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 0
+        width: 63
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc7a45c82d571d440800000000000000
+      internalID: 4958874211869566924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_29
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 0
+        width: 43
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a31ec6ebb5a7d8720800000000000000
+      internalID: 2850068673650811194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_30
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 44
+        width: 34
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31af126e72a7e2950800000000000000
+      internalID: 6426208030087576083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WARBOOK DATABASE_31
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 0
+        width: 34
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8c7654147d7bc6c0800000000000000
+      internalID: -4122063096416666481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      WARBOOK DATABASE_0: 6949870022485782332
+      WARBOOK DATABASE_1: -287566378989731615
+      WARBOOK DATABASE_10: -6667594435342691988
+      WARBOOK DATABASE_11: -7257824728101746769
+      WARBOOK DATABASE_12: -4849186606307896853
+      WARBOOK DATABASE_13: -7882575143339124639
+      WARBOOK DATABASE_14: 4410227688542473074
+      WARBOOK DATABASE_15: -8301756986938107022
+      WARBOOK DATABASE_16: 2618430876081309165
+      WARBOOK DATABASE_17: 6082036007545028000
+      WARBOOK DATABASE_18: 3433126581607772008
+      WARBOOK DATABASE_19: -300605697660381731
+      WARBOOK DATABASE_2: 4933868840522484801
+      WARBOOK DATABASE_20: 803506046767938201
+      WARBOOK DATABASE_21: 145106102994342157
+      WARBOOK DATABASE_22: -1597415430362095616
+      WARBOOK DATABASE_23: -1929511452397805846
+      WARBOOK DATABASE_24: 8864487896967080438
+      WARBOOK DATABASE_25: 5288724313090645228
+      WARBOOK DATABASE_26: -7853990819361417848
+      WARBOOK DATABASE_27: -5854618450599772049
+      WARBOOK DATABASE_28: 4958874211869566924
+      WARBOOK DATABASE_29: 2850068673650811194
+      WARBOOK DATABASE_3: 5759092101572656294
+      WARBOOK DATABASE_30: 6426208030087576083
+      WARBOOK DATABASE_31: -4122063096416666481
+      WARBOOK DATABASE_4: -3030495710522742714
+      WARBOOK DATABASE_5: -692068197048327631
+      WARBOOK DATABASE_6: -5911569763022195538
+      WARBOOK DATABASE_7: 4633693587651725702
+      WARBOOK DATABASE_8: -8046982776175497834
+      WARBOOK DATABASE_9: 4675291264590114387
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

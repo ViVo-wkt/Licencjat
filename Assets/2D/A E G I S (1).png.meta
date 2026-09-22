@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 581279278b3dfbe46b1d9abd2c066b53
+guid: a960e7501ca5eb84f864cc9fbf33f033
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 211022590724899025
-    second: Group 51 (1)_0
+      213: -7372702701647425318
+    second: A E G I S (1)_0
+  - first:
+      213: 8916766542531410983
+    second: A E G I S (1)_1
+  - first:
+      213: -3566380890254542923
+    second: A E G I S (1)_2
+  - first:
+      213: 5408763970996707268
+    second: A E G I S (1)_3
+  - first:
+      213: -7683922585364448197
+    second: A E G I S (1)_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +87,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Group 51 (1)_0
+      name: A E G I S (1)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 2127
-        height: 1190
+        y: 479
+        width: 76
+        height: 69
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +127,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1d08dbf9de3bde200800000000000000
-      internalID: 211022590724899025
+      spriteID: ad01eb184f5eea990800000000000000
+      internalID: -7372702701647425318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A E G I S (1)_1
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 359
+        width: 64
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72c3ca86de7bebb70800000000000000
+      internalID: 8916766542531410983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A E G I S (1)_2
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 239
+        width: 67
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b7f2aec97ba18ec0800000000000000
+      internalID: -3566380890254542923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A E G I S (1)_3
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 119
+        width: 40
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cf903dbc2acf0b40800000000000000
+      internalID: 5408763970996707268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A E G I S (1)_4
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 0
+        width: 67
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3c30c9ae193d5590800000000000000
+      internalID: -7683922585364448197
       vertices: []
       indices: 
       edges: []
@@ -135,7 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Group 51 (1)_0: 211022590724899025
+      A E G I S (1)_0: -7372702701647425318
+      A E G I S (1)_1: 8916766542531410983
+      A E G I S (1)_2: -3566380890254542923
+      A E G I S (1)_3: 5408763970996707268
+      A E G I S (1)_4: -7683922585364448197
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
