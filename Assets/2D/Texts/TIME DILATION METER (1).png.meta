@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: cb3991acd53989149b7334615cfaa874
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5138734495248193490
+    second: TIME DILATION METER (1)_0
+  - first:
+      213: 4688489727022200527
+    second: TIME DILATION METER (1)_1
+  - first:
+      213: -3257591800027379198
+    second: TIME DILATION METER (1)_2
+  - first:
+      213: 6175105602945240772
+    second: TIME DILATION METER (1)_3
+  - first:
+      213: 5652718254434833615
+    second: TIME DILATION METER (1)_4
+  - first:
+      213: -3901394275718689498
+    second: TIME DILATION METER (1)_5
+  - first:
+      213: -3233103788887071228
+    second: TIME DILATION METER (1)_6
+  - first:
+      213: 7773487269045961369
+    second: TIME DILATION METER (1)_7
+  - first:
+      213: 1086431191248672277
+    second: TIME DILATION METER (1)_8
+  - first:
+      213: -5322093918944090539
+    second: TIME DILATION METER (1)_9
+  - first:
+      213: -6666193414272359349
+    second: TIME DILATION METER (1)_10
+  - first:
+      213: 2689906015509279174
+    second: TIME DILATION METER (1)_11
+  - first:
+      213: 5840237435950226369
+    second: TIME DILATION METER (1)_12
+  - first:
+      213: 121216144329568093
+    second: TIME DILATION METER (1)_13
+  - first:
+      213: 1600433128978359056
+    second: TIME DILATION METER (1)_14
+  - first:
+      213: 2251632254910265807
+    second: TIME DILATION METER (1)_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TIME DILATION METER (1)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 59
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e286fa7e33c8fa8b0800000000000000
+      internalID: -5138734495248193490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TIME DILATION METER (1)_1
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 1
+        width: 40
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc6f938e09cd01140800000000000000
+      internalID: 4688489727022200527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TIME DILATION METER (1)_2
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 0
+        width: 84
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20a84207485bac2d0800000000000000
+      internalID: -3257591800027379198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TIME DILATION METER (1)_3
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 1
+        width: 63
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ce431a24d162b550800000000000000
+      internalID: 6175105602945240772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TIME DILATION METER (1)_4
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 1
+        width: 67
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc454f29d4d727e40800000000000000
+      internalID: 5652718254434833615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TIME DILATION METER (1)_5
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 1
+        width: 41
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62d8b03a3967bd9c0800000000000000
+      internalID: -3901394275718689498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TIME DILATION METER (1)_6
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 1
+        width: 135
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 406aa65db35b123d0800000000000000
+      internalID: -3233103788887071228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TIME DILATION METER (1)_7
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 1
+        width: 61
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99281894c79f0eb60800000000000000
+      internalID: 7773487269045961369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TIME DILATION METER (1)_8
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 1
+        width: 40
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 516184b8967c31f00800000000000000
+      internalID: 1086431191248672277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TIME DILATION METER (1)_9
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 1
+        width: 67
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 556221447cf1426b0800000000000000
+      internalID: -5322093918944090539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TIME DILATION METER (1)_10
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 1
+        width: 70
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b446f32a86cec73a0800000000000000
+      internalID: -6666193414272359349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TIME DILATION METER (1)_11
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 0
+        width: 84
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c1fd95f447745520800000000000000
+      internalID: 2689906015509279174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TIME DILATION METER (1)_12
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 1
+        width: 63
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cb50cd4101bc0150800000000000000
+      internalID: 5840237435950226369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TIME DILATION METER (1)_13
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 1
+        width: 61
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5f6ec7e075aea100800000000000000
+      internalID: 121216144329568093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TIME DILATION METER (1)_14
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 1
+        width: 63
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 013a58b8371e53610800000000000000
+      internalID: 1600433128978359056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TIME DILATION METER (1)_15
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 1
+        width: 70
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc9fcbe2b976f3f10800000000000000
+      internalID: 2251632254910265807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      TIME DILATION METER (1)_0: -5138734495248193490
+      TIME DILATION METER (1)_1: 4688489727022200527
+      TIME DILATION METER (1)_10: -6666193414272359349
+      TIME DILATION METER (1)_11: 2689906015509279174
+      TIME DILATION METER (1)_12: 5840237435950226369
+      TIME DILATION METER (1)_13: 121216144329568093
+      TIME DILATION METER (1)_14: 1600433128978359056
+      TIME DILATION METER (1)_15: 2251632254910265807
+      TIME DILATION METER (1)_2: -3257591800027379198
+      TIME DILATION METER (1)_3: 6175105602945240772
+      TIME DILATION METER (1)_4: 5652718254434833615
+      TIME DILATION METER (1)_5: -3901394275718689498
+      TIME DILATION METER (1)_6: -3233103788887071228
+      TIME DILATION METER (1)_7: 7773487269045961369
+      TIME DILATION METER (1)_8: 1086431191248672277
+      TIME DILATION METER (1)_9: -5322093918944090539
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
